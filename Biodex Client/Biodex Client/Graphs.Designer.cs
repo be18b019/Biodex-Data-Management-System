@@ -33,9 +33,9 @@
             this.btnStop = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
             this.tlpGraphs = new System.Windows.Forms.TableLayoutPanel();
-            this.chartAngle = new LiveCharts.WinForms.CartesianChart();
-            this.chartAngularSpeed = new LiveCharts.WinForms.CartesianChart();
+            this.chartVelocity = new LiveCharts.WinForms.CartesianChart();
             this.chartTorque = new LiveCharts.WinForms.CartesianChart();
+            this.chartAngle = new LiveCharts.WinForms.CartesianChart();
             this.tlpGraphsButtons.SuspendLayout();
             this.tlpGraphs.SuspendLayout();
             this.SuspendLayout();
@@ -54,7 +54,7 @@
             this.tlpGraphsButtons.Name = "tlpGraphsButtons";
             this.tlpGraphsButtons.RowCount = 1;
             this.tlpGraphsButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpGraphsButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpGraphsButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 71F));
             this.tlpGraphsButtons.Size = new System.Drawing.Size(950, 71);
             this.tlpGraphsButtons.TabIndex = 1;
             // 
@@ -111,9 +111,9 @@
             this.tlpGraphs.ColumnCount = 1;
             this.tlpGraphs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpGraphs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpGraphs.Controls.Add(this.chartAngle, 0, 2);
-            this.tlpGraphs.Controls.Add(this.chartAngularSpeed, 0, 1);
+            this.tlpGraphs.Controls.Add(this.chartVelocity, 0, 1);
             this.tlpGraphs.Controls.Add(this.chartTorque, 0, 0);
+            this.tlpGraphs.Controls.Add(this.chartAngle, 0, 2);
             this.tlpGraphs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpGraphs.Location = new System.Drawing.Point(0, 0);
             this.tlpGraphs.Name = "tlpGraphs";
@@ -121,26 +121,18 @@
             this.tlpGraphs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tlpGraphs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tlpGraphs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tlpGraphs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpGraphs.Size = new System.Drawing.Size(950, 554);
             this.tlpGraphs.TabIndex = 2;
             // 
-            // chartAngle
+            // chartVelocity
             // 
-            this.chartAngle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chartAngle.Location = new System.Drawing.Point(3, 371);
-            this.chartAngle.Name = "chartAngle";
-            this.chartAngle.Size = new System.Drawing.Size(944, 180);
-            this.chartAngle.TabIndex = 2;
-            this.chartAngle.Text = "Angle";
-            // 
-            // chartAngularSpeed
-            // 
-            this.chartAngularSpeed.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chartAngularSpeed.Location = new System.Drawing.Point(3, 187);
-            this.chartAngularSpeed.Name = "chartAngularSpeed";
-            this.chartAngularSpeed.Size = new System.Drawing.Size(944, 178);
-            this.chartAngularSpeed.TabIndex = 1;
-            this.chartAngularSpeed.Text = "Angular Speed";
+            this.chartVelocity.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chartVelocity.Location = new System.Drawing.Point(3, 187);
+            this.chartVelocity.Name = "chartVelocity";
+            this.chartVelocity.Size = new System.Drawing.Size(944, 178);
+            this.chartVelocity.TabIndex = 3;
+            this.chartVelocity.Text = "Velocity";
             // 
             // chartTorque
             // 
@@ -150,6 +142,15 @@
             this.chartTorque.Size = new System.Drawing.Size(944, 178);
             this.chartTorque.TabIndex = 0;
             this.chartTorque.Text = "Torque";
+            // 
+            // chartAngle
+            // 
+            this.chartAngle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chartAngle.Location = new System.Drawing.Point(3, 371);
+            this.chartAngle.Name = "chartAngle";
+            this.chartAngle.Size = new System.Drawing.Size(944, 180);
+            this.chartAngle.TabIndex = 4;
+            this.chartAngle.Text = "Angle";
             // 
             // formGraphs
             // 
@@ -176,8 +177,8 @@
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.TableLayoutPanel tlpGraphs;
-        private LiveCharts.WinForms.CartesianChart chartAngle;
-        private LiveCharts.WinForms.CartesianChart chartAngularSpeed;
-        private LiveCharts.WinForms.CartesianChart chartTorque;
+        public LiveCharts.WinForms.CartesianChart chartTorque;
+        public LiveCharts.WinForms.CartesianChart chartVelocity;
+        public LiveCharts.WinForms.CartesianChart chartAngle;
     }
 }

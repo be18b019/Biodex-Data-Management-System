@@ -140,6 +140,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -160,6 +161,7 @@
     <Compile Include="Biodex_Client.Designer.cs">
       <DependentUpon>Biodex_Client.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data.cs" />
     <Compile Include="Graphs.cs">
       <SubType>Form</SubType>
     </Compile>

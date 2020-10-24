@@ -12,8 +12,16 @@ namespace Biodex_Client
 {
     public partial class formGraphs : Form
     {
+        Data _data = null;
+
         public formGraphs()
         {
+            InitializeComponent();
+        }
+
+        public formGraphs(Data data)
+        {
+            _data = data;
             InitializeComponent();
         }
     }

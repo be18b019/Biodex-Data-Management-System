@@ -34,6 +34,7 @@
             this.btnMeasurementProperties = new System.Windows.Forms.Button();
             this.btnGraphs = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
+            this.lblBiodex2 = new System.Windows.Forms.Label();
             this.panelControl = new System.Windows.Forms.Panel();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnMaximize = new System.Windows.Forms.Button();
@@ -41,7 +42,6 @@
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
             this.panelChildForms = new System.Windows.Forms.Panel();
             this.lblBiodex1 = new System.Windows.Forms.Label();
-            this.lblBiodex2 = new System.Windows.Forms.Label();
             this.panelSideMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelControl.SuspendLayout();
@@ -125,6 +125,19 @@
             this.panelLogo.Name = "panelLogo";
             this.panelLogo.Size = new System.Drawing.Size(250, 100);
             this.panelLogo.TabIndex = 1;
+            // 
+            // lblBiodex2
+            // 
+            this.lblBiodex2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblBiodex2.AutoSize = true;
+            this.lblBiodex2.Font = new System.Drawing.Font("Baskerville Old Face", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBiodex2.ForeColor = System.Drawing.Color.DarkGray;
+            this.lblBiodex2.Location = new System.Drawing.Point(67, 40);
+            this.lblBiodex2.Name = "lblBiodex2";
+            this.lblBiodex2.Size = new System.Drawing.Size(143, 36);
+            this.lblBiodex2.TabIndex = 4;
+            this.lblBiodex2.Text = "BIODEX";
+            this.lblBiodex2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panelControl
             // 
@@ -214,19 +227,6 @@
             this.lblBiodex1.Text = "BIODEX";
             this.lblBiodex1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblBiodex2
-            // 
-            this.lblBiodex2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblBiodex2.AutoSize = true;
-            this.lblBiodex2.Font = new System.Drawing.Font("Baskerville Old Face", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBiodex2.ForeColor = System.Drawing.Color.DarkGray;
-            this.lblBiodex2.Location = new System.Drawing.Point(67, 40);
-            this.lblBiodex2.Name = "lblBiodex2";
-            this.lblBiodex2.Size = new System.Drawing.Size(143, 36);
-            this.lblBiodex2.TabIndex = 4;
-            this.lblBiodex2.Text = "BIODEX";
-            this.lblBiodex2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // Biodex_Client
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -242,6 +242,7 @@
             this.Name = "Biodex_Client";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Biodex_Client";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panelSideMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
             this.panelLogo.PerformLayout();

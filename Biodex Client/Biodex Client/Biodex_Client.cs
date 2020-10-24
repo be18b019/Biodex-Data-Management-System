@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
+
 namespace Biodex_Client
 {
     public partial class Biodex_Client : Form
@@ -23,11 +24,12 @@ namespace Biodex_Client
         private const int cGrip = 16;      // Grip size
         private const int cCaption = 32;   // Caption bar height;
 
-        //initializing of childforms
+        //initializing of childforms and data object   
         private Form activeForm = null;
-        private formGraphs FormGraphs = new formGraphs();
-        private formMeasurementProperties FormMeasurementProperties = new formMeasurementProperties();
-        private formMicrocontrollerStatus FormMicrocontrollerStatus = new formMicrocontrollerStatus();
+        public static Data data = new Data();
+        public static formGraphs FormGraphs = new formGraphs(data);
+        public static formMeasurementProperties FormMeasurementProperties = new formMeasurementProperties(FormGraphs, data);
+        public static formMicrocontrollerStatus FormMicrocontrollerStatus = new formMicrocontrollerStatus();
         #endregion
 
         #region title bar and dragging control
@@ -127,7 +129,7 @@ namespace Biodex_Client
     }
 }
 
-#region Johnny's notes
+#region Johnny's notes ¯\_(ツ)_/¯
 
 //Johnny's notes:
 
@@ -148,7 +150,7 @@ namespace Biodex_Client
 //      1. Design proper UI
 //           --> exporting of excercise information for database
 // 
-//           get form resizeable and dragable --> done  with site and bunifudragcontrol
+//           get form resizeable and dragable --> done  with link and bunifudragcontrol
 //           https://stackoverflow.com/questions/29024910/how-to-design-a-custom-close-minimize-and-maximize-button-in-windows-form-appli
 //          
 //            measurement Properties:
@@ -171,7 +173,7 @@ namespace Biodex_Client
 //              like checkbox
 //           
 //
-
+//
 //      2. Implement test Load button with function of loading existing matlabfiles (convert them into csv files)
 //      3. implement real load button that loads data from database
 //      4. Implement test export button with loaded data from test load 
