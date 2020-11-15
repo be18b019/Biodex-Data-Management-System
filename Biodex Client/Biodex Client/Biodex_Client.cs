@@ -126,6 +126,7 @@ namespace Biodex_Client
             childForm.Show();
         }
         #endregion
+
     }
 }
 

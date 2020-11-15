@@ -180,6 +180,7 @@
     <Compile Include="Microcontroller_Status.Designer.cs">
       <DependentUpon>Microcontroller_Status.cs</DependentUpon>
     </Compile>
+    <Compile Include="MProperties.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Biodex_Client.resx">

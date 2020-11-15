@@ -21,6 +21,7 @@ namespace Biodex_Client
         //initializing of necessary members
         formGraphs _FormGraphs = null;
         Data _data = null;
+        MProperties _mProperties = null;
 
         public ChartValues<ValuePoint> ChartValuesTorqueValues { get; set; }
         public ChartValues<ValuePoint> ChartValuesVelocityValues { get; set; }
@@ -29,6 +30,7 @@ namespace Biodex_Client
         Thread threadAddValuesToChart;
 
 
+        #region formMeasurement Constructors, Load function, disable nud Scroll
         public formMeasurementProperties()
         {
             InitializeComponent();        
@@ -83,7 +85,7 @@ namespace Biodex_Client
 
             _FormGraphs.chartVelocity.AxisY.Add(new LiveCharts.Wpf.Axis
             {
-                Title = "Angle Velocity",
+                Title = "Angular Velocity",
                 //DisableAnimations = true,
                 //MaxValue = 600, 
                 //MinValue=400
@@ -111,6 +113,60 @@ namespace Biodex_Client
             InitializeComponent();
         }
 
+
+        /*
+       * added getControls function to:
+       * https://stackoverflow.com/questions/59862561/how-to-disable-scrolling-on-a-numericupdown-in-a-windows-form
+       * adds an Eventhandler to MousewheelEvents for disabling scrolling
+       */
+        private void formMeasurementProperties_Load(object sender, EventArgs e)
+        {
+            foreach (Control ctl in getControls())
+            {
+                if (ctl.GetType() == typeof(NumericUpDown))
+                    ctl.MouseWheel += Ctl_MouseWheel;
+            }
+        }
+
+        /*
+         * sets handled eventarg true to disable scrolling
+         */
+        private void Ctl_MouseWheel(object sender, MouseEventArgs e)
+        {
+            ((HandledMouseEventArgs)e).Handled = true;
+        }
+
+        /*
+         * searches for controls of type NumericUpDown in all containers 
+         * @return returns a list of all controls in order to provide access if maybe needed later
+         */
+        private List<Control> getControls()
+        {
+            List<Control> cntrls = new List<Control>();
+            cntrls.Clear();
+
+            foreach (TableLayoutPanel tlp in panelMain.Controls)
+            {
+                foreach (GroupBox gb in tlp.Controls)
+                {
+                    foreach (TableLayoutPanel tlp1 in gb.Controls)
+                    {
+                        foreach (TableLayoutPanel tlp2 in tlp1.Controls)
+                        {
+                            foreach (Control c in tlp2.Controls)
+                            {
+                                cntrls.Add(c);
+                            }
+                        }
+
+                    }
+                }
+            }
+            return cntrls;
+        }
+
+        #endregion
+
         #region loadtestbutton and graphs
         /*
          * just for test purposes
@@ -136,6 +192,7 @@ namespace Biodex_Client
             // eventargs need to contain current values from serialport
             for (int i = 0; i < _data.Time.Length; i++)
             {
+                //maybe change those points to the calibrated version
                 ValuePoint ValuePointTorque=new ValuePoint(_data.Time[i], _data.Torque[i]);
                 ValuePoint ValuePointVelocity = new ValuePoint(_data.Time[i], _data.Velocity[i]);
                 ValuePoint ValuePointAngle = new ValuePoint(_data.Time[i], _data.Angle[i]);
@@ -274,7 +331,47 @@ namespace Biodex_Client
 
                 return result;
         }
+
         #endregion
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            _mProperties = new MProperties(cbxEExercise.GetItemText(cbxEExercise.SelectedItem),
+                                                      cbxEMuscle.GetItemText(cbxEMuscle.SelectedItem),
+                                                      cbxERepetitions.GetItemText(cbxERepetitions.SelectedItem),
+
+                                                      cbxPOrientation.GetItemText(cbxPOrientation.SelectedItem),
+                                                      nudPTilt.Value.ToString(),
+                                                      nudPHeight.Value.ToString(),
+                                                      nudPPosition.Value.ToString(),
+                                                      cbxPAttachments.GetItemText(cbxPAttachments.SelectedItem),
+
+                                                      cbxCOrientation.GetItemText(cbxCOrientation.SelectedItem),
+                                                      nudCTilt.Value.ToString(),
+                                                      nudCHeight.Value.ToString(),
+                                                      nudCPosition.Value.ToString(),
+
+                                                      cbxCoMode.GetItemText(cbxCoMode.SelectedItem),
+                                                      cbxCoCushion.GetItemText(cbxCoCushion.SelectedItem),
+                                                      cbxCoSensitivity.GetItemText(cbxCoSensitivity.SelectedItem),
+                                                      nudCoPause.Value.ToString(),
+                                                      nudCoEccentricSpeed.Value.ToString(),
+                                                      nudCoPassiveSpeed.Value.ToString(),
+                                                      nudCoIsokineticSpeed.Value.ToString(),
+                                                      nudCoTorqueLimit.Value.ToString(),
+                                                      nudCoPercentROM.Value.ToString(),
+                                                      nudCoROMLower.Value.ToString(),
+                                                      nudCoROMUpper.Value.ToString(),
+
+                                                      nudSHipFlexion.Value.ToString(),
+                                                      nudSFootPlateTilt.Value.ToString(),
+                                                      nudSAnkleFlexion.Value.ToString(),
+                                                      nudSKneeFlexion.Value.ToString(),
+                                                      nudSShoulderAbduction.Value.ToString(),
+                                                      nudSShoulderFlexion.Value.ToString(),
+                                                      nudSElbowFlexion.Value.ToString());
+       
+        }
     }
 }
 

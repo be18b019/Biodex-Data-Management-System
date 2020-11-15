@@ -20,15 +20,14 @@ namespace Biodex_Client
             const double ANGLECALFACTOR = 0.363;
             const double ANGLECALSUBTRAHEND = -99.3;
 
-            //arrays for storing measurment values + calibrated values
+            //Measurment Properties + Calibrated Measurement data
             public double[] Time { get; set; }
             public double[] Torque { get; set; }
             public double[] Velocity { get; set; }
             public double[] Angle { get; set; }
-            public Data graphDataCalibrated { get; set; }
+            public Data GraphDataCalibrated { get; set; }
 
             public Data() { }
-
 
             public Data(int[][] data)
             {
@@ -36,13 +35,13 @@ namespace Biodex_Client
                 Torque = getDatainClassProperty(data, Torque, 0);
                 Velocity = getDatainClassProperty(data, Velocity, 1);
                 Angle = getDatainClassProperty(data, Angle, 2);
-                graphDataCalibrated = calibrateData(data, Time, Torque, Velocity, Angle);
+                GraphDataCalibrated = calibrateData(data, Time, Torque, Velocity, Angle);
             }
 
-            /*
-             * generates the calibrated data object 
-             */
-            Data calibrateData(int[][] data, double[] time, double[] torque, double[] velocity, double[] angle)
+        /*
+         * generates the calibrated data object 
+         */
+        Data calibrateData(int[][] data, double[] time, double[] torque, double[] velocity, double[] angle)
             {
                 Data graphData = new Data();
                 graphData.Time = time;

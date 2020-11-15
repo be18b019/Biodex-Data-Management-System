@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.tlpGraphsButtons = new System.Windows.Forms.TableLayoutPanel();
-            this.btnSave = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
             this.tlpGraphs = new System.Windows.Forms.TableLayoutPanel();
@@ -42,11 +41,10 @@
             // 
             // tlpGraphsButtons
             // 
-            this.tlpGraphsButtons.ColumnCount = 3;
-            this.tlpGraphsButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlpGraphsButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tlpGraphsButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tlpGraphsButtons.Controls.Add(this.btnSave, 0, 0);
+            this.tlpGraphsButtons.ColumnCount = 2;
+            this.tlpGraphsButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.99999F));
+            this.tlpGraphsButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpGraphsButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpGraphsButtons.Controls.Add(this.btnStop, 0, 0);
             this.tlpGraphsButtons.Controls.Add(this.btnStart, 0, 0);
             this.tlpGraphsButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -54,25 +52,8 @@
             this.tlpGraphsButtons.Name = "tlpGraphsButtons";
             this.tlpGraphsButtons.RowCount = 1;
             this.tlpGraphsButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpGraphsButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 71F));
             this.tlpGraphsButtons.Size = new System.Drawing.Size(950, 71);
             this.tlpGraphsButtons.TabIndex = 1;
-            // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSave.FlatAppearance.BorderSize = 0;
-            this.btnSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.Color.DarkGray;
-            this.btnSave.Location = new System.Drawing.Point(635, 3);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(312, 65);
-            this.btnSave.TabIndex = 7;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = false;
             // 
             // btnStop
             // 
@@ -83,9 +64,9 @@
             this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStop.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStop.ForeColor = System.Drawing.Color.DarkGray;
-            this.btnStop.Location = new System.Drawing.Point(319, 3);
+            this.btnStop.Location = new System.Drawing.Point(477, 3);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(310, 65);
+            this.btnStop.Size = new System.Drawing.Size(470, 65);
             this.btnStop.TabIndex = 6;
             this.btnStop.Text = "Stop";
             this.btnStop.UseVisualStyleBackColor = false;
@@ -101,7 +82,7 @@
             this.btnStart.ForeColor = System.Drawing.Color.DarkGray;
             this.btnStart.Location = new System.Drawing.Point(3, 3);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(310, 65);
+            this.btnStart.Size = new System.Drawing.Size(468, 65);
             this.btnStart.TabIndex = 5;
             this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = false;
@@ -173,7 +154,6 @@
 
         #endregion
         private System.Windows.Forms.TableLayoutPanel tlpGraphsButtons;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.TableLayoutPanel tlpGraphs;
