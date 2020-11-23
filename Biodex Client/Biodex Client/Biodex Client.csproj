@@ -181,6 +181,7 @@
       <DependentUpon>Microcontroller_Status.cs</DependentUpon>
     </Compile>
     <Compile Include="MProperties.cs" />
+    <Compile Include="PatientData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Biodex_Client.resx">

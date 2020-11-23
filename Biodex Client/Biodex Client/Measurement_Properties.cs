@@ -22,6 +22,7 @@ namespace Biodex_Client
         formGraphs _FormGraphs = null;
         Data _data = null;
         MProperties _mProperties = null;
+        PatientData _patientData = null;
 
         public ChartValues<ValuePoint> ChartValuesTorqueValues { get; set; }
         public ChartValues<ValuePoint> ChartValuesVelocityValues { get; set; }
@@ -370,6 +371,44 @@ namespace Biodex_Client
                                                       nudSShoulderAbduction.Value.ToString(),
                                                       nudSShoulderFlexion.Value.ToString(),
                                                       nudSElbowFlexion.Value.ToString());
+
+            _patientData = new PatientData(txtbPDTitleName.Text,
+                                                      txtbPDSVNumber.Text,
+                                                      txtbPDSVNumber.Text,
+                                                      txtbPDGender.Text,
+                                                      txtbPDDateOfBirth.Text,
+                                                      txtbPDPhoneNumber.Text,
+                                                      txtbPDInsurance.Text,
+                                                      txtbPDLanguage.Text,
+                                                      txtbPDReligion.Text,
+                                                      txtbPDLegalGuardian.Text,
+                                                      txtbPDAdress.Text,
+                                                      txtbPDEmail.Text,
+                                                      txtbPDFamilyStatus.Text,
+
+                                                      txtbHIHospitalName.Text,
+                                                      txtbHIDepartment.Text,
+                                                      txtbHIHospitalAdress.Text,
+                                                      txtbHIHospitalConatct.Text,
+                                                      txtbHIStartDate.Text,
+                                                      txtbHIEndDate.Text,
+                                                      txtbHIAdmissionNumber.Text,
+                                                      txtbHIResponsibleDoctor.Text,
+
+                                                      txtbMDAdmissionReason.Text,
+                                                      txtbMDAnamnesis.Text,
+                                                      txtbMDPreviousDisease.Text,
+                                                      txtbMDRisksAllergies.Text,
+                                                      txtbMDMedicationArrival.Text,
+                                                      txtbMDMedicationStay.Text,
+                                                      txtbMDActionsHospital.Text,
+
+                                                      txtbDStateRelease.Text,
+                                                      txtbDPhysicalIssue.Text,
+                                                      txtbDRecommendedMeasuremnts.Text,
+                                                      txtbDRehabilitationAim.Text,
+                                                      txtbDFutureMedication.Text,
+                                                      txtbDSummary.Text);
        
         }
     }
