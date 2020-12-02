@@ -411,7 +411,17 @@ namespace Biodex_Client
                                                       txtbDSummary.Text);
        
         }
-    }
+
+		private void lblCOrientation_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void lblCPosition_Click(object sender, EventArgs e)
+		{
+
+		}
+	}
 }
 
 /*
