@@ -184,3 +184,86 @@ C:\Users\risha\Documents\GitHub\Biodex-Data-Management-System\Biodex Client\Biod
 C:\Users\risha\Documents\GitHub\Biodex-Data-Management-System\Biodex Client\Biodex Client\obj\Debug\Biodex Client.csproj.CopyComplete
 C:\Users\risha\Documents\GitHub\Biodex-Data-Management-System\Biodex Client\Biodex Client\obj\Debug\Biodex Client.exe
 C:\Users\risha\Documents\GitHub\Biodex-Data-Management-System\Biodex Client\Biodex Client\obj\Debug\Biodex Client.pdb
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\obj\Debug\Biodex Client.csprojAssemblyReference.cache
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\obj\Debug\Biodex_Client.Biodex_Client.resources
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\obj\Debug\Biodex_Client.formGraphs.resources
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\obj\Debug\Biodex_Client.formMeasurementProperties.resources
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\obj\Debug\Biodex_Client.formMicrocontrollerStatus.resources
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\obj\Debug\Biodex_Client.Properties.Resources.resources
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\obj\Debug\Biodex Client.csproj.GenerateResource.cache
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\obj\Debug\Biodex Client.csproj.CoreCompileInputs.cache
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\obj\Debug\Biodex Client.exe
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\obj\Debug\Biodex Client.pdb
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Biodex Client.exe.config
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Biodex Client.exe
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Biodex Client.pdb
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.Licensing.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.1.5.3.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuButton.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuCheckBox.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuCircleProgress.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuColorTransition.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuDataGridView.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuDatePicker.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuDropdown.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuFormDock.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuGauge.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuGradientPanel.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuImageButton.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuLabel.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuPages.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuPanel.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuPictureBox.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuProgressBar.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuRadioButton.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuRating.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuScrollBar.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuSeparator.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuShadowPanel.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuSlider.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuSnackbar.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuTextbox.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuToggleSwitch.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuToolTip.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuTransition.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuUserControl.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.Deprecated.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\LiveCharts.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\LiveCharts.WinForms.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\LiveCharts.Wpf.dll
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.1.5.3.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuButton.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuCheckBox.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuCircleProgress.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuColorTransition.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuDataGridView.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuDatePicker.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuDropdown.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuFormDock.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuGauge.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuGradientPanel.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuImageButton.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuLabel.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuPages.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuPanel.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuPictureBox.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuProgressBar.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuRadioButton.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuRating.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuScrollBar.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuSeparator.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuShadowPanel.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuSlider.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuSnackbar.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuTextbox.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuToggleSwitch.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuToolTip.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuTransition.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\Bunifu.UI.WinForms.BunifuUserControl.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\LiveCharts.pdb
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\LiveCharts.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\LiveCharts.WinForms.pdb
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\LiveCharts.WinForms.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\LiveCharts.Wpf.pdb
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\LiveCharts.Wpf.xml
+D:\Users\Tobias Gehrer\Documents\Studium\5. Semester\Biodex-Data-Management-System\Biodex Client\Biodex Client\obj\Debug\Biodex Client.csproj.CopyComplete
