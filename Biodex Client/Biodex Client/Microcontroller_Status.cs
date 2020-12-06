@@ -14,7 +14,7 @@ namespace Biodex_Client
 {
     public partial class formMicrocontrollerStatus : Form
     {
-        public formMicrocontrollerStatus(Settings settings)
+        public formMicrocontrollerStatus(SerialPortSave settings)
         {
             InitializeComponent();
 
@@ -28,7 +28,7 @@ namespace Biodex_Client
             }
         }
 
-        private Settings settings;
+        private SerialPortSave settings;
 
         private void cbxSerialPort_SelectedIndexChanged(object sender, EventArgs e)
         {

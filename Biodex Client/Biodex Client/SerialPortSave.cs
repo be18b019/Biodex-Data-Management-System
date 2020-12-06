@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Biodex_Client
 {
-    public class Settings
+    public class SerialPortSave
     {
         /*
          * required to have the Serial Port in the Graph class as well as in the Microcontroller class
