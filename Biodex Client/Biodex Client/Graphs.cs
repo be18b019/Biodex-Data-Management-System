@@ -93,7 +93,7 @@ namespace Biodex_Client
             try
             {
                 BiodexSerialPort.Close();
-                BiodexSerialPort.DataReceived -= new SerialDataReceivedEventHandler(DataReceivedHandler);
+                BiodexSerialPort.DataReceived -= DataReceivedHandler;
             }
             catch (Exception SerialPortCloseException)
             {
