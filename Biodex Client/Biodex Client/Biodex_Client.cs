@@ -26,11 +26,11 @@ namespace Biodex_Client
 
         //initializing of childforms and data object   
         private Form activeForm = null;
-        private static Settings settings = new Settings();
+        private static SerialPortSave serialportsave = new SerialPortSave();
         public static Data data = new Data();
-        public static formGraphs FormGraphs = new formGraphs(data, settings);
+        public static formGraphs FormGraphs = new formGraphs(data, serialportsave);
         public static formMeasurementProperties FormMeasurementProperties = new formMeasurementProperties(FormGraphs, data);
-        public static formMicrocontrollerStatus FormMicrocontrollerStatus = new formMicrocontrollerStatus(settings);
+        public static formMicrocontrollerStatus FormMicrocontrollerStatus = new formMicrocontrollerStatus(serialportsave);
         #endregion
 
         #region title bar and dragging control
