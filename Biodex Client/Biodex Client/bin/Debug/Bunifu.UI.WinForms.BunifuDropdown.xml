@@ -6,7 +6,7 @@
     <members>
         <member name="T:Bunifu.UI.WinForms.BunifuDropdown">
             <summary>
-            Class BunifuDropdown.
+            Bring style and elegance to your item selections with Bunifu Dropdown.
             </summary>
             <seealso cref="T:System.Windows.Forms.ComboBox" />
         </member>
@@ -275,6 +275,11 @@
             <summary>
             Gets or sets a value indicating whether your code or the 
             Operating System will handle drawing of elements in the list.
+            </summary>
+        </member>
+        <member name="P:Bunifu.UI.WinForms.BunifuDropdown.BackColor">
+            <summary>
+            Gets or sets a the control back color.
             </summary>
         </member>
         <member name="F:Bunifu.UI.WinForms.BunifuDropdown.components">

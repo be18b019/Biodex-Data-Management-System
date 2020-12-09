@@ -7,7 +7,7 @@
         <member name="T:Bunifu.UI.WinForms.BunifuShadowPanel">
             <summary>
             Provides a beautiful and improved panel with shadowed borders 
-            amongst other features, including styling the borders and edges.
+            amongst other features, including styling borders and edges.
             </summary>
         </member>
         <member name="M:Bunifu.UI.WinForms.BunifuShadowPanel.#ctor">

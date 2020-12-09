@@ -8580,7 +8580,7 @@
         <member name="T:Bunifu.UI.WinForms.BunifuLabel">
             <summary>
             Provides standard and rich HTML text-rendering capabilities with 
-            native support for CSS 2.0 styling and inline style-tags.
+            native support for CSS 2.0 styling and inline CSS style-tags.
             </summary>
         </member>
         <member name="M:Bunifu.UI.WinForms.BunifuLabel.#ctor">

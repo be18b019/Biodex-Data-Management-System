@@ -6,8 +6,8 @@
     <members>
         <member name="T:Bunifu.UI.WinForms.BunifuToolTip">
             <summary>
-            Provides enhanced ToolTips with a set of customzation options
-            to help match your UI/UX design needs.
+            Provides enhanced ToolTips with a set of customzation 
+            options to distinctly match your design needs.
             </summary>
         </member>
         <member name="M:Bunifu.UI.WinForms.BunifuToolTip.#ctor">

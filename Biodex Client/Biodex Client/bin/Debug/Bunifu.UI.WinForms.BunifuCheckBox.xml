@@ -6,7 +6,7 @@
     <members>
         <member name="T:Bunifu.UI.WinForms.BunifuCheckBox">
             <summary>
-            Provides enhanced visual support for on and off states using a standard checkmark.
+            Provides enhanced visual support for on and off states when supporting feature selections.m
             </summary>
             <seealso cref="T:System.Windows.Forms.UserControl" />
         </member>

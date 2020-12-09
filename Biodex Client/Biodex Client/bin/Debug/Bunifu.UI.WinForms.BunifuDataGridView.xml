@@ -6,8 +6,8 @@
     <members>
         <member name="T:Bunifu.UI.WinForms.BunifuDataGridView">
             <summary>
-            Provides a more enhanced data display experience 
-            with extra visualization features and additions.
+            Provides a more enhanced data display experiences 
+            with extended visualization features and options.
             </summary>
         </member>
         <member name="M:Bunifu.UI.WinForms.BunifuDataGridView.#ctor">
@@ -302,14 +302,6 @@
             </summary>
             <param name="theme">A valid <see cref="T:Bunifu.UI.WinForms.BunifuDataGridView.BunifuDataGridViewTheme"/> to apply.</param>
         </member>
-        <member name="M:Bunifu.UI.WinForms.BunifuDataGridView.PopulateWithPreviewData">
-            <summary>
-            Populates a <see cref="T:Bunifu.UI.WinForms.BunifuDataGridView"/> with sample data.
-            </summary>
-            <param name="dataGridView">
-            The <see cref="T:Bunifu.UI.WinForms.BunifuDataGridView"/> control to populate.
-            </param>
-        </member>
         <member name="F:Bunifu.UI.WinForms.BunifuDataGridView.components">
             <summary> 
             Required designer variable.
@@ -331,6 +323,27 @@
             <summary>
             Provides a collection of methods that extend the .NET Color class.
             </summary>
+        </member>
+        <member name="M:Bunifu.UI.WinForms.Extensions.ColorExtensions.LightenBy(System.Drawing.Color,System.Int32)">
+            <summary>
+            Lightens a color by a certain percentage.
+            </summary>
+            <param name="color">The color to lighten.</param>
+            <param name="percent">The lightening precentage.</param>
+        </member>
+        <member name="M:Bunifu.UI.WinForms.Extensions.ColorExtensions.DarkenBy(System.Drawing.Color,System.Int32)">
+            <summary>
+            Darkens a color by a certain percentage.
+            </summary>
+            <param name="color">The color to darken.</param>
+            <param name="percent">The darkening precentage.</param>
+        </member>
+        <member name="M:Bunifu.UI.WinForms.Extensions.ColorExtensions.ChangeColorBrightness(System.Drawing.Color,System.Single)">
+            <summary>
+            Changes the brightness of a color by a specific value or factor.
+            </summary>
+            <param name="color">The color to modify.</param>
+            <param name="correctionFactor">The correction value or factor.</param>
         </member>
         <member name="T:Bunifu.UI.WinForms.Properties.Resources">
             <summary>

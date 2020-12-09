@@ -6,7 +6,7 @@
     <members>
         <member name="T:Bunifu.UI.WinForms.BunifuImageButton">
             <summary>
-            Provides button-like capabilities and image manipulation features when working with images.
+            Provides button-like capabilities and image manipulation features when working with images/icons.
             </summary>
         </member>
         <member name="M:Bunifu.UI.WinForms.BunifuImageButton.#ctor">

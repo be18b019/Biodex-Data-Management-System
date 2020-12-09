@@ -6,10 +6,8 @@
     <members>
         <member name="T:Bunifu.UI.WinForms.BunifuRadialGauge">
             <summary>
-            Provides a highly customizable, arc-based, 
-            range-value display meter that works similar 
-            to a car's speed gauge for previewing value 
-            movements within definite ranges of motion.
+            Provides a highly customizable, arc-based, range value display meter 
+            for previewing value movements within definite ranges of motion.
             </summary>
         </member>
         <member name="M:Bunifu.UI.WinForms.BunifuRadialGauge.#ctor">

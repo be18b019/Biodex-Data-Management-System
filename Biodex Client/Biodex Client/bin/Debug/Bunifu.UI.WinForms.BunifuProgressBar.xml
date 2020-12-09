@@ -6,8 +6,7 @@
     <members>
         <member name="T:Bunifu.UI.WinForms.BunifuProgressBar">
             <summary>
-            Add stylish progress bars to depict the 
-            flow of operations in your applications.
+            Add stylish progress bars to depict the flow of operations in your apps.
             </summary>
         </member>
         <member name="M:Bunifu.UI.WinForms.BunifuProgressBar.#ctor">
@@ -73,6 +72,11 @@
         <member name="P:Bunifu.UI.WinForms.BunifuProgressBar.ProgressColorRight">
             <summary>
             Gets or sets an emerging progress color to the right.
+            </summary>
+        </member>
+        <member name="P:Bunifu.UI.WinForms.BunifuProgressBar.Orientation">
+            <summary>
+            Gets or sets the progress bar orientation.
             </summary>
         </member>
         <member name="P:Bunifu.UI.WinForms.BunifuProgressBar.ValueByTransition">

@@ -6,8 +6,7 @@
     <members>
         <member name="T:Bunifu.UI.WinForms.BunifuPictureBox">
             <summary>
-            Provides a customizable PictureBox with 
-            a number of additional styling options.
+            Provides a customizable Picture Box with more styling options.
             </summary>
             <seealso cref="T:System.Windows.Forms.PictureBox" />
         </member>

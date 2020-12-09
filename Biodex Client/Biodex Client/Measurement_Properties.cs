@@ -122,7 +122,8 @@ namespace Biodex_Client
        */
         private void formMeasurementProperties_Load(object sender, EventArgs e)
         {
-            foreach (Control ctl in getControls())
+            List<Control> Ctrls = getControls();
+            foreach (Control ctl in Ctrls)
             {
                 if (ctl.GetType() == typeof(NumericUpDown))
                     ctl.MouseWheel += Ctl_MouseWheel;
@@ -335,6 +336,10 @@ namespace Biodex_Client
 
         #endregion
 
+
+        /*
+         * fills _mProperties and _patientData with values from GUI
+         */
         private void btnSave_Click(object sender, EventArgs e)
         {
             _mProperties = new MProperties(cbxEExercise.GetItemText(cbxEExercise.SelectedItem),
@@ -412,16 +417,36 @@ namespace Biodex_Client
        
         }
 
-		private void lblCOrientation_Click(object sender, EventArgs e)
-		{
 
-		}
+        /*
+         * resets all controls of measurement properties and sets _data, _mProperties and _patientData to null
+         */
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            List<Control> Ctrls = getControls();
+            foreach (Control ctl in Ctrls)
+            {
+                if (ctl.GetType() == typeof(TextBox))
+                {
+                    ctl.Text = null;
+                }
+                if (ctl.GetType() == typeof(ComboBox))
+                {
+                    ComboBox comboBox = (ComboBox)ctl;
+                    comboBox.SelectedIndex = -1;
+                }
+                if (ctl.GetType() == typeof(NumericUpDown))
+                {
+                    NumericUpDown numericUpDown = (NumericUpDown)ctl;
+                    numericUpDown.Value = 0;
+                }
 
-		private void lblCPosition_Click(object sender, EventArgs e)
-		{
-
-		}
-	}
+                _data = null;
+                _mProperties = null;
+                _patientData = null;
+            }
+        }
+    }
 }
 
 /*
