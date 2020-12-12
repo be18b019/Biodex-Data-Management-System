@@ -6,10 +6,15 @@
     <members>
         <member name="T:Bunifu.UI.WinForms.BunifuVSlider">
             <summary>
-            Provides enhanced vertical element-scrolling capabilities 
-            and extended customization options at design time.
+            Provides enhanced vertical ranged value 
+            selections and extra customization options.
             </summary>
             <seealso cref="T:System.Windows.Forms.UserControl" />
+        </member>
+        <member name="M:Bunifu.UI.WinForms.BunifuVSlider.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Bunifu.UI.WinForms.BunifuVSlider"/> control.
+            </summary>
         </member>
         <member name="T:Bunifu.UI.WinForms.BunifuVSlider.DirectionalMovements">
             <summary>
@@ -39,6 +44,26 @@
             </summary>
         </member>
         <!-- Badly formed XML comment ignored for member "F:Bunifu.UI.WinForms.BunifuVSlider.ThumbStyles.Outline" -->
+        <member name="T:Bunifu.UI.WinForms.BunifuVSlider.ThumbSizes">
+            <summary>
+            Provides default thumb size options.
+            </summary>
+        </member>
+        <member name="F:Bunifu.UI.WinForms.BunifuVSlider.ThumbSizes.Small">
+            <summary>
+            Represents a small thumb.
+            </summary>
+        </member>
+        <member name="F:Bunifu.UI.WinForms.BunifuVSlider.ThumbSizes.Medium">
+            <summary>
+            Represents a medium-sized thumb.
+            </summary>
+        </member>
+        <member name="F:Bunifu.UI.WinForms.BunifuVSlider.ThumbSizes.Large">
+            <summary>
+            Represents a large thumb.
+            </summary>
+        </member>
         <member name="T:Bunifu.UI.WinForms.BunifuVSlider.SliderStyles">
             <summary>
             Provides options for choosing the slider's overall style.
@@ -159,8 +184,8 @@
         </member>
         <member name="T:Bunifu.UI.WinForms.BunifuHSlider">
             <summary>
-            Provides enhanced horizontal element-scrolling capabilities 
-            and extended customization options at design time.
+            Provides enhanced horizontal ranged value 
+            selections and extra customization options.
             </summary>
             <seealso cref="T:System.Windows.Forms.UserControl" />
         </member>
@@ -192,6 +217,26 @@
             </summary>
         </member>
         <!-- Badly formed XML comment ignored for member "F:Bunifu.UI.WinForms.BunifuHSlider.SliderStyles.Thin" -->
+        <member name="T:Bunifu.UI.WinForms.BunifuHSlider.ThumbSizes">
+            <summary>
+            Provides default thumb size options.
+            </summary>
+        </member>
+        <member name="F:Bunifu.UI.WinForms.BunifuHSlider.ThumbSizes.Small">
+            <summary>
+            Represents a small thumb.
+            </summary>
+        </member>
+        <member name="F:Bunifu.UI.WinForms.BunifuHSlider.ThumbSizes.Medium">
+            <summary>
+            Represents a medium-sized thumb.
+            </summary>
+        </member>
+        <member name="F:Bunifu.UI.WinForms.BunifuHSlider.ThumbSizes.Large">
+            <summary>
+            Represents a large thumb.
+            </summary>
+        </member>
         <member name="T:Bunifu.UI.WinForms.BunifuHSlider.SliderStates">
             <summary>
             Defines various states in a Slider's activity cycle.
@@ -517,11 +562,6 @@
             Represents the disabled or inactive state of the control.
             </summary>
         </member>
-        <member name="P:Utilities.BunifuSlider.BunifuHScrollBar.Orientation">
-            <summary>
-            Gets the orientation of the ScrollBar.
-            </summary>
-        </member>
         <member name="P:Utilities.BunifuSlider.BunifuHScrollBar.BindingContainer">
             <summary>
             Gets or sets the container-control attached with the ScrollBar.
@@ -662,6 +702,16 @@
         <member name="P:Utilities.BunifuSlider.BunifuHScrollBar.ThumbColor">
             <summary>
              Gets or sets the background color of the thumb.
+            </summary>
+        </member>
+        <member name="P:Utilities.BunifuSlider.BunifuHScrollBar.ThumbSize">
+            <summary>
+            Gets or sets the default thumb size.
+            </summary>
+        </member>
+        <member name="P:Utilities.BunifuSlider.BunifuHScrollBar.Orientation">
+            <summary>
+            Gets the orientation of the ScrollBar.
             </summary>
         </member>
         <member name="P:Utilities.BunifuSlider.BunifuHScrollBar.ScrollBarRectangle">
@@ -1244,11 +1294,6 @@
             Represents the disabled or inactive state of the control.
             </summary>
         </member>
-        <member name="P:Utilities.BunifuSlider.BunifuVScrollBar.Orientation">
-            <summary>
-            Gets the orientation of the ScrollBar.
-            </summary>
-        </member>
         <member name="P:Utilities.BunifuSlider.BunifuVScrollBar.BindingContainer">
             <summary>
             Gets or sets the container-control attached with the ScrollBar.
@@ -1389,6 +1434,16 @@
         <member name="P:Utilities.BunifuSlider.BunifuVScrollBar.ThumbColor">
             <summary>
              Gets or sets the background color of the thumb.
+            </summary>
+        </member>
+        <member name="P:Utilities.BunifuSlider.BunifuVScrollBar.ThumbSize">
+            <summary>
+            Gets or sets the default thumb size.
+            </summary>
+        </member>
+        <member name="P:Utilities.BunifuSlider.BunifuVScrollBar.Orientation">
+            <summary>
+            Gets the orientation of the ScrollBar.
             </summary>
         </member>
         <member name="P:Utilities.BunifuSlider.BunifuVScrollBar.ScrollBarRectangle">

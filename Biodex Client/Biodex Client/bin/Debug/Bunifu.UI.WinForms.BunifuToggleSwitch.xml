@@ -6,7 +6,8 @@
     <members>
         <member name="T:Bunifu.UI.WinForms.BunifuToggleSwitch">
             <summary>
-            Add customizable switches that toggle the state of a single setting on or off.
+            Add customizable switches that toggle between 
+            the visual states of settings and features.
             </summary>
         </member>
         <member name="M:Bunifu.UI.WinForms.BunifuToggleSwitch.#ctor">

@@ -6,8 +6,8 @@
     <members>
         <member name="T:Bunifu.UI.WinForms.BunifuCircleProgress">
             <summary>
-            Provides customizable circular progress bars for use 
-            in ranged values and progressive movement of data.
+            Provides customizable circular progress bars for use in 
+            value ranges and progressive movement of data.
             </summary>
             <seealso cref="T:System.Windows.Forms.ProgressBar" />
             <seealso cref="T:System.Windows.Forms.Control" />

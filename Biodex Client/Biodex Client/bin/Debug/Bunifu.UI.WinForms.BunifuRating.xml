@@ -6,7 +6,8 @@
     <members>
         <member name="T:Bunifu.UI.WinForms.BunifuRating">
             <summary>
-            Create stylish ratings with tons of customization options and enhancements.
+            Add awesome rating inputs with tons of 
+            customization options and UI enhancements.
             </summary>
         </member>
         <member name="M:Bunifu.UI.WinForms.BunifuRating.#ctor">

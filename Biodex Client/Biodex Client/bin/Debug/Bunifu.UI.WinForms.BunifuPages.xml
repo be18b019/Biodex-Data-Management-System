@@ -6,9 +6,9 @@
     <members>
         <member name="T:Bunifu.UI.WinForms.BunifuPages">
             <summary>
-            Provides controlled tab-based navigation which 
-            appears invisible to users but visible and customizable 
-            to developers, thus mimicking single-page-applications design.
+            Provides controlled tab-based navigation that appears invisible 
+            to users but visible and customizable to developers at design-time, 
+            mimicking single-page-applications (SPAs).
             </summary>
         </member>
         <member name="M:Bunifu.UI.WinForms.BunifuPages.#ctor">

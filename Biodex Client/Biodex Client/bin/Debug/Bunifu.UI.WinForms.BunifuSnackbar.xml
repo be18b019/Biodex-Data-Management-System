@@ -2439,6 +2439,12 @@
             meaning the snackbar's Action button was clicked.
             </summary>
         </member>
+        <member name="P:Bunifu.UI.WinForms.BunifuSnackbar.AllowDragging">
+            <summary>
+            Gets or sets a value indicating whether the 
+            Snackbar will be draggable once displayed.
+            </summary>
+        </member>
         <member name="P:Bunifu.UI.WinForms.BunifuSnackbar.ClickToClose">
             <summary>
             Gets or sets a value indicating whether the 

@@ -6,7 +6,7 @@
     <members>
         <member name="T:Bunifu.UI.WinForms.BunifuRadioButton">
             <summary>
-            Create stylish radio buttons with intuitive 
+            Add stylish radio buttons with intuitive 
             customization options and design features.
             </summary>
             <seealso cref="T:System.Windows.Forms.Control" />
@@ -48,9 +48,19 @@
             Gets or sets the radio color.
             </summary>
         </member>
+        <member name="P:Bunifu.UI.WinForms.BunifuRadioButton.RadioColorTabFocused">
+            <summary>
+            Gets or sets the radio color on focus.
+            </summary>
+        </member>
         <member name="P:Bunifu.UI.WinForms.BunifuRadioButton.OutlineColorUnchecked">
             <summary>
-            Gets or sets the radio's color when unchecked.
+            Gets or sets the radio's outline color when unchecked.
+            </summary>
+        </member>
+        <member name="P:Bunifu.UI.WinForms.BunifuRadioButton.OutlineColorTabFocused">
+            <summary>
+            Gets or sets the radio's outline color when focused.
             </summary>
         </member>
         <member name="P:Bunifu.UI.WinForms.BunifuRadioButton.OutlineColor">
@@ -81,14 +91,6 @@
             Gets or sets the text associated with this control.
             </summary>
             <value>The text.</value>
-        </member>
-        <member name="M:Bunifu.UI.WinForms.BunifuRadioButton.OnPaint(System.Windows.Forms.PaintEventArgs)">
-            <summary>
-            Handles the <see cref="E:Paint" /> event.
-            </summary>
-            <param name="pe">
-            The <see cref="T:System.Windows.Forms.PaintEventArgs"/> instance containing the event data.
-            </param>
         </member>
         <member name="E:Bunifu.UI.WinForms.BunifuRadioButton.CheckedChanged">
             <summary>
@@ -159,6 +161,14 @@
             <summary>
             Gets the current position of the bound control.
             </summary>
+        </member>
+        <member name="M:Bunifu.UI.WinForms.BunifuRadioButton.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Handles the <see cref="E:Paint" /> event.
+            </summary>
+            <param name="pe">
+            The <see cref="T:System.Windows.Forms.PaintEventArgs"/> instance containing the event data.
+            </param>
         </member>
         <member name="T:Bunifu.UI.WinForms.BunifuRadioButton.BunifuRadioButtonActionList">
             <summary>

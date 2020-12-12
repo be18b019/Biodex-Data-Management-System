@@ -7,7 +7,7 @@
         <member name="T:Bunifu.UI.WinForms.BunifuButton.BunifuButton">
             <summary>
             Provides a highly customizable button with improved 
-            styling options and additional feature improvements.
+            styling options and great feature improvements.
             </summary>
         </member>
         <member name="M:Bunifu.UI.WinForms.BunifuButton.BunifuButton.#ctor">
@@ -92,11 +92,29 @@
             to receive or release focus when clicked.
             </summary>
         </member>
+        <member name="P:Bunifu.UI.WinForms.BunifuButton.BunifuButton.AllowAnimations">
+            <summary>
+            Gets or sets a value indicating whether animations
+            will be allowed when the button is active.
+            </summary>
+        </member>
+        <member name="P:Bunifu.UI.WinForms.BunifuButton.BunifuButton.AllowMouseEffects">
+            <summary>
+            Gets or sets a value indicating whether mouse effects will 
+            be allowed whenever mouse-events are being captured.
+            </summary>
+        </member>
         <member name="P:Bunifu.UI.WinForms.BunifuButton.BunifuButton.AutoGenerateColors">
             <summary>
             When set to true, the button's <see cref="P:Bunifu.UI.WinForms.BunifuButton.BunifuButton.IdleFillColor"/> 
             and <see cref="P:Bunifu.UI.WinForms.BunifuButton.BunifuButton.IdleBorderColor"/> will be used to generate 
             colors for the various states supported.
+            </summary>
+        </member>
+        <member name="P:Bunifu.UI.WinForms.BunifuButton.BunifuButton.AutoRoundBorders">
+            <summary>
+            Gets or sets a value indicating whether 
+            the borders will be automatically rounded.
             </summary>
         </member>
         <member name="P:Bunifu.UI.WinForms.BunifuButton.BunifuButton.AutoSize">
@@ -472,16 +490,16 @@
             Gets the list of created control parameters.
             </summary>
         </member>
-        <member name="M:Bunifu.UI.WinForms.BunifuButton.BunifuButton.Reset">
-            <summary>
-            Resets the control's temporary values to their defaults.
-            </summary>
-        </member>
         <member name="M:Bunifu.UI.WinForms.BunifuButton.BunifuButton.Refresh">
             <summary>
             Redraws the control's layout.
             </summary>
             <param name="useTimer">Loop redraws using a timer?</param>
+        </member>
+        <member name="M:Bunifu.UI.WinForms.BunifuButton.BunifuButton.Reset">
+            <summary>
+            Resets the control's temporary values to their defaults.
+            </summary>
         </member>
         <member name="M:Bunifu.UI.WinForms.BunifuButton.BunifuButton.Reset(Bunifu.UI.WinForms.BunifuButton.BunifuButton.StateProperties)">
             <summary>

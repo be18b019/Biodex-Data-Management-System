@@ -6,8 +6,8 @@
     <members>
         <member name="T:Bunifu.UI.WinForms.BunifuUserControl">
             <summary>
-            Provides a rich and customizable Bunifu User Control 
-            in place of the standard Windows Forms User Control.
+            Provides a rich and customizable User Control in 
+            place of the standard Windows Forms User Control.
             </summary>
             <seealso cref="T:System.Windows.Forms.UserControl" />
         </member>
