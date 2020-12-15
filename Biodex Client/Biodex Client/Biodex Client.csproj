@@ -13,6 +13,9 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
@@ -202,6 +205,18 @@
       <DependentUpon>Biodex_Client.cs</DependentUpon>
     </Compile>
     <Compile Include="Data.cs" />
+    <Compile Include="DataAccessObject.cs" />
+    <Compile Include="DB Classes\BiodexReport.cs" />
+    <Compile Include="DB Classes\elgaReport.cs" />
+    <Compile Include="DB Classes\givesInformation.cs" />
+    <Compile Include="DB Classes\mayConsistOf.cs" />
+    <Compile Include="DB Classes\medicalData.cs" />
+    <Compile Include="DB Classes\personalData.cs" />
+    <Compile Include="DB Classes\Proband.cs" />
+    <Compile Include="DB Classes\receives.cs" />
+    <Compile Include="DB Classes\ReportResult.cs" />
+    <Compile Include="DB Classes\Settings.cs" />
+    <Compile Include="DB Classes\useSettings.cs" />
     <Compile Include="Graphs.cs">
       <SubType>Form</SubType>
     </Compile>
