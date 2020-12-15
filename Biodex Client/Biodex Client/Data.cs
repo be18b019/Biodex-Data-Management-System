@@ -13,12 +13,12 @@ namespace Biodex_Client
     public class Data
     {
         //Calibration Coefficients (FROM MATLAB_GUI)
-        const double TORQUECALFACTOR = 1.04;
-        const double TORQUECALSUBTRAHEND = -552;
-        const double VELOCITYCALFACTOR = 0.883;
-        const double VELOCITYCALSUBTRAHEND = -459;
-        const double ANGLECALFACTOR = 0.363;
-        const double ANGLECALSUBTRAHEND = -99.3;
+        const double TORQUE_CAL_FACTOR = 1.04;
+        const double TORQUE_CAL_SUBTRAHEND = -552;
+        const double VELOCITY_CAL_FACTOR = 0.883;
+        const double VELOCITY_CAL_SUBTRAHEND = -459;
+        const double ANGLE_CAL_FACTOR = 0.363;
+        const double ANGLE_CAL_SUBTRAHEND = -99.3;
 
         //Measurment Properties + Calibrated Measurement data
         public double[] Time { get; set; }
@@ -56,9 +56,9 @@ namespace Biodex_Client
         public void AddtoLists(double Torque, double Velocity, double Angle)
         {
             aTimeList.Add(aTimeList.Count + 1);
-            aTorqueList.Add(Torque * TORQUECALFACTOR + TORQUECALSUBTRAHEND);
-            aVelocityList.Add(Velocity * VELOCITYCALFACTOR + VELOCITYCALSUBTRAHEND);
-            aAngleList.Add(Angle * ANGLECALFACTOR + ANGLECALSUBTRAHEND);
+            aTorqueList.Add(Torque * TORQUE_CAL_FACTOR + TORQUE_CAL_SUBTRAHEND);
+            aVelocityList.Add(Velocity * VELOCITY_CAL_FACTOR + VELOCITY_CAL_SUBTRAHEND);
+            aAngleList.Add(Angle * ANGLE_CAL_FACTOR + ANGLE_CAL_SUBTRAHEND);
         }
 
         /*
@@ -85,9 +85,9 @@ namespace Biodex_Client
 
             for (int i = 0; i < data[0].Length; i++)
             {
-                graphData.Torque[i] = graphData.Torque[i] * TORQUECALFACTOR + TORQUECALSUBTRAHEND;
-                graphData.Velocity[i] = graphData.Velocity[i] * VELOCITYCALFACTOR + VELOCITYCALSUBTRAHEND;
-                graphData.Angle[i] = graphData.Angle[i] * ANGLECALFACTOR + ANGLECALSUBTRAHEND;
+                graphData.Torque[i] = graphData.Torque[i] * TORQUE_CAL_FACTOR + TORQUE_CAL_SUBTRAHEND;
+                graphData.Velocity[i] = graphData.Velocity[i] * VELOCITY_CAL_FACTOR + VELOCITY_CAL_SUBTRAHEND;
+                graphData.Angle[i] = graphData.Angle[i] * ANGLE_CAL_FACTOR + ANGLE_CAL_SUBTRAHEND;
             }
             return graphData;
         }

@@ -13,6 +13,7 @@ using LiveCharts.Configurations;
 using LiveCharts.Wpf;
 using LiveCharts.Defaults;
 using System.Threading;
+using Biodex_Client.DB_Classes;
 
 namespace Biodex_Client
 {
@@ -340,7 +341,7 @@ namespace Biodex_Client
         /*
          * fills _mProperties and _patientData with values from GUI
          */
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_ClickAsync(object sender, EventArgs e)
         {
             _mProperties = new MProperties(cbxEExercise.GetItemText(cbxEExercise.SelectedItem),
                                                       cbxEMuscle.GetItemText(cbxEMuscle.SelectedItem),
@@ -414,6 +415,10 @@ namespace Biodex_Client
                                                       txtbDRehabilitationAim.Text,
                                                       txtbDFutureMedication.Text,
                                                       txtbDSummary.Text);
+
+            DataAccessObject DAO = new DataAccessObject();
+            BiodexReport biodexReport = new BiodexReport(-1, (double)nudCoTorqueLimit.Value, (double)nudCoIsokineticSpeed.Value, (double)nudPTilt.Value, cbxEExercise.GetItemText(cbxEExercise.SelectedItem), cbxEMuscle.GetItemText(cbxEMuscle.SelectedItem), cbxERepetitions.GetItemText(cbxERepetitions.SelectedItem));
+            await DAO.insertIntoBiodexReportAsync(biodexReport);
        
         }
 
