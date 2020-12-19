@@ -31,7 +31,7 @@ namespace Biodex_Client.DB_Classes
         public string diagSummary { get; set; }
         public string diagStateAtRelease { get; set; }
 
-        public medicalData(long medicalDataID, string hospitalStartDate, string hospitalEndDate, string hospitalAdress, string hospitalDepartment, string hospitalAdmissionNumber, string hospitalName, string hospitalContact, string hospitalResposibleDoctor, string medAdmissionReason, string medAnamnesis, string medPreviousDisease, string medRiskAlergies, string medMedicationAtArrival, string medMedicationDurringStay, string medActionsByHospital, string diagPhysicalIssue, string diagRecommendedMeasurement, string diagRehaAim, string diagFutureMedication, string diagSummary, string diagStateAtRelease)
+        public medicalData(long medicalDataID, string hospitalStartDate, string hospitalEndDate, string hospitalAdress, string hospitalDepartment, string hospitalAdmissionNumber, string hospitalName, string hospitalContact, string hospitalResposibleDoctor, string diagStateAtRelease, string diagSummary, string diagFutureMedication, string diagRehaAim, string diagRecommendedMeasurement, string diagPhysicalIssue,  string medActionsByHospital, string medMedicationDurringStay, string medMedicationAtArrival, string medRiskAlergies, string medPreviousDisease, string medAnamnesis, string medAdmissionReason)
         {
             this.medicalDataID = medicalDataID;
             this.hospitalStartDate = hospitalStartDate;
