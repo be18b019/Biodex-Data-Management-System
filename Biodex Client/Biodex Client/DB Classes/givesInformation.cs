@@ -8,15 +8,15 @@ namespace Biodex_Client.DB_Classes
 {
     class givesInformation
     {
-        public long _elgaID { get; set; }
-        public long _personalDataID { get; set; }
-        public long _medDataId { get; set; }
+        public long ElgaID { get; set; }
+        public long PersonalDataID { get; set; }
+        public long MedDataId { get; set; }
 
         public givesInformation(long elgaID, long personalDataID, long medDataId)
         {
-            _elgaID = elgaID;
-            _personalDataID = personalDataID;
-            _medDataId = medDataId;
+            ElgaID = elgaID;
+            PersonalDataID = personalDataID;
+            MedDataId = medDataId;
         }
     }
 }

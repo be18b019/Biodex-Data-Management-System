@@ -209,14 +209,12 @@
     <Compile Include="DB Classes\BiodexReport.cs" />
     <Compile Include="DB Classes\elgaReport.cs" />
     <Compile Include="DB Classes\givesInformation.cs" />
-    <Compile Include="DB Classes\mayConsistOf.cs" />
+    <Compile Include="DB Classes\mayContain.cs" />
     <Compile Include="DB Classes\medicalData.cs" />
     <Compile Include="DB Classes\personalData.cs" />
     <Compile Include="DB Classes\Proband.cs" />
-    <Compile Include="DB Classes\receives.cs" />
     <Compile Include="DB Classes\ReportResult.cs" />
     <Compile Include="DB Classes\Settings.cs" />
-    <Compile Include="DB Classes\useSettings.cs" />
     <Compile Include="Graphs.cs">
       <SubType>Form</SubType>
     </Compile>

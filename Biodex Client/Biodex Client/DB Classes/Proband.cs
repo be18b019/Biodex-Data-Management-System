@@ -8,14 +8,14 @@ namespace Biodex_Client.DB_Classes
 {
     class Proband
     {
-        public long _MatriculationNumber { get; set; }
+        public string MatriculationNumber { get; set; }
 
-        public string _Name { get; set; }
+        public string probandName { get; set; }
 
-        public Proband(long matriculationNumber, string name)
+        public Proband(string matriculationNumber, string name)
         {
-            _MatriculationNumber = matriculationNumber;
-            _Name = name;
+            MatriculationNumber = matriculationNumber;
+            probandName = name;
         }
     }
 }

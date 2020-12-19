@@ -8,7 +8,7 @@ namespace Biodex_Client.DB_Classes
 {
     class personalData
     {
-        public long SV_Number { get; set; }
+        public string SV_Number { get; set; }
         public string familyStatus { get; set; }
         public string Email { get; set; }
         public string adress { get; set; }
@@ -22,8 +22,9 @@ namespace Biodex_Client.DB_Classes
         public string gender { get; set; }
         public string NameTitel { get; set; }
 
-        public personalData(long sV_Number, string familyStatus, string email, string adress, string legalGuardian, string religion, string laguage, string insurance, string telNumber, string birthPlace, string birthDATE, string gender, string nameTitel)
+        public personalData(string sV_Number, string familyStatus, string email, string adress, string legalGuardian, string religion, string language, string insurance, string telNumber, string birthPlace, string birthDATE, string gender, string nameTitel)
         {
+            //Rishad ändern, SV Nummer kann nicht BIGSERIAL SEIN!! zB 7229200890 BITTE VARCHAR(10)!!!
             SV_Number = sV_Number;
             this.familyStatus = familyStatus;
             Email = email;
