@@ -430,7 +430,7 @@ namespace Biodex_Client
             personaldata.SV_Number =  DAO.insertIntoPersonalDataAsync(personaldata);
             elgaReport elgareport = new elgaReport(-1);
             elgareport.elgaID = DAO.insertIntoElgaReport(elgareport);
-            Proband proband= new Proband()
+            Proband proband = new Proband()
 
         }
 
