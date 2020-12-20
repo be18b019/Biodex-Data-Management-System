@@ -479,7 +479,71 @@ namespace Biodex_Client
                 _patientData = null;
             }
         }
-    }
+
+		private void btnPDSSimulatePatientData_Click(object sender, EventArgs e)
+		{
+			//generating the dummy data according to the ELGA Entlassungsbrief
+			string DummyData;
+			string[] seperator = { "|$|" };
+
+			//depending on the choice from the dropdown cbxPDSChoosePatient a dummy dataset will be displayed
+			if (cbxPDSChoosePatient.Text == "Patient 1")
+			{
+				DummyData = "Dipl.Ing. Hofrat Mustermann, BSc, MBA|$|1111241261|$|Männlich|$|24. Dezember 1961|$|Graz|$|+43 2682 40400|$|Wiener Gebietskrankenkasse|$|Deutsch (spricht: ausgezeichnet), bevorzugt|$|Römisch-Katholisch|$|Susi Sorgenvoll|$|Musterstraße 13a 7000 Eisenstadt, Burgenland|$|herberthannes.mustermann@provider.at|$|Vater|$|Amadeus Spital|$|Chirurgische Abteilung|$|Mozartgasse 1-7 5350 St.Wolfgang, Salzburg|$|+43 6138 3453446 0, info@amadeusspital.at|$|30. Juli 2016 um 10:46|$|17. August 2016 um 12:00 Uhr|$|Az123456|$|Univ.-Prof. Dr. Sigrid Kollmann|$|Gelenksempyem im linken Knie|$|Sturz bei sportlicher Betätigung|$|Trichterbrustoperation in der Jugend|$|Penicillin|$|Nasirin 0,05 %, Ciproxin 400 mg|$|Augmentin 2g, Ciproxin 400mg, Fosfomycin 2g|$|Antimikrobielle Therapie|$|Patient mobil eingeschränkt|$|rezidivierende Rückenschmerzen|$|Schonung, absolutes Sportverbot|$|Mobilität/Stab ges. WS, Bodentransfer|$|Diazepam, Zithromax, Nasivin|$|Revisions-OP, antimikrobielle Therapie|$||$||$|";
+			}
+			else if (cbxPDSChoosePatient.Text == "Patient 2")
+			{
+				DummyData = "Dr. Donald Duck|$|0123456789|$|male duck|$|24. January 1944|$|California|$|+1 2682 40400|$|World Disney|$| English (speaks: excellent), preferred |$|no specification|$|Daisy Duck (Wife)|$|Duckburg 13a 7000 , Calisota|$|donald.duck@disney.at|$|Dad and Husband|$|Charité - Universitätsmedizin Berlin (Berlin, Germany)|$|Surgical Department|$| 9500 Euclid Ave. Cleveland , Ohio 44195 |$| +1 216-444-2200, info@clevelandclinic.at|$|14. February 2008 at 10:46|$|5. August 2008 at 12:00|$|WDDD123456|$|Univ.-Prof. Dr. Martin Arrowsmith |$| joint empyema in the left knee |$| Fall during sporting activity |$| Funnel chest surgery in youth |$|Methicillin|$| Bactrim 0,1 %, Welchol 700 mg|$|Tadalafil 7g, Purelax 400mg, Fosfomycin 2g|$| Antimicrobial therapy|$| Patient with limited mobility |$|recurrent back pain |$| Rest, absolute ban on sport |$|Restoring Mobility|$| Fleet Bisacodyl, Senna S, Docuzen |$| Revisions-OP, Antimicrobial therapy|$||$||$|";
+			}
+			else if (cbxPDSChoosePatient.Text == "Patient 3")
+			{
+				DummyData = "Peter Parker|$|9876543210|$|male|$|26. March 1998|$|Vienna|$|+1 0676 133|$|Daily Bugle|$| French (speaks: excellent), preferred, also German |$|peace and hapiness|$|May Parker (Aunt)|$|20 Ingram Street in Forest Hills, Queens|$|spiderman@avengers.at|$|single|$|Massachusetts General Hospital (Boston)|$|Radiology Department|$| 55 Fruit St, Boston, MA 02114 |$| +1 617-726-2000, info@bostonclinic.at|$|8. October 2009 at 10:46|$|5. August 2010 at 12:00|$|MASM987456|$|Univ.-Prof. Dr. Curtis Connors|$| nullum venenum aranea |$| bitten by a radioactive spider |$| torn ligaments of the legs in youth |$|Mefenamic acid|$| Bactrim 0,1 %, Welchol 700 mg|$|Tadalafil 7g, Purelax 400mg, Fosfomycin 2g|$|monoclonal antibody therapy|$| Patient with weaked immune system and low stamina |$|recurrent ligament|$| Rest, absolute ban on sport |$|Gaining back strength|$| Fleet Bisacodyl, Senna S, Docuzen |$| water cure (therapy), neutron therapy |$||$||$|";
+			}
+			else
+			{
+				DummyData = "Name Titel|$|SV-Number|$|Gender|$|Birth Date|$|Birth Place|$|Phone Number|$|Insurance|$|Language|$|Religion|$|Guardian|$|Adress|$|Email|$|Family Status|$|Hospital Name|$|Hospital Department|$|Hospital Adress|$|Hospital Contact|$|Start Date|$|End Date|$|Admission Number|$|Responsible Doctor|$|Admission Reason|$|Anamnesis|$|Previous Diseases|$|Risk and Allergies|$|Medication At Arrival|$|Medication During Stay|$|Actions By Hospital|$|State At Release|$|Pysical Issue|$|Recommended Measurements|$|Rehabilitation Aim|$|Future Medication|$|Diagnosis Summary|$||$||$|";
+			}
+
+			string[] DummyDataArray = DummyData.Split(seperator, StringSplitOptions.RemoveEmptyEntries);
+
+			//inserting the values from the String Array Dummy Data into each Text Box
+			int i = 0;
+			txtbPDTitleName.Text = DummyDataArray[i++];
+			txtbPDSVNumber.Text = DummyDataArray[i++];
+			txtbPDGender.Text = DummyDataArray[i++];
+			txtbPDDateOfBirth.Text = DummyDataArray[i++];
+			txtbPDPlaceOfBirth.Text = DummyDataArray[i++];
+			txtbPDPhoneNumber.Text = DummyDataArray[i++];
+			txtbPDInsurance.Text = DummyDataArray[i++];
+			txtbPDLanguage.Text = DummyDataArray[i++];
+			txtbPDReligion.Text = DummyDataArray[i++];
+			txtbPDLegalGuardian.Text = DummyDataArray[i++];
+			txtbPDAdress.Text = DummyDataArray[i++];
+			txtbPDEmail.Text = DummyDataArray[i++];
+			txtbPDFamilyStatus.Text = DummyDataArray[i++];
+			txtbHIHospitalName.Text = DummyDataArray[i++];
+			txtbHIDepartment.Text = DummyDataArray[i++];
+			txtbHIHospitalAdress.Text = DummyDataArray[i++];
+			txtbHIHospitalConatct.Text = DummyDataArray[i++];
+			txtbHIStartDate.Text = DummyDataArray[i++];
+			txtbHIEndDate.Text = DummyDataArray[i++];
+			txtbHIAdmissionNumber.Text = DummyDataArray[i++];
+			txtbHIResponsibleDoctor.Text = DummyDataArray[i++];
+			txtbMDAdmissionReason.Text = DummyDataArray[i++];
+			txtbMDAnamnesis.Text = DummyDataArray[i++];
+			txtbMDPreviousDisease.Text = DummyDataArray[i++];
+			txtbMDRisksAllergies.Text = DummyDataArray[i++];
+			txtbMDMedicationArrival.Text = DummyDataArray[i++];
+			txtbMDMedicationStay.Text = DummyDataArray[i++];
+			txtbMDActionsHospital.Text = DummyDataArray[i++];
+			txtbDStateRelease.Text = DummyDataArray[i++];
+			txtbDPhysicalIssue.Text = DummyDataArray[i++];
+			txtbDRecommendedMeasuremnts.Text = DummyDataArray[i++];
+			txtbDRehabilitationAim.Text = DummyDataArray[i++];
+			txtbDFutureMedication.Text = DummyDataArray[i++];
+			txtbDSummary.Text = DummyDataArray[i++];
+		}
+	}
 }
 
 /*

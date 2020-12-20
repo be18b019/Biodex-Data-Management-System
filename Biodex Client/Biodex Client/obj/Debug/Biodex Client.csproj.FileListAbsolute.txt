@@ -594,3 +594,4 @@ C:\Users\marta\OneDrive\Dokumente\Downloads\Biodex-Data-Management-System\Biodex
 C:\Users\marta\OneDrive\Dokumente\Downloads\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\marta\OneDrive\Dokumente\Downloads\Biodex-Data-Management-System\Biodex Client\Biodex Client\bin\Debug\System.ValueTuple.xml
 C:\Users\marta\OneDrive\Dokumente\Downloads\Biodex-Data-Management-System\Biodex Client\Biodex Client\obj\Debug\Biodex Client.csproj.CopyComplete
+C:\Users\risha\Documents\GitHub\Biodex-Data-Management-System\Biodex Client\Biodex Client\obj\Debug\Biodex Client.exe.config
