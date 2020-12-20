@@ -13,6 +13,7 @@ using LiveCharts.Configurations;
 using LiveCharts.Wpf;
 using LiveCharts.Defaults;
 using System.Threading;
+using Biodex_Client.DB_Classes;
 
 namespace Biodex_Client
 {
@@ -122,7 +123,8 @@ namespace Biodex_Client
        */
         private void formMeasurementProperties_Load(object sender, EventArgs e)
         {
-            foreach (Control ctl in getControls())
+            List<Control> Ctrls = getControls();
+            foreach (Control ctl in Ctrls)
             {
                 if (ctl.GetType() == typeof(NumericUpDown))
                     ctl.MouseWheel += Ctl_MouseWheel;
@@ -335,9 +337,13 @@ namespace Biodex_Client
 
         #endregion
 
-        private void btnSave_Click(object sender, EventArgs e)
+
+        /*
+         * fills _mProperties and _patientData with values from GUI
+         */
+        private async void btnSave_ClickAsync(object sender, EventArgs e)
         {
-            _mProperties = new MProperties(cbxEExercise.GetItemText(cbxEExercise.SelectedItem),
+            /*_mProperties = new MProperties(cbxEExercise.GetItemText(cbxEExercise.SelectedItem),
                                                       cbxEMuscle.GetItemText(cbxEMuscle.SelectedItem),
                                                       cbxERepetitions.GetItemText(cbxERepetitions.SelectedItem),
 
@@ -374,7 +380,7 @@ namespace Biodex_Client
 
             _patientData = new PatientData(txtbPDTitleName.Text,
                                                       txtbPDSVNumber.Text,
-                                                      txtbPDSVNumber.Text,
+                                                      txtbPDPlaceOfBirth.Text,
                                                       txtbPDGender.Text,
                                                       txtbPDDateOfBirth.Text,
                                                       txtbPDPhoneNumber.Text,
@@ -408,20 +414,72 @@ namespace Biodex_Client
                                                       txtbDRecommendedMeasuremnts.Text,
                                                       txtbDRehabilitationAim.Text,
                                                       txtbDFutureMedication.Text,
-                                                      txtbDSummary.Text);
-       
+                                                      txtbDSummary.Text);*/
+
+            DataAccessObject DAO = new DataAccessObject();
+            float[] torque = convertDoubleToFloat(_data.Torque);
+            float[] angle = convertDoubleToFloat(_data.Angle);
+            float[] angleVelocity = convertDoubleToFloat(_data.Velocity);
+            Settings settings = new Settings(-1, cbxPOrientation.GetItemText(cbxPOrientation.SelectedItem), nudPHeight.Value.ToString(), nudPPosition.Value.ToString(), cbxPAttachments.GetItemText(cbxPAttachments.SelectedItem), nudPTilt.Value.ToString(), nudCHeight.Value.ToString(), cbxCOrientation.GetItemText(cbxCOrientation.SelectedItem), nudCTilt.Value.ToString(), nudCPosition.Value.ToString(), nudSHipFlexion.Value.ToString(), nudSFootPlateTilt.Value.ToString(), nudSKneeFlexion.Value.ToString(), nudSAnkleFlexion.Value.ToString(), nudSShoulderAbduction.Value.ToString(), nudSShoulderFlexion.Value.ToString(), cbxCoMode.GetItemText(cbxCoMode.SelectedItem), cbxCoCushion.GetItemText(cbxCoCushion.SelectedItem), cbxCoSensitivity.GetItemText(cbxCoSensitivity.SelectedItem), nudCoROMUpper.Value.ToString(), nudCoROMLower.Value.ToString(), nudCoPercentROM.Value.ToString(), nudCoEccentricSpeed.Value.ToString(), nudCoPassiveSpeed.Value.ToString(), nudCoTorqueLimit.Value.ToString(), nudCoPause.Value.ToString(),nudCoIsokineticSpeed.Value.ToString(), nudSElbowFlexion.Value.ToString());
+            long settingsID = DAO.insertIntoSettings(settings);
+            BiodexReport biodexReport = new BiodexReport(-1, torque,angle, angleVelocity,cbxEExercise.GetItemText(cbxEExercise.SelectedItem), cbxEMuscle.GetItemText(cbxEMuscle.SelectedItem), cbxERepetitions.GetItemText(cbxERepetitions.SelectedItem), settingsID);
+            await DAO.insertIntoBiodexReportAsync(biodexReport);
+            medicalData medicaldata = new medicalData(-1, txtbHIStartDate.Text, txtbHIEndDate.Text, txtbHIHospitalAdress.Text, txtbHIDepartment.Text, txtbHIAdmissionNumber.Text, txtbHIHospitalName.Text, txtbHIHospitalConatct.Text, txtbHIResponsibleDoctor.Text, txtbDStateRelease.Text, txtbDSummary.Text, txtbDFutureMedication.Text, txtbDRehabilitationAim.Text, txtbDRecommendedMeasuremnts.Text, txtbDPhysicalIssue.Text, txtbMDActionsHospital.Text, txtbMDMedicationStay.Text, txtbMDMedicationArrival.Text, txtbMDRisksAllergies.Text, txtbMDPreviousDisease.Text, txtbMDAnamnesis.Text, txtbMDAdmissionReason.Text);
+            medicaldata.medicalDataID =  DAO.insertIntoMedicalDataAsync(medicaldata);
+            personalData personaldata = new personalData(txtbPDSVNumber.Text, txtbPDFamilyStatus.Text, txtbPDEmail.Text, txtbPDAdress.Text, txtbPDLegalGuardian.Text, txtbPDReligion.Text, txtbPDLanguage.Text, txtbPDInsurance.Text, txtbPDPhoneNumber.Text, txtbPDPlaceOfBirth.Text, txtbPDDateOfBirth.Text, txtbPDGender.Text, txtbPDTitleName.Text);
+            personaldata.SV_Number =  DAO.insertIntoPersonalDataAsync(personaldata);
+            elgaReport elgareport = new elgaReport(-1);
+            elgareport.elgaID = DAO.insertIntoElgaReport(elgareport);
+            Proband proband = new Proband()
+
         }
 
-		private void lblCOrientation_Click(object sender, EventArgs e)
-		{
+        private float[] convertDoubleToFloat(double[] doubleArray)
+        {
+            try
+            {
+                float[] floatArray = new float[doubleArray.Length];
+                for (int i = 0; i < doubleArray.Length; i++)
+                {
+                    floatArray[i] = (float)doubleArray[i];
+                }
+                return floatArray;
+            }
+            catch(Exception e)
+            {
+                return null;
+            }
+        }
 
-		}
+        /*
+         * resets all controls of measurement properties and sets _data, _mProperties and _patientData to null
+         */
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            List<Control> Ctrls = getControls();
+            foreach (Control ctl in Ctrls)
+            {
+                if (ctl.GetType() == typeof(TextBox))
+                {
+                    ctl.Text = null;
+                }
+                if (ctl.GetType() == typeof(ComboBox))
+                {
+                    ComboBox comboBox = (ComboBox)ctl;
+                    comboBox.SelectedIndex = -1;
+                }
+                if (ctl.GetType() == typeof(NumericUpDown))
+                {
+                    NumericUpDown numericUpDown = (NumericUpDown)ctl;
+                    numericUpDown.Value = 0;
+                }
 
-		private void lblCPosition_Click(object sender, EventArgs e)
-		{
-
-		}
-	}
+                _data = null;
+                _mProperties = null;
+                _patientData = null;
+            }
+        }
+    }
 }
 
 /*
