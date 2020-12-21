@@ -416,21 +416,21 @@ namespace Biodex_Client
                                                       txtbDFutureMedication.Text,
                                                       txtbDSummary.Text);*/
 
-            DataAccessObject DAO = new DataAccessObject();
-            float[] torque = convertDoubleToFloat(_data.Torque);
-            float[] angle = convertDoubleToFloat(_data.Angle);
-            float[] angleVelocity = convertDoubleToFloat(_data.Velocity);
-            Settings settings = new Settings(-1, cbxPOrientation.GetItemText(cbxPOrientation.SelectedItem), nudPHeight.Value.ToString(), nudPPosition.Value.ToString(), cbxPAttachments.GetItemText(cbxPAttachments.SelectedItem), nudPTilt.Value.ToString(), nudCHeight.Value.ToString(), cbxCOrientation.GetItemText(cbxCOrientation.SelectedItem), nudCTilt.Value.ToString(), nudCPosition.Value.ToString(), nudSHipFlexion.Value.ToString(), nudSFootPlateTilt.Value.ToString(), nudSKneeFlexion.Value.ToString(), nudSAnkleFlexion.Value.ToString(), nudSShoulderAbduction.Value.ToString(), nudSShoulderFlexion.Value.ToString(), cbxCoMode.GetItemText(cbxCoMode.SelectedItem), cbxCoCushion.GetItemText(cbxCoCushion.SelectedItem), cbxCoSensitivity.GetItemText(cbxCoSensitivity.SelectedItem), nudCoROMUpper.Value.ToString(), nudCoROMLower.Value.ToString(), nudCoPercentROM.Value.ToString(), nudCoEccentricSpeed.Value.ToString(), nudCoPassiveSpeed.Value.ToString(), nudCoTorqueLimit.Value.ToString(), nudCoPause.Value.ToString(),nudCoIsokineticSpeed.Value.ToString(), nudSElbowFlexion.Value.ToString());
-            long settingsID = DAO.insertIntoSettings(settings);
-            BiodexReport biodexReport = new BiodexReport(-1, torque,angle, angleVelocity,cbxEExercise.GetItemText(cbxEExercise.SelectedItem), cbxEMuscle.GetItemText(cbxEMuscle.SelectedItem), cbxERepetitions.GetItemText(cbxERepetitions.SelectedItem), settingsID);
-            await DAO.insertIntoBiodexReportAsync(biodexReport);
-            medicalData medicaldata = new medicalData(-1, txtbHIStartDate.Text, txtbHIEndDate.Text, txtbHIHospitalAdress.Text, txtbHIDepartment.Text, txtbHIAdmissionNumber.Text, txtbHIHospitalName.Text, txtbHIHospitalConatct.Text, txtbHIResponsibleDoctor.Text, txtbDStateRelease.Text, txtbDSummary.Text, txtbDFutureMedication.Text, txtbDRehabilitationAim.Text, txtbDRecommendedMeasuremnts.Text, txtbDPhysicalIssue.Text, txtbMDActionsHospital.Text, txtbMDMedicationStay.Text, txtbMDMedicationArrival.Text, txtbMDRisksAllergies.Text, txtbMDPreviousDisease.Text, txtbMDAnamnesis.Text, txtbMDAdmissionReason.Text);
-            medicaldata.medicalDataID =  DAO.insertIntoMedicalDataAsync(medicaldata);
-            personalData personaldata = new personalData(txtbPDSVNumber.Text, txtbPDFamilyStatus.Text, txtbPDEmail.Text, txtbPDAdress.Text, txtbPDLegalGuardian.Text, txtbPDReligion.Text, txtbPDLanguage.Text, txtbPDInsurance.Text, txtbPDPhoneNumber.Text, txtbPDPlaceOfBirth.Text, txtbPDDateOfBirth.Text, txtbPDGender.Text, txtbPDTitleName.Text);
-            personaldata.SV_Number =  DAO.insertIntoPersonalDataAsync(personaldata);
-            elgaReport elgareport = new elgaReport(-1);
-            elgareport.elgaID = DAO.insertIntoElgaReport(elgareport);
-            Proband proband = new Proband()
+            //DataAccessObject DAO = new DataAccessObject();
+            //float[] torque = convertDoubleToFloat(_data.Torque);
+            //float[] angle = convertDoubleToFloat(_data.Angle);
+            //float[] angleVelocity = convertDoubleToFloat(_data.Velocity);
+            //Settings settings = new Settings(-1, cbxPOrientation.GetItemText(cbxPOrientation.SelectedItem), nudPHeight.Value.ToString(), nudPPosition.Value.ToString(), cbxPAttachments.GetItemText(cbxPAttachments.SelectedItem), nudPTilt.Value.ToString(), nudCHeight.Value.ToString(), cbxCOrientation.GetItemText(cbxCOrientation.SelectedItem), nudCTilt.Value.ToString(), nudCPosition.Value.ToString(), nudSHipFlexion.Value.ToString(), nudSFootPlateTilt.Value.ToString(), nudSKneeFlexion.Value.ToString(), nudSAnkleFlexion.Value.ToString(), nudSShoulderAbduction.Value.ToString(), nudSShoulderFlexion.Value.ToString(), cbxCoMode.GetItemText(cbxCoMode.SelectedItem), cbxCoCushion.GetItemText(cbxCoCushion.SelectedItem), cbxCoSensitivity.GetItemText(cbxCoSensitivity.SelectedItem), nudCoROMUpper.Value.ToString(), nudCoROMLower.Value.ToString(), nudCoPercentROM.Value.ToString(), nudCoEccentricSpeed.Value.ToString(), nudCoPassiveSpeed.Value.ToString(), nudCoTorqueLimit.Value.ToString(), nudCoPause.Value.ToString(),nudCoIsokineticSpeed.Value.ToString(), nudSElbowFlexion.Value.ToString());
+            //long settingsID = DAO.insertIntoSettings(settings);
+            //BiodexReport biodexReport = new BiodexReport(-1, torque,angle, angleVelocity,cbxEExercise.GetItemText(cbxEExercise.SelectedItem), cbxEMuscle.GetItemText(cbxEMuscle.SelectedItem), cbxERepetitions.GetItemText(cbxERepetitions.SelectedItem), settingsID);
+            //await DAO.insertIntoBiodexReportAsync(biodexReport);
+            //medicalData medicaldata = new medicalData(-1, txtbHIStartDate.Text, txtbHIEndDate.Text, txtbHIHospitalAdress.Text, txtbHIDepartment.Text, txtbHIAdmissionNumber.Text, txtbHIHospitalName.Text, txtbHIHospitalConatct.Text, txtbHIResponsibleDoctor.Text, txtbDStateRelease.Text, txtbDSummary.Text, txtbDFutureMedication.Text, txtbDRehabilitationAim.Text, txtbDRecommendedMeasuremnts.Text, txtbDPhysicalIssue.Text, txtbMDActionsHospital.Text, txtbMDMedicationStay.Text, txtbMDMedicationArrival.Text, txtbMDRisksAllergies.Text, txtbMDPreviousDisease.Text, txtbMDAnamnesis.Text, txtbMDAdmissionReason.Text);
+            //medicaldata.medicalDataID =  DAO.insertIntoMedicalDataAsync(medicaldata);
+            //personalData personaldata = new personalData(txtbPDSVNumber.Text, txtbPDFamilyStatus.Text, txtbPDEmail.Text, txtbPDAdress.Text, txtbPDLegalGuardian.Text, txtbPDReligion.Text, txtbPDLanguage.Text, txtbPDInsurance.Text, txtbPDPhoneNumber.Text, txtbPDPlaceOfBirth.Text, txtbPDDateOfBirth.Text, txtbPDGender.Text, txtbPDTitleName.Text);
+            //personaldata.SV_Number =  DAO.insertIntoPersonalDataAsync(personaldata);
+            //elgaReport elgareport = new elgaReport(-1);
+            //elgareport.elgaID = DAO.insertIntoElgaReport(elgareport);
+            //Proband proband = new Proband()
 
         }
 
