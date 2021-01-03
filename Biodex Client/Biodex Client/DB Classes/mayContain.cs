@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Biodex_Client.DB_Classes
 {
-    class mayContain
+    class MayContain
     {
         public long ReportID { get; set; }
         public long ElgaID { get; set; }
         public long BiodexReportID { get; set; }
 
-        public mayContain(long reportID, long elgaID, long biodexReportID)
+        public MayContain(long reportID, long elgaID, long biodexReportID)
         {
             ReportID = reportID;
             ElgaID = elgaID;

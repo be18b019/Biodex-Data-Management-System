@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Biodex_Client.DB_Classes
 {
-    class elgaReport
+    class ElgaReport
     {
-        public long elgaID { get; set; }
+        public long ElgaID { get; set; }
 
-        public elgaReport(long elgaID)
+        public ElgaReport(long elgaID)
         {
-            this.elgaID = elgaID;
+            this.ElgaID = elgaID;
         }
     }
 }
