@@ -6,37 +6,36 @@ using System.Threading.Tasks;
 
 namespace Biodex_Client.DB_Classes
 {
-    class personalData
+    class PersonalData
     {
         public string SV_Number { get; set; }
-        public string familyStatus { get; set; }
+        public string FamilyStatus { get; set; }
         public string Email { get; set; }
-        public string adress { get; set; }
-        public string legalGuardian { get; set; }
-        public string religion { get; set; }
-        public string laguage { get; set; }
-        public string insurance { get; set; }
-        public string telNumber { get; set; }
-        public string birthPlace { get; set; }
-        public string birthDATE { get; set; }
-        public string gender { get; set; }
+        public string Adress { get; set; }
+        public string LegalGuardian { get; set; }
+        public string Religion { get; set; }
+        public string Laguage { get; set; }
+        public string Insurance { get; set; }
+        public string TelNumber { get; set; }
+        public string BirthPlace { get; set; }
+        public string BirthDATE { get; set; }
+        public string Gender { get; set; }
         public string NameTitel { get; set; }
 
-        public personalData(string sV_Number, string familyStatus, string email, string adress, string legalGuardian, string religion, string language, string insurance, string telNumber, string birthPlace, string birthDATE, string gender, string nameTitel)
+        public PersonalData(string sV_Number, string familyStatus, string email, string adress, string legalGuardian, string religion, string language, string insurance, string telNumber, string birthPlace, string birthDATE, string gender, string nameTitel)
         {
-            //Rishad ändern, SV Nummer kann nicht BIGSERIAL SEIN!! zB 7229200890 BITTE VARCHAR(10)!!!
             SV_Number = sV_Number;
-            this.familyStatus = familyStatus;
+            this.FamilyStatus = familyStatus;
             Email = email;
-            this.adress = adress;
-            this.legalGuardian = legalGuardian;
-            this.religion = religion;
-            this.laguage = laguage;
-            this.insurance = insurance;
-            this.telNumber = telNumber;
-            this.birthPlace = birthPlace;
-            this.birthDATE = birthDATE;
-            this.gender = gender;
+            this.Adress = adress;
+            this.LegalGuardian = legalGuardian;
+            this.Religion = religion;
+            this.Laguage = Laguage;
+            this.Insurance = insurance;
+            this.TelNumber = telNumber;
+            this.BirthPlace = birthPlace;
+            this.BirthDATE = birthDATE;
+            this.Gender = gender;
             NameTitel = nameTitel;
         }
     }
