@@ -218,6 +218,8 @@
             this.tlpAMChooseExercise = new System.Windows.Forms.TableLayoutPanel();
             this.cbxAMChooseExercise = new System.Windows.Forms.ComboBox();
             this.lblAMChooseExercise = new System.Windows.Forms.Label();
+            this.tlpAMDataGrid = new System.Windows.Forms.TableLayoutPanel();
+            this.dgvAMmeasurements = new System.Windows.Forms.DataGridView();
             this.gbPersonalData = new System.Windows.Forms.GroupBox();
             this.tlpPersonalData = new System.Windows.Forms.TableLayoutPanel();
             this.tlpPDLanguage = new System.Windows.Forms.TableLayoutPanel();
@@ -259,7 +261,6 @@
             this.tlpPDFamilyStatus = new System.Windows.Forms.TableLayoutPanel();
             this.txtbPDFamilyStatus = new System.Windows.Forms.TextBox();
             this.lblPDFamilyStatus = new System.Windows.Forms.Label();
-            this.dgvAMmeasurements = new System.Windows.Forms.DataGridView();
             this.tlpPropertiesButtons.SuspendLayout();
             this.panelMain.SuspendLayout();
             this.tlpMeasurementProperties.SuspendLayout();
@@ -358,6 +359,8 @@
             this.gbAvailableMeasurements.SuspendLayout();
             this.tlpAvailableMeasuremnets.SuspendLayout();
             this.tlpAMChooseExercise.SuspendLayout();
+            this.tlpAMDataGrid.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAMmeasurements)).BeginInit();
             this.gbPersonalData.SuspendLayout();
             this.tlpPersonalData.SuspendLayout();
             this.tlpPDLanguage.SuspendLayout();
@@ -373,7 +376,6 @@
             this.tlpPDLegalGuardian.SuspendLayout();
             this.tlpPDEmail.SuspendLayout();
             this.tlpPDFamilyStatus.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAMmeasurements)).BeginInit();
             this.SuspendLayout();
             // 
             // tlpPropertiesButtons
@@ -562,7 +564,7 @@
             this.gbSetup.Controls.Add(this.tlpSetup);
             this.gbSetup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbSetup.ForeColor = System.Drawing.Color.DarkGray;
-            this.gbSetup.Location = new System.Drawing.Point(3, 1684);
+            this.gbSetup.Location = new System.Drawing.Point(3, 1634);
             this.gbSetup.Name = "gbSetup";
             this.gbSetup.Size = new System.Drawing.Size(944, 271);
             this.gbSetup.TabIndex = 4;
@@ -937,7 +939,7 @@
             this.gbController.Controls.Add(this.tlpController);
             this.gbController.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbController.ForeColor = System.Drawing.Color.DarkGray;
-            this.gbController.Location = new System.Drawing.Point(3, 1257);
+            this.gbController.Location = new System.Drawing.Point(3, 1207);
             this.gbController.Name = "gbController";
             this.gbController.Size = new System.Drawing.Size(944, 371);
             this.gbController.TabIndex = 3;
@@ -1450,7 +1452,7 @@
             this.gbChair.Controls.Add(this.tlpChair);
             this.gbChair.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbChair.ForeColor = System.Drawing.Color.DarkGray;
-            this.gbChair.Location = new System.Drawing.Point(3, 1010);
+            this.gbChair.Location = new System.Drawing.Point(3, 960);
             this.gbChair.Name = "gbChair";
             this.gbChair.Size = new System.Drawing.Size(944, 191);
             this.gbChair.TabIndex = 2;
@@ -1680,7 +1682,7 @@
             this.gbPowerhead.Controls.Add(this.tlpPowerhead);
             this.gbPowerhead.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbPowerhead.ForeColor = System.Drawing.Color.DarkGray;
-            this.gbPowerhead.Location = new System.Drawing.Point(3, 683);
+            this.gbPowerhead.Location = new System.Drawing.Point(3, 633);
             this.gbPowerhead.Name = "gbPowerhead";
             this.gbPowerhead.Size = new System.Drawing.Size(944, 271);
             this.gbPowerhead.TabIndex = 1;
@@ -1959,7 +1961,7 @@
             this.gbExercise.Controls.Add(this.tlpExercise);
             this.gbExercise.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbExercise.ForeColor = System.Drawing.Color.DarkGray;
-            this.gbExercise.Location = new System.Drawing.Point(3, 436);
+            this.gbExercise.Location = new System.Drawing.Point(3, 386);
             this.gbExercise.Name = "gbExercise";
             this.gbExercise.Size = new System.Drawing.Size(944, 191);
             this.gbExercise.TabIndex = 0;
@@ -2166,7 +2168,7 @@
             this.gbHospitalInformation.Controls.Add(this.tlpHospitalInformation);
             this.gbHospitalInformation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbHospitalInformation.ForeColor = System.Drawing.Color.DarkGray;
-            this.gbHospitalInformation.Location = new System.Drawing.Point(3, 2765);
+            this.gbHospitalInformation.Location = new System.Drawing.Point(3, 2715);
             this.gbHospitalInformation.Name = "gbHospitalInformation";
             this.gbHospitalInformation.Size = new System.Drawing.Size(944, 271);
             this.gbHospitalInformation.TabIndex = 6;
@@ -2520,7 +2522,7 @@
             this.gbMedicalData.Controls.Add(this.tlpMedicalData);
             this.gbMedicalData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbMedicalData.ForeColor = System.Drawing.Color.DarkGray;
-            this.gbMedicalData.Location = new System.Drawing.Point(3, 3092);
+            this.gbMedicalData.Location = new System.Drawing.Point(3, 3042);
             this.gbMedicalData.Name = "gbMedicalData";
             this.gbMedicalData.Size = new System.Drawing.Size(944, 271);
             this.gbMedicalData.TabIndex = 7;
@@ -2834,7 +2836,7 @@
             this.gbDiagnosis.Controls.Add(this.tlpDiagnosis);
             this.gbDiagnosis.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbDiagnosis.ForeColor = System.Drawing.Color.DarkGray;
-            this.gbDiagnosis.Location = new System.Drawing.Point(3, 3419);
+            this.gbDiagnosis.Location = new System.Drawing.Point(3, 3369);
             this.gbDiagnosis.Name = "gbDiagnosis";
             this.gbDiagnosis.Size = new System.Drawing.Size(944, 271);
             this.gbDiagnosis.TabIndex = 8;
@@ -3108,7 +3110,7 @@
             this.gbPatientDataSimulator.Controls.Add(this.tlpPatientSimulator);
             this.gbPatientDataSimulator.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbPatientDataSimulator.ForeColor = System.Drawing.Color.DarkGray;
-            this.gbPatientDataSimulator.Location = new System.Drawing.Point(3, 2011);
+            this.gbPatientDataSimulator.Location = new System.Drawing.Point(3, 1961);
             this.gbPatientDataSimulator.Name = "gbPatientDataSimulator";
             this.gbPatientDataSimulator.Size = new System.Drawing.Size(944, 171);
             this.gbPatientDataSimulator.TabIndex = 10;
@@ -3220,7 +3222,7 @@
             this.gbAvailableMeasurements.ForeColor = System.Drawing.Color.DarkGray;
             this.gbAvailableMeasurements.Location = new System.Drawing.Point(3, 53);
             this.gbAvailableMeasurements.Name = "gbAvailableMeasurements";
-            this.gbAvailableMeasurements.Size = new System.Drawing.Size(944, 327);
+            this.gbAvailableMeasurements.Size = new System.Drawing.Size(944, 277);
             this.gbAvailableMeasurements.TabIndex = 11;
             this.gbAvailableMeasurements.TabStop = false;
             this.gbAvailableMeasurements.Text = "Available Measurements:";
@@ -3233,7 +3235,7 @@
             this.tlpAvailableMeasuremnets.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpAvailableMeasuremnets.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tlpAvailableMeasuremnets.Controls.Add(this.tlpAMChooseExercise, 1, 1);
-            this.tlpAvailableMeasuremnets.Controls.Add(this.dgvAMmeasurements, 1, 2);
+            this.tlpAvailableMeasuremnets.Controls.Add(this.tlpAMDataGrid, 1, 2);
             this.tlpAvailableMeasuremnets.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpAvailableMeasuremnets.Location = new System.Drawing.Point(3, 28);
             this.tlpAvailableMeasuremnets.Name = "tlpAvailableMeasuremnets";
@@ -3242,7 +3244,7 @@
             this.tlpAvailableMeasuremnets.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tlpAvailableMeasuremnets.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpAvailableMeasuremnets.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpAvailableMeasuremnets.Size = new System.Drawing.Size(938, 296);
+            this.tlpAvailableMeasuremnets.Size = new System.Drawing.Size(938, 246);
             this.tlpAvailableMeasuremnets.TabIndex = 1;
             // 
             // tlpAMChooseExercise
@@ -3308,13 +3310,40 @@
             this.lblAMChooseExercise.Text = "choose exercise:";
             this.lblAMChooseExercise.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // tlpAMDataGrid
+            // 
+            this.tlpAMDataGrid.ColumnCount = 1;
+            this.tlpAMDataGrid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpAMDataGrid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpAMDataGrid.Controls.Add(this.dgvAMmeasurements, 0, 0);
+            this.tlpAMDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpAMDataGrid.Location = new System.Drawing.Point(103, 123);
+            this.tlpAMDataGrid.Name = "tlpAMDataGrid";
+            this.tlpAMDataGrid.RowCount = 1;
+            this.tlpAMDataGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpAMDataGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tlpAMDataGrid.Size = new System.Drawing.Size(732, 100);
+            this.tlpAMDataGrid.TabIndex = 8;
+            // 
+            // dgvAMmeasurements
+            // 
+            this.dgvAMmeasurements.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.dgvAMmeasurements.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAMmeasurements.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvAMmeasurements.Location = new System.Drawing.Point(3, 3);
+            this.dgvAMmeasurements.MinimumSize = new System.Drawing.Size(732, 94);
+            this.dgvAMmeasurements.Name = "dgvAMmeasurements";
+            this.dgvAMmeasurements.RowTemplate.Height = 28;
+            this.dgvAMmeasurements.Size = new System.Drawing.Size(732, 94);
+            this.dgvAMmeasurements.TabIndex = 7;
+            // 
             // gbPersonalData
             // 
             this.gbPersonalData.AutoSize = true;
             this.gbPersonalData.Controls.Add(this.tlpPersonalData);
             this.gbPersonalData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbPersonalData.ForeColor = System.Drawing.Color.DarkGray;
-            this.gbPersonalData.Location = new System.Drawing.Point(3, 2238);
+            this.gbPersonalData.Location = new System.Drawing.Point(3, 2188);
             this.gbPersonalData.Name = "gbPersonalData";
             this.gbPersonalData.Size = new System.Drawing.Size(944, 471);
             this.gbPersonalData.TabIndex = 5;
@@ -3863,18 +3892,6 @@
             this.lblPDFamilyStatus.Text = "Family Status:";
             this.lblPDFamilyStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // dgvAMmeasurements
-            // 
-            this.dgvAMmeasurements.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
-            this.dgvAMmeasurements.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAMmeasurements.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvAMmeasurements.Location = new System.Drawing.Point(103, 123);
-            this.dgvAMmeasurements.MinimumSize = new System.Drawing.Size(732, 94);
-            this.dgvAMmeasurements.Name = "dgvAMmeasurements";
-            this.dgvAMmeasurements.RowTemplate.Height = 28;
-            this.dgvAMmeasurements.Size = new System.Drawing.Size(732, 150);
-            this.dgvAMmeasurements.TabIndex = 7;
-            // 
             // formMeasurementProperties
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 24F);
@@ -4052,6 +4069,8 @@
             this.tlpAvailableMeasuremnets.ResumeLayout(false);
             this.tlpAMChooseExercise.ResumeLayout(false);
             this.tlpAMChooseExercise.PerformLayout();
+            this.tlpAMDataGrid.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAMmeasurements)).EndInit();
             this.gbPersonalData.ResumeLayout(false);
             this.gbPersonalData.PerformLayout();
             this.tlpPersonalData.ResumeLayout(false);
@@ -4081,7 +4100,6 @@
             this.tlpPDEmail.PerformLayout();
             this.tlpPDFamilyStatus.ResumeLayout(false);
             this.tlpPDFamilyStatus.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAMmeasurements)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -4320,5 +4338,6 @@
         private System.Windows.Forms.ComboBox cbxAMChooseExercise;
         private System.Windows.Forms.Label lblAMChooseExercise;
         private System.Windows.Forms.DataGridView dgvAMmeasurements;
+        private System.Windows.Forms.TableLayoutPanel tlpAMDataGrid;
     }
 }

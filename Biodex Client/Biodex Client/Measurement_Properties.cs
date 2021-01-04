@@ -543,7 +543,8 @@ namespace Biodex_Client
 			txtbDFutureMedication.Text = DummyDataArray[i++];
 			txtbDSummary.Text = DummyDataArray[i++];
 		}
-	}
+
+    }
 }
 
 /*
