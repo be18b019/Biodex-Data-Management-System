@@ -10,12 +10,12 @@ namespace Biodex_Client.DB_Classes
     {
         public string MatriculationNumber { get; set; }
 
-        public string probandName { get; set; }
+        public string ProbandName { get; set; }
 
         public Proband(string matriculationNumber, string name)
         {
             MatriculationNumber = matriculationNumber;
-            probandName = name;
+            ProbandName = name;
         }
     }
 }
