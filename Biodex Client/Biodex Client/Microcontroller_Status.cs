@@ -30,11 +30,6 @@ namespace Biodex_Client
 
         private SerialPortSave settings;
 
-        private void cbxSerialPort_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            settings.sSerialPort = cbxSerialPort.SelectedItem.ToString();
-            TestConnection();
-        }
 
         /*
          * Serial Port Connection is tested
@@ -58,6 +53,10 @@ namespace Biodex_Client
 
         }
 
-        
-    }
+		private void cbxSerialPort_SelectedIndexChanged(object sender, EventArgs e)
+		{
+            settings.sSerialPort = cbxSerialPort.SelectedItem.ToString();
+            TestConnection();
+        }
+	}
 }

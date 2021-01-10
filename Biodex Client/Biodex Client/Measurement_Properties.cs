@@ -15,6 +15,7 @@ using LiveCharts.Defaults;
 using System.Threading;
 using Biodex_Client.DB_Classes;
 using Npgsql;
+using CsvHelper;
 
 namespace Biodex_Client
 {
@@ -23,6 +24,7 @@ namespace Biodex_Client
         //initializing of necessary members
         formGraphs _FormGraphs = null;
         Data _data = null;
+        SerialPortSave serialportsave = null;
         MProperties _mProperties = null;
         PatientData _patientData = null;
 
@@ -33,8 +35,7 @@ namespace Biodex_Client
         Thread threadAddValuesToChart;
 
 
-        //DATABASE REGION
-        #region initializing DB objects and variables
+        #region initializing Database objects and variables
         //tips from: https://www.youtube.com/watch?v=U_v1dSglNjE
 
         private NpgsqlConnection conn;
@@ -45,14 +46,24 @@ namespace Biodex_Client
         private NpgsqlCommand cmd;      //represents a function or a statement - this object will excute a command against the database
         private DataTable dt;           //will only create a table to diplay it later on the GUI Available Measurement Table
 
-        private int rowIndex = -1;      //is used to work with the CellClick() method
+        private int rowIndex = -1;      //is used to work with the CellClick() method ... "-1" means, nothing is selected
 
-		#endregion
+        //strings to fill in and send TO the DB
+        string torqueStringToDB = null;
+        string angleStringToDB = null;
+        string velocityStringToDB = null;
+
+        //string will be filled with values from the database
+        string torqueStringFromDB = null;
+        string angleStringFromDB = null;
+        string velocityStringFromDB = null;
+
+        #endregion
 
 
 
-		#region formMeasurement Constructors, Load function, disable nud Scroll, Database Connection
-		public formMeasurementProperties()
+        #region formMeasurement Constructors, Load function, disable nud Scroll, Database Connection
+        public formMeasurementProperties()
         {
             InitializeComponent();        
         }
@@ -60,10 +71,11 @@ namespace Biodex_Client
         /*
          * custom constructor for initializing serveral objects
          */
-        public formMeasurementProperties(formGraphs FormGraphs, Data data)
+        public formMeasurementProperties(formGraphs FormGraphs, Data data, SerialPortSave serialportsave)
         {
             _FormGraphs = FormGraphs;
             _data = data;
+            this.serialportsave = serialportsave;
 
             var mapper = Mappers.Xy<ValuePoint>()
                  .X(model => model.Frame)
@@ -418,12 +430,31 @@ namespace Biodex_Client
                 _mProperties = null;
                 _patientData = null;
             }
+
+            //resetting the selection in the Datagrid View (Database Table)
+            rowIndex = -1;
+            dgvAMmeasurements.ClearSelection();
+
+            //resetting all strings
+            torqueStringToDB = null;
+            angleStringToDB = null;
+            velocityStringToDB = null;
+            torqueStringFromDB = null;
+            angleStringFromDB = null;
+            velocityStringFromDB = null;
+
+            //resetting the lists from the Data Object
+            Data myData = serialportsave.myData;
+            myData.aTorqueList.Clear();
+            myData.aAngleList.Clear();
+            myData.aVelocityList.Clear();
+
             MessageBox.Show("ALL VALUES HAVE BEEN RESET", "VALUES TO NULL", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
 
 
-		#region is needed to insert Dummy Data into the text boxes from the Patient Data Section
+		#region insert Dummy Data into the text boxes from the Patient Data Section
 		private void btnPDSSimulatePatientData_Click(object sender, EventArgs e)
 		{
 			//generating the dummy data according to the ELGA Entlassungsbrief
@@ -447,8 +478,8 @@ namespace Biodex_Client
 			{
 				DummyData = "Name Titel|$|SV-Number|$|Gender|$|Birth Date|$|Birth Place|$|Phone Number|$|Insurance|$|Language|$|Religion|$|Guardian|$|Adress|$|Email|$|Family Status|$|Hospital Name|$|Hospital Department|$|Hospital Adress|$|Hospital Contact|$|Start Date|$|End Date|$|Admission Number|$|Responsible Doctor|$|Admission Reason|$|Anamnesis|$|Previous Diseases|$|Risk and Allergies|$|Medication At Arrival|$|Medication During Stay|$|Actions By Hospital|$|State At Release|$|Pysical Issue|$|Recommended Measurements|$|Rehabilitation Aim|$|Future Medication|$|Diagnosis Summary|$||$||$|";
 			}
-
-			string[] DummyDataArray = DummyData.Split(seperator, StringSplitOptions.RemoveEmptyEntries);
+            
+            string[] DummyDataArray = DummyData.Split(seperator, StringSplitOptions.RemoveEmptyEntries);
 
 			//inserting the values from the String Array Dummy Data into each Text Box
 			int i = 0;
@@ -486,21 +517,16 @@ namespace Biodex_Client
 			txtbDRehabilitationAim.Text = DummyDataArray[i++];
 			txtbDFutureMedication.Text = DummyDataArray[i++];
 			txtbDSummary.Text = DummyDataArray[i++];
-		}
+        }
         #endregion
 
 
 
-
-
-
         //DATABASE !!!
         //DATABASE !!!
         //DATABASE !!!
-        //DATABASE !!! the connection to the database will be built from down here
+        //the connection to the database will be built from down here
         //but also some predefinitions were needed look up line: 38 and 150
-
-
 
 
 
@@ -564,10 +590,8 @@ namespace Biodex_Client
         //when one cell of the dgvAMmeasurements is clicked, it will collect the whole rows index
         private void dgvAMmeasurements_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-			if (e.RowIndex>0)
-			{
-                rowIndex = e.RowIndex;
-			}
+            //gets the exercise_id of the currently selected record from the dataGridView
+            rowIndex = int.Parse(dgvAMmeasurements.Rows[e.RowIndex].Cells["id"].Value.ToString());
         }
 
         #endregion
@@ -667,21 +691,22 @@ namespace Biodex_Client
             //elgareport.elgaID = DAO.insertIntoElgaReport(elgareport);
             //Proband proband = new Proband()
             #endregion some useful test code 
+            //REFRESH BUTTON, displays the updated values from the Database
             display_table();
-            MessageBox.Show("Table Displays Database Entries", "Table Refreshed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Table Displays Current Database Entries", "Table Refreshed", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
 
 
-
-        //SENDING THE DATA TO THE DATABASE !!!
-        int CSV_Id = 0;
-		private void btnExport_Click(object sender, EventArgs e)
+        #region SENDING THE DATA TO THE DATABASE
+        private void btnExport_Click(object sender, EventArgs e)
 		{
+            //resetting the selection in the Datagrid View (Database Table)
+            rowIndex = -1;
+            dgvAMmeasurements.ClearSelection();
 
-            //TO-DO here we have to fix the LIST thing !!!
-			//insert into the exercise_data table
-			int exercise_data_LastId = 0;
+            //insert into the exercise_data table
+            int exercise_data_LastId = 0;
 			try
 			{
 				conn.Open();
@@ -696,18 +721,21 @@ namespace Biodex_Client
 
                 cmd = new NpgsqlCommand(sql, conn);
 
-                List<int> torqueLIST = new List<int>() { 1, 2, 5, 7, 8, 10 };
-                string torqueSTRING = string.Join(",", torqueLIST);
+                Data myData = serialportsave.myData;
 
-                cmd.Parameters.AddWithValue("_torque", torqueSTRING);
-                cmd.Parameters.AddWithValue("_angle", torqueSTRING);
-                cmd.Parameters.AddWithValue("_velocity", torqueSTRING);
-                cmd.Parameters.AddWithValue("_muscle", cbxEMuscle.Text);
-                cmd.Parameters.AddWithValue("_exercise", cbxEExercise.Text);
-                cmd.Parameters.AddWithValue("_repetition", cbxERepetitions.Text);
+                torqueStringToDB = string.Join(";", myData.aTorqueList.ToArray());
+                angleStringToDB = string.Join(";", myData.aAngleList.ToArray());
+                velocityStringToDB = string.Join(";", myData.aVelocityList.ToArray());
+
+                cmd.Parameters.AddWithValue("_torque", torqueStringToDB);
+				cmd.Parameters.AddWithValue("_angle", angleStringToDB);
+				cmd.Parameters.AddWithValue("_velocity", velocityStringToDB);
+				cmd.Parameters.AddWithValue("_muscle", cbxEMuscle.Text);
+				cmd.Parameters.AddWithValue("_exercise", cbxEExercise.Text);
+				cmd.Parameters.AddWithValue("_repetition", cbxERepetitions.Text);
 
 
-                exercise_data_LastId = (int)cmd.ExecuteScalar();
+				exercise_data_LastId = (int)cmd.ExecuteScalar();
 
 				conn.Close();
 
@@ -1068,16 +1096,190 @@ namespace Biodex_Client
                 MessageBox.Show("Inserted Fail. Error: " + ex.Message);
             }
 
-            display_table();
-            MessageBox.Show("Inserted New Record Successfully", "Record Exported", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            CSV_Id = report_result_LastId;
-        }
 
-		private void btnCreateCSV_Click(object sender, EventArgs e)
+            # region checking if the IDs are the same for each created table to ensure, that for every measurement the Database always creates the diffrent Tables with the same ID
+			List<int> lastIdListA = new List<int>() { exercise_data_LastId, settings_LastId, personal_data_LastId, medical_data_LastId };
+            List<int> lastIdListB = new List<int>() { biodex_report_LastId, elga_report_LastId, report_result_LastId, exercise_data_LastId };
+
+            if (lastIdListA.SequenceEqual(lastIdListB))     //if both lists have the same IDs, then everything is fine and the data will be stored as planned
+            {
+                MessageBox.Show("Inserted New Record Successfully Into The Database", "Record Exported", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+			else //if the IDs are not the same, the maximum value will be choosen. all other tables will start from the new ID
+			{
+                //TO-DO Postgres Reset ID
+				#region ignore this
+				////is needed to allign the IDs again
+				//List<int> lastIdListCal = new List<int>() { exercise_data_LastId, settings_LastId, personal_data_LastId, medical_data_LastId, biodex_report_LastId, elga_report_LastId, report_result_LastId };
+				//int maxID = lastIdListCal.Max();
+				//int renew_feedback = 0;
+
+				//try
+				//{
+				//	conn.Open();
+
+				//	sql = @"SELECT * FROM renew_ids(:_newid)";
+
+				//	cmd = new NpgsqlCommand(sql, conn);
+
+				//	cmd.Parameters.AddWithValue("_newid", maxID);
+
+				//	renew_feedback = (int)cmd.ExecuteScalar();
+
+				//	conn.Close();
+				//}
+				//catch (Exception ex)
+				//{
+				//	conn.Close();
+				//	MessageBox.Show("Renewing IDs Failed. Error: " + ex.Message);
+				//}
+				#endregion
+				MessageBox.Show("There Were Some COMPLICATIONS, WHEN EXPORTING THE DATA TO THE DATABASE. THE IDs HAVE TO BE ADJUSTED", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+			#endregion
+
+			display_table();
+        }
+        #endregion
+
+
+
+        #region Loading Data From The DATABASE 
+        //after selecting a existing record, the data can be loaded via the LOAD BUTTON: this will plot the data in the graphs window. Optionally, a CSV File can be created via the CREATE CSV FILE BUTTON
+        private void btnLoad_Click(object sender, EventArgs e)
 		{
+            //if nothing is selected, then the user will be reminded to select a record from the table
+            if (rowIndex <= 0)
+			{
+                MessageBox.Show("Before Loading: Please Select An Available Record From The Table: AVAILABLE MEASUREMENT", "Please Select", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            MessageBox.Show("Created New CSV-File Successfully", "CSV-File Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //get torque from DB
+            try
+            {
+                conn.Open();
+
+                sql = @"SELECT * FROM return_torque(:_id)";
+
+                cmd = new NpgsqlCommand(sql, conn);
+
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+
+                torqueStringFromDB = (string)cmd.ExecuteScalar();
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show("Loading Failed. Error: " + ex.Message);
+            }
+
+
+
+            //get angle from DB
+            try
+            {
+                conn.Open();
+
+                sql = @"SELECT * FROM return_angle(:_id)";
+
+                cmd = new NpgsqlCommand(sql, conn);
+
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+
+                angleStringFromDB = (string)cmd.ExecuteScalar();
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show("Loading Failed. Error: " + ex.Message);
+            }
+
+
+
+            //get velocity from DB
+            try
+            {
+                conn.Open();
+
+                sql = @"SELECT * FROM return_velocity(:_id)";
+
+                cmd = new NpgsqlCommand(sql, conn);
+
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+
+                velocityStringFromDB = (string)cmd.ExecuteScalar();
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                MessageBox.Show("Loading Failed. Error: " + ex.Message);
+            }
+
+            //handing the strings to the DATA object - to plot the selection
+            Data plotData = new Data(torqueStringFromDB, velocityStringFromDB, angleStringFromDB);
         }
+		#endregion
+
+
+
+		#region Creating a CSV-file in the selected path
+
+		//creating the CSV-File with the currently measured values and from the DB imported values
+		public void createCSV(string torque, string velocity, string angle) 
+        {
+            //spitting the string into three seperate Arrays
+            string[] seperator = { ";" };
+            string[] torqueArray = torque.Split(seperator, StringSplitOptions.RemoveEmptyEntries);
+            string[] velocityArray = velocity.Split(seperator, StringSplitOptions.RemoveEmptyEntries);
+            string[] angleArray = angle.Split(seperator, StringSplitOptions.RemoveEmptyEntries);
+
+            //creating the CSV-File
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            for (int i = 0; i < torqueArray.Length; i++)
+            {
+                sb.AppendLine(torqueArray[i] + ";" + velocityArray[i] + ";" + angleArray[i]);           //starts new line with the three values and in between there is a ; (torque; velocity; angle)
+            }
+
+            //pop up window, to save the data ... tips from: https://www.youtube.com/watch?v=5hQQg7S_5GQ
+            SaveFileDialog save = new SaveFileDialog();
+            if (save.ShowDialog() == System.Windows.Forms.DialogResult.OK) 
+            {
+                StreamWriter write = new StreamWriter(File.Create(save.FileName));
+                write.Write(sb.ToString());
+                write.Dispose();
+            }
+        }
+
+
+        private void btnCreateCSV_Click(object sender, EventArgs e)
+        {
+
+            if (rowIndex <= 0)      // if-statement means nothing is selected from the Data Table (Available Measurement)
+            {
+                Data myData = serialportsave.myData;
+                torqueStringToDB = string.Join(";", myData.aTorqueList.ToArray());
+                angleStringToDB = string.Join(";", myData.aAngleList.ToArray());
+                velocityStringToDB = string.Join(";", myData.aVelocityList.ToArray());
+
+                createCSV(torqueStringToDB, velocityStringToDB, angleStringToDB);
+                MessageBox.Show("CSV-File Created From The Currently Measured Values", "CSV-File Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                createCSV(torqueStringFromDB, velocityStringFromDB, angleStringFromDB);
+                MessageBox.Show("CSV-File Created From Prerecorded Database Values", "CSV-File Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+		#endregion
 	}
 }
 

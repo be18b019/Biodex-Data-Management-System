@@ -29,7 +29,7 @@ namespace Biodex_Client
         private static SerialPortSave serialportsave = new SerialPortSave();
         public static Data data = new Data();
         public static formGraphs FormGraphs = new formGraphs(data, serialportsave);
-        public static formMeasurementProperties FormMeasurementProperties = new formMeasurementProperties(FormGraphs, data);
+        public static formMeasurementProperties FormMeasurementProperties = new formMeasurementProperties(FormGraphs, data, serialportsave);
         public static formMicrocontrollerStatus FormMicrocontrollerStatus = new formMicrocontrollerStatus(serialportsave);
         #endregion
 
