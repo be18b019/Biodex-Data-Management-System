@@ -431,7 +431,7 @@
 			this.btnSave.Name = "btnSave";
 			this.btnSave.Size = new System.Drawing.Size(154, 65);
 			this.btnSave.TabIndex = 9;
-			this.btnSave.Text = "Refresh";
+			this.btnSave.Text = "Refresh Data Table";
 			this.btnSave.UseVisualStyleBackColor = false;
 			this.btnSave.Click += new System.EventHandler(this.btnSave_ClickAsync);
 			// 
@@ -448,8 +448,9 @@
 			this.btnLoad.Name = "btnLoad";
 			this.btnLoad.Size = new System.Drawing.Size(152, 65);
 			this.btnLoad.TabIndex = 5;
-			this.btnLoad.Text = "Load";
+			this.btnLoad.Text = "Load and Plot";
 			this.btnLoad.UseVisualStyleBackColor = false;
+			this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
 			// 
 			// btnExport
 			// 

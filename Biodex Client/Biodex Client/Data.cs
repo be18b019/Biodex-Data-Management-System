@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Biodex_Client
 {
@@ -28,10 +29,10 @@ namespace Biodex_Client
         public Data GraphDataCalibrated { get; set; }
 
         //Measurment Properties as Lists
-        public List<double> aTimeList { get; }
-        public List<double> aTorqueList { get; }
-        public List<double> aVelocityList { get; }
-        public List<double> aAngleList { get; }
+        public List<double> aTimeList { get; set; }
+        public List<double> aTorqueList { get; set; }
+        public List<double> aVelocityList { get; set; }
+        public List<double> aAngleList { get; set; }
 
         public Data()
         {
@@ -60,6 +61,36 @@ namespace Biodex_Client
             aVelocityList.Add(Velocity * VELOCITY_CAL_FACTOR + VELOCITY_CAL_SUBTRAHEND);
             aAngleList.Add(Angle * ANGLE_CAL_FACTOR + ANGLE_CAL_SUBTRAHEND);
         }
+
+        //get data from DB and plot them
+        public Data(string Torque, string Velocity, string Angle):this()
+        {
+			try
+			{
+                Biodex_Client.FormMeasurementProperties.refreshCharts();
+
+                aTorqueList = Array.ConvertAll(Torque.Split(';'), double.Parse).ToList();
+                aVelocityList = Array.ConvertAll(Velocity.Split(';'), double.Parse).ToList();
+                aAngleList = Array.ConvertAll(Angle.Split(';'), double.Parse).ToList();
+
+
+                for (int i = 0; i < aTorqueList.Count; i++)
+                {
+                    aTimeList.Add(aTimeList.Count + 1);
+
+                    Biodex_Client.FormMeasurementProperties.ChartValuesTorqueValues.Add(new formMeasurementProperties.ValuePoint(aTimeList[i], aTorqueList[i]));
+                    Biodex_Client.FormMeasurementProperties.ChartValuesVelocityValues.Add(new formMeasurementProperties.ValuePoint(aTimeList[i], aVelocityList[i]));
+                    Biodex_Client.FormMeasurementProperties.ChartValuesAngleValues.Add(new formMeasurementProperties.ValuePoint(aTimeList[i], aAngleList[i]));
+                }
+
+                MessageBox.Show("Loaded Former Records From Database Successfully and PLOTTED THEM. Now You Can Also Create a CSV-File", "Loading Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+			catch (Exception ex)
+			{
+                MessageBox.Show("The Record Can NOT BE PLOTTED. HINT: The Lists Torque, Velocity or Angle are EMPTY", "CANNOT PLOT", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+		}
 
         /*
          * clears data from alle lists
