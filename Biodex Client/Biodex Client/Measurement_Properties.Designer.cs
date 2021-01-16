@@ -557,7 +557,6 @@
             this.tlpMeasurementProperties.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tlpMeasurementProperties.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMeasurementProperties.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tlpMeasurementProperties.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpMeasurementProperties.Size = new System.Drawing.Size(950, 554);
             this.tlpMeasurementProperties.TabIndex = 0;
             // 
@@ -567,7 +566,7 @@
             this.gbSetup.Controls.Add(this.tlpSetup);
             this.gbSetup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbSetup.ForeColor = System.Drawing.Color.DarkGray;
-            this.gbSetup.Location = new System.Drawing.Point(3, 1634);
+            this.gbSetup.Location = new System.Drawing.Point(3, 1640);
             this.gbSetup.Name = "gbSetup";
             this.gbSetup.Size = new System.Drawing.Size(944, 271);
             this.gbSetup.TabIndex = 4;
@@ -942,7 +941,7 @@
             this.gbController.Controls.Add(this.tlpController);
             this.gbController.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbController.ForeColor = System.Drawing.Color.DarkGray;
-            this.gbController.Location = new System.Drawing.Point(3, 1207);
+            this.gbController.Location = new System.Drawing.Point(3, 1213);
             this.gbController.Name = "gbController";
             this.gbController.Size = new System.Drawing.Size(944, 371);
             this.gbController.TabIndex = 3;
@@ -1455,7 +1454,7 @@
             this.gbChair.Controls.Add(this.tlpChair);
             this.gbChair.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbChair.ForeColor = System.Drawing.Color.DarkGray;
-            this.gbChair.Location = new System.Drawing.Point(3, 960);
+            this.gbChair.Location = new System.Drawing.Point(3, 966);
             this.gbChair.Name = "gbChair";
             this.gbChair.Size = new System.Drawing.Size(944, 191);
             this.gbChair.TabIndex = 2;
@@ -1685,7 +1684,7 @@
             this.gbPowerhead.Controls.Add(this.tlpPowerhead);
             this.gbPowerhead.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbPowerhead.ForeColor = System.Drawing.Color.DarkGray;
-            this.gbPowerhead.Location = new System.Drawing.Point(3, 633);
+            this.gbPowerhead.Location = new System.Drawing.Point(3, 639);
             this.gbPowerhead.Name = "gbPowerhead";
             this.gbPowerhead.Size = new System.Drawing.Size(944, 271);
             this.gbPowerhead.TabIndex = 1;
@@ -1964,7 +1963,7 @@
             this.gbExercise.Controls.Add(this.tlpExercise);
             this.gbExercise.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbExercise.ForeColor = System.Drawing.Color.DarkGray;
-            this.gbExercise.Location = new System.Drawing.Point(3, 386);
+            this.gbExercise.Location = new System.Drawing.Point(3, 392);
             this.gbExercise.Name = "gbExercise";
             this.gbExercise.Size = new System.Drawing.Size(944, 191);
             this.gbExercise.TabIndex = 0;
@@ -2171,7 +2170,7 @@
             this.gbHospitalInformation.Controls.Add(this.tlpHospitalInformation);
             this.gbHospitalInformation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbHospitalInformation.ForeColor = System.Drawing.Color.DarkGray;
-            this.gbHospitalInformation.Location = new System.Drawing.Point(3, 2715);
+            this.gbHospitalInformation.Location = new System.Drawing.Point(3, 2721);
             this.gbHospitalInformation.Name = "gbHospitalInformation";
             this.gbHospitalInformation.Size = new System.Drawing.Size(944, 271);
             this.gbHospitalInformation.TabIndex = 6;
@@ -2525,7 +2524,7 @@
             this.gbMedicalData.Controls.Add(this.tlpMedicalData);
             this.gbMedicalData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbMedicalData.ForeColor = System.Drawing.Color.DarkGray;
-            this.gbMedicalData.Location = new System.Drawing.Point(3, 3042);
+            this.gbMedicalData.Location = new System.Drawing.Point(3, 3048);
             this.gbMedicalData.Name = "gbMedicalData";
             this.gbMedicalData.Size = new System.Drawing.Size(944, 271);
             this.gbMedicalData.TabIndex = 7;
@@ -2839,7 +2838,7 @@
             this.gbDiagnosis.Controls.Add(this.tlpDiagnosis);
             this.gbDiagnosis.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbDiagnosis.ForeColor = System.Drawing.Color.DarkGray;
-            this.gbDiagnosis.Location = new System.Drawing.Point(3, 3369);
+            this.gbDiagnosis.Location = new System.Drawing.Point(3, 3375);
             this.gbDiagnosis.Name = "gbDiagnosis";
             this.gbDiagnosis.Size = new System.Drawing.Size(944, 271);
             this.gbDiagnosis.TabIndex = 8;
@@ -3113,7 +3112,7 @@
             this.gbPatientDataSimulator.Controls.Add(this.tlpPatientSimulator);
             this.gbPatientDataSimulator.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbPatientDataSimulator.ForeColor = System.Drawing.Color.DarkGray;
-            this.gbPatientDataSimulator.Location = new System.Drawing.Point(3, 1961);
+            this.gbPatientDataSimulator.Location = new System.Drawing.Point(3, 1967);
             this.gbPatientDataSimulator.Name = "gbPatientDataSimulator";
             this.gbPatientDataSimulator.Size = new System.Drawing.Size(944, 171);
             this.gbPatientDataSimulator.TabIndex = 10;
@@ -3225,7 +3224,7 @@
             this.gbAvailableMeasurements.ForeColor = System.Drawing.Color.DarkGray;
             this.gbAvailableMeasurements.Location = new System.Drawing.Point(3, 53);
             this.gbAvailableMeasurements.Name = "gbAvailableMeasurements";
-            this.gbAvailableMeasurements.Size = new System.Drawing.Size(944, 277);
+            this.gbAvailableMeasurements.Size = new System.Drawing.Size(944, 283);
             this.gbAvailableMeasurements.TabIndex = 11;
             this.gbAvailableMeasurements.TabStop = false;
             this.gbAvailableMeasurements.Text = "Available Measurements:";
@@ -3247,7 +3246,7 @@
             this.tlpAvailableMeasuremnets.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tlpAvailableMeasuremnets.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpAvailableMeasuremnets.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpAvailableMeasuremnets.Size = new System.Drawing.Size(938, 246);
+            this.tlpAvailableMeasuremnets.Size = new System.Drawing.Size(938, 252);
             this.tlpAvailableMeasuremnets.TabIndex = 1;
             // 
             // tlpAMChooseExercise
@@ -3317,17 +3316,16 @@
             // 
             // tlpAMDataGrid
             // 
+            this.tlpAMDataGrid.AutoSize = true;
             this.tlpAMDataGrid.ColumnCount = 1;
             this.tlpAMDataGrid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpAMDataGrid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpAMDataGrid.Controls.Add(this.dgvAMmeasurements, 0, 0);
             this.tlpAMDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpAMDataGrid.Location = new System.Drawing.Point(103, 123);
             this.tlpAMDataGrid.Name = "tlpAMDataGrid";
             this.tlpAMDataGrid.RowCount = 1;
             this.tlpAMDataGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpAMDataGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tlpAMDataGrid.Size = new System.Drawing.Size(732, 100);
+            this.tlpAMDataGrid.Size = new System.Drawing.Size(732, 106);
             this.tlpAMDataGrid.TabIndex = 8;
             // 
             // dgvAMmeasurements
@@ -3341,14 +3339,14 @@
             this.dgvAMmeasurements.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAMmeasurements.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvAMmeasurements.Location = new System.Drawing.Point(3, 3);
-            this.dgvAMmeasurements.MinimumSize = new System.Drawing.Size(732, 94);
+            this.dgvAMmeasurements.MinimumSize = new System.Drawing.Size(732, 100);
             this.dgvAMmeasurements.MultiSelect = false;
             this.dgvAMmeasurements.Name = "dgvAMmeasurements";
             this.dgvAMmeasurements.ReadOnly = true;
             this.dgvAMmeasurements.RowHeadersWidth = 51;
             this.dgvAMmeasurements.RowTemplate.Height = 28;
             this.dgvAMmeasurements.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAMmeasurements.Size = new System.Drawing.Size(732, 94);
+            this.dgvAMmeasurements.Size = new System.Drawing.Size(732, 100);
             this.dgvAMmeasurements.TabIndex = 7;
             this.dgvAMmeasurements.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAMmeasurements_CellClick);
             // 
@@ -3358,7 +3356,7 @@
             this.gbPersonalData.Controls.Add(this.tlpPersonalData);
             this.gbPersonalData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbPersonalData.ForeColor = System.Drawing.Color.DarkGray;
-            this.gbPersonalData.Location = new System.Drawing.Point(3, 2188);
+            this.gbPersonalData.Location = new System.Drawing.Point(3, 2194);
             this.gbPersonalData.Name = "gbPersonalData";
             this.gbPersonalData.Size = new System.Drawing.Size(944, 471);
             this.gbPersonalData.TabIndex = 5;
@@ -4082,6 +4080,7 @@
             this.gbAvailableMeasurements.ResumeLayout(false);
             this.gbAvailableMeasurements.PerformLayout();
             this.tlpAvailableMeasuremnets.ResumeLayout(false);
+            this.tlpAvailableMeasuremnets.PerformLayout();
             this.tlpAMChooseExercise.ResumeLayout(false);
             this.tlpAMChooseExercise.PerformLayout();
             this.tlpAMDataGrid.ResumeLayout(false);
