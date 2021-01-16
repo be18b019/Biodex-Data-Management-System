@@ -479,7 +479,7 @@ namespace Biodex_Client
 				DummyData = "Name Titel|$|SV-Number|$|Gender|$|Birth Date|$|Birth Place|$|Phone Number|$|Insurance|$|Language|$|Religion|$|Guardian|$|Adress|$|Email|$|Family Status|$|Hospital Name|$|Hospital Department|$|Hospital Adress|$|Hospital Contact|$|Start Date|$|End Date|$|Admission Number|$|Responsible Doctor|$|Admission Reason|$|Anamnesis|$|Previous Diseases|$|Risk and Allergies|$|Medication At Arrival|$|Medication During Stay|$|Actions By Hospital|$|State At Release|$|Pysical Issue|$|Recommended Measurements|$|Rehabilitation Aim|$|Future Medication|$|Diagnosis Summary|$||$||$|";
 			}
             
-            string[] DummyDataArray = DummyData.Split(seperator, StringSplitOptions.RemoveEmptyEntries);
+            string[] DummyDataArray = DummyData.Split(seperator, StringSplitOptions.None);
 
 			//inserting the values from the String Array Dummy Data into each Text Box
 			int i = 0;
@@ -526,11 +526,11 @@ namespace Biodex_Client
         //DATABASE !!!
         //DATABASE !!!
         //the connection to the database will be built from down here
-        //but also some predefinitions were needed look up line: 38 and 150
+        //but also some predefinitions were needed look up at line: ~ 38 and 150
 
 
 
-        #region required methods to interact with the table in the GUI --- display_table(), dgvAMmeasurements_CellClick()
+        #region required methods to interact with the table in the GUI --- display_table(), dgvAMmeasurements_CellClick(), cbxAMChooseExercise_SelectedIndexChanged()
 
         //connect to the DB and displays the current (predefined) values from the DB in the DataGridView
         private void display_table()
@@ -584,8 +584,13 @@ namespace Biodex_Client
 					MessageBox.Show("Error: " + ex.Message);
 				}
 			}
-
 		}
+
+        //when item from combobox is choosen, the datagridview shows the selection
+        private void cbxAMChooseExercise_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            display_table();
+        }
 
         //when one cell of the dgvAMmeasurements is clicked, it will collect the whole rows index
         private void dgvAMmeasurements_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -1237,19 +1242,54 @@ namespace Biodex_Client
         {
             //spitting the string into three seperate Arrays
             string[] seperator = { ";" };
-            string[] torqueArray = torque.Split(seperator, StringSplitOptions.RemoveEmptyEntries);
-            string[] velocityArray = velocity.Split(seperator, StringSplitOptions.RemoveEmptyEntries);
-            string[] angleArray = angle.Split(seperator, StringSplitOptions.RemoveEmptyEntries);
+            string[] torqueArray = torque.Split(seperator, StringSplitOptions.None);
+            string[] velocityArray = velocity.Split(seperator, StringSplitOptions.None);
+            string[] angleArray = angle.Split(seperator, StringSplitOptions.None);
 
-            //creating the CSV-File
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            for (int i = 0; i < torqueArray.Length; i++)
+            int[] lengths = { torqueArray.Length, velocityArray.Length, angleArray.Length };
+            int maxLength = lengths.Max();
+
+            //filling strings with identification information for the header
+            string timestampHeader = null;
+            string exerciseHeader = null;
+            string muscleHeader = null;
+            string repetitionHeader = null;
+            string nameTitleHeader = null;
+
+            DateTime localDate = DateTime.Now;
+            localDate = localDate.AddSeconds(-localDate.Second);
+
+			if (rowIndex <= 0)          //nothing is selected
+			{
+				timestampHeader = localDate.ToString();
+				exerciseHeader = cbxEExercise.Text;
+				muscleHeader = cbxEMuscle.Text;
+				repetitionHeader = cbxERepetitions.Text;
+				nameTitleHeader = txtbPDTitleName.Text;
+			}
+			else
+			{
+				timestampHeader = dgvAMmeasurements.CurrentRow.Cells["created_at"].Value.ToString();
+				exerciseHeader = dgvAMmeasurements.CurrentRow.Cells["exercise"].Value.ToString();
+				muscleHeader = dgvAMmeasurements.CurrentRow.Cells["muscle"].Value.ToString();
+				repetitionHeader = dgvAMmeasurements.CurrentRow.Cells["repetition"].Value.ToString();
+				nameTitleHeader = dgvAMmeasurements.CurrentRow.Cells["name_title"].Value.ToString();
+			}
+
+			//creating the CSV-File
+			System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            sb.AppendLine("Timestamp;Exercise;Muscle;Repetition;Name and Title");
+            sb.AppendLine(timestampHeader+ ";" + exerciseHeader + ";" + muscleHeader + ";" + repetitionHeader + ";" + nameTitleHeader).AppendLine();            //the header will contain the basic information for identification
+            sb.AppendLine("Torque;Velocity;Angle");
+
+            for (int i = 0; i < maxLength; i++)
             {
                 sb.AppendLine(torqueArray[i] + ";" + velocityArray[i] + ";" + angleArray[i]);           //starts new line with the three values and in between there is a ; (torque; velocity; angle)
             }
 
             //pop up window, to save the data ... tips from: https://www.youtube.com/watch?v=5hQQg7S_5GQ
             SaveFileDialog save = new SaveFileDialog();
+            save.Filter = "CSV Files (*.csv)|*.csv|All Files (*.*)|*.*";
             if (save.ShowDialog() == System.Windows.Forms.DialogResult.OK) 
             {
                 StreamWriter write = new StreamWriter(File.Create(save.FileName));
@@ -1261,7 +1301,6 @@ namespace Biodex_Client
 
         private void btnCreateCSV_Click(object sender, EventArgs e)
         {
-
             if (rowIndex <= 0)      // if-statement means nothing is selected from the Data Table (Available Measurement)
             {
                 Data myData = serialportsave.myData;
@@ -1270,16 +1309,15 @@ namespace Biodex_Client
                 velocityStringToDB = string.Join(";", myData.aVelocityList.ToArray());
 
                 createCSV(torqueStringToDB, velocityStringToDB, angleStringToDB);
-                MessageBox.Show("CSV-File Created From The Currently Measured Values", "CSV-File Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 createCSV(torqueStringFromDB, velocityStringFromDB, angleStringFromDB);
-                MessageBox.Show("CSV-File Created From Prerecorded Database Values", "CSV-File Created", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
 		#endregion
+
 	}
 }
 
