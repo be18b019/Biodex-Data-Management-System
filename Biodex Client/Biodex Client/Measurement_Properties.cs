@@ -19,9 +19,10 @@ using CsvHelper;
 
 namespace Biodex_Client
 {
+
     public partial class formMeasurementProperties : Form
     {
-        //initializing of necessary members
+        #region initializing form members and Chartvalues
         formGraphs _FormGraphs = null;
         Data _data = null;
         SerialPortSave serialportsave = null;
@@ -33,7 +34,7 @@ namespace Biodex_Client
         public ChartValues<ValuePoint> ChartValuesAngleValues { get; set; }
 
         Thread threadAddValuesToChart;
-
+        #endregion
 
         #region initializing Database objects and variables
         //tips from: https://www.youtube.com/watch?v=U_v1dSglNjE
@@ -60,9 +61,7 @@ namespace Biodex_Client
 
         #endregion
 
-
-
-        #region formMeasurement Constructors, Load function, disable nud Scroll, Database Connection
+        #region formMeasurement Constructors, initializing of some plotting stuff
         public formMeasurementProperties()
         {
             InitializeComponent();        
@@ -145,8 +144,9 @@ namespace Biodex_Client
 
             InitializeComponent();
         }
+        #endregion
 
-
+        #region initialization of some GUI stuff
         /*
        * added getControls function to:
        * https://stackoverflow.com/questions/59862561/how-to-disable-scrolling-on-a-numericupdown-in-a-windows-form
@@ -210,30 +210,13 @@ namespace Biodex_Client
             }
             return cntrls;
         }
-
         #endregion
 
-
-
-        #region loadtestbutton and graphs
-        /*
-         * just for test purposes
-         * reads test file for plotting and starts new thread for plotting
-         * function will be removed when serialport+ loadbutton_click is implemented
-         */
-        private void btnLoadTest_Click(object sender, EventArgs e)
-        {
-            string path = "C:/Users/jgtha/OneDrive/BBE/Biodex/Biodex Client/csv data to read for load(test)/Armin_Messung";
-            int[][] data = readCSV(path);
-            _data = new Data(data);
-            refreshCharts();
-            threadAddValuesToChart = new Thread(new ThreadStart(addValuesToChart));
-            threadAddValuesToChart.Start();           
-        }
-
+        #region plot interaction
         /*
          * generates Valuepoint objects which are added to the chart series
          */
+        
         void addValuesToChart()
         { 
             //for live plotting loop has to be removed and function has to be called from event handler
@@ -323,86 +306,9 @@ namespace Biodex_Client
                 Value = value;
             }
         }
-
-        /*
-         * reads test csv file and returns int data array
-         * function will be deleted as soon as serialport and loadbutton work
-         */
-        int[][] readCSV(string path)
-        {
-                if (File.Exists(path))
-                {
-                    string[] lines = File.ReadAllLines(path, Encoding.Default);
-                    string[][] dataString = new string[lines.Length][];
-                    int[][] data = new int[lines.Length][];
-
-                    for (int i = 0; i < lines.Length; i++)
-                    {
-                        dataString[i] = lines[i].Split(',');
-                        int[] temp = new int[dataString[i].Length];
-                        for (int j = 0; j < dataString[i].Length; j++)
-                        {
-                            temp[j] = Convert.ToInt32(dataString[i][j]);
-                        }
-                        data[i] = temp;
-                    }
-                    data = Transpose(data);
-                    return data;
-                }
-                else
-                {
-                    throw new FileNotFoundException();
-                }
-        }
-
-        /*
-         * transposes parameter matrix
-         * function will be deleted as soon as serialport and loadbutton work
-         */
-        int[][] Transpose(int[][] matrix)
-        {
-                int w = matrix.GetLength(0);
-                int h = matrix[0].GetLength(0);
-
-                int[][] result = new int[h][];
-                int[] temp = null;
-
-                for (int i = 0; i < h; i++)
-                {
-                    temp = new int[w];
-                    for (int j = 0; j < w; j++)
-                    {
-                        temp[j] = matrix[j][i];
-                    }
-                    result[i] = temp;
-                }
-
-                return result;
-        }
-
         #endregion
 
-
-
-		private float[] convertDoubleToFloat(double[] doubleArray)
-        {
-            try
-            {
-                float[] floatArray = new float[doubleArray.Length];
-                for (int i = 0; i < doubleArray.Length; i++)
-                {
-                    floatArray[i] = (float)doubleArray[i];
-                }
-                return floatArray;
-            }
-            catch(Exception e)
-            {
-                return null;
-            }
-        }
-
-
-
+        #region deleting collected data with clear buttonclick
         /*
          * resets all controls of measurement properties and sets _data, _mProperties and _patientData to null
          */
@@ -451,11 +357,10 @@ namespace Biodex_Client
 
             MessageBox.Show("ALL VALUES HAVE BEEN RESET", "VALUES TO NULL", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+        #endregion
 
-
-
-		#region insert Dummy Data into the text boxes from the Patient Data Section
-		private void btnPDSSimulatePatientData_Click(object sender, EventArgs e)
+        #region insert Dummy Data into the text boxes from the Patient Data Section
+        private void btnPDSSimulatePatientData_Click(object sender, EventArgs e)
 		{
 			//generating the dummy data according to the ELGA Entlassungsbrief
 			string DummyData;
@@ -519,16 +424,6 @@ namespace Biodex_Client
 			txtbDSummary.Text = DummyDataArray[i++];
         }
         #endregion
-
-
-
-        //DATABASE !!!
-        //DATABASE !!!
-        //DATABASE !!!
-        //the connection to the database will be built from down here
-        //but also some predefinitions were needed look up at line: ~ 38 and 150
-
-
 
         #region required methods to interact with the table in the GUI --- display_table(), dgvAMmeasurements_CellClick(), cbxAMChooseExercise_SelectedIndexChanged()
 
@@ -598,110 +493,7 @@ namespace Biodex_Client
             //gets the exercise_id of the currently selected record from the dataGridView
             rowIndex = int.Parse(dgvAMmeasurements.Rows[e.RowIndex].Cells["id"].Value.ToString());
         }
-
         #endregion
-
-
-
-        //fills _mProperties and _patientData with values from GUI
-        private async void btnSave_ClickAsync(object sender, EventArgs e)
-        {
-            #region some useful test code
-            /*_mProperties = new MProperties(cbxEExercise.GetItemText(cbxEExercise.SelectedItem),
-                                                      cbxEMuscle.GetItemText(cbxEMuscle.SelectedItem),
-                                                      cbxERepetitions.GetItemText(cbxERepetitions.SelectedItem),
-
-                                                      cbxPOrientation.GetItemText(cbxPOrientation.SelectedItem),
-                                                      nudPTilt.Value.ToString(),
-                                                      nudPHeight.Value.ToString(),
-                                                      nudPPosition.Value.ToString(),
-                                                      cbxPAttachments.GetItemText(cbxPAttachments.SelectedItem),
-
-                                                      cbxCOrientation.GetItemText(cbxCOrientation.SelectedItem),
-                                                      nudCTilt.Value.ToString(),
-                                                      nudCHeight.Value.ToString(),
-                                                      nudCPosition.Value.ToString(),
-
-                                                      cbxCoMode.GetItemText(cbxCoMode.SelectedItem),
-                                                      cbxCoCushion.GetItemText(cbxCoCushion.SelectedItem),
-                                                      cbxCoSensitivity.GetItemText(cbxCoSensitivity.SelectedItem),
-                                                      nudCoPause.Value.ToString(),
-                                                      nudCoEccentricSpeed.Value.ToString(),
-                                                      nudCoPassiveSpeed.Value.ToString(),
-                                                      nudCoIsokineticSpeed.Value.ToString(),
-                                                      nudCoTorqueLimit.Value.ToString(),
-                                                      nudCoPercentROM.Value.ToString(),
-                                                      nudCoROMLower.Value.ToString(),
-                                                      nudCoROMUpper.Value.ToString(),
-
-                                                      nudSHipFlexion.Value.ToString(),
-                                                      nudSFootPlateTilt.Value.ToString(),
-                                                      nudSAnkleFlexion.Value.ToString(),
-                                                      nudSKneeFlexion.Value.ToString(),
-                                                      nudSShoulderAbduction.Value.ToString(),
-                                                      nudSShoulderFlexion.Value.ToString(),
-                                                      nudSElbowFlexion.Value.ToString());
-
-            _patientData = new PatientData(txtbPDTitleName.Text,
-                                                      txtbPDSVNumber.Text,
-                                                      txtbPDPlaceOfBirth.Text,
-                                                      txtbPDGender.Text,
-                                                      txtbPDDateOfBirth.Text,
-                                                      txtbPDPhoneNumber.Text,
-                                                      txtbPDInsurance.Text,
-                                                      txtbPDLanguage.Text,
-                                                      txtbPDReligion.Text,
-                                                      txtbPDLegalGuardian.Text,
-                                                      txtbPDAdress.Text,
-                                                      txtbPDEmail.Text,
-                                                      txtbPDFamilyStatus.Text,
-
-                                                      txtbHIHospitalName.Text,
-                                                      txtbHIDepartment.Text,
-                                                      txtbHIHospitalAdress.Text,
-                                                      txtbHIHospitalConatct.Text,
-                                                      txtbHIStartDate.Text,
-                                                      txtbHIEndDate.Text,
-                                                      txtbHIAdmissionNumber.Text,
-                                                      txtbHIResponsibleDoctor.Text,
-
-                                                      txtbMDAdmissionReason.Text,
-                                                      txtbMDAnamnesis.Text,
-                                                      txtbMDPreviousDisease.Text,
-                                                      txtbMDRisksAllergies.Text,
-                                                      txtbMDMedicationArrival.Text,
-                                                      txtbMDMedicationStay.Text,
-                                                      txtbMDActionsHospital.Text,
-
-                                                      txtbDStateRelease.Text,
-                                                      txtbDPhysicalIssue.Text,
-                                                      txtbDRecommendedMeasuremnts.Text,
-                                                      txtbDRehabilitationAim.Text,
-                                                      txtbDFutureMedication.Text,
-                                                      txtbDSummary.Text);*/
-
-            //DataAccessObject DAO = new DataAccessObject();
-            //float[] torque = convertDoubleToFloat(_data.Torque);
-            //float[] angle = convertDoubleToFloat(_data.Angle);
-            //float[] angleVelocity = convertDoubleToFloat(_data.Velocity);
-            //Settings settings = new Settings(-1, cbxPOrientation.GetItemText(cbxPOrientation.SelectedItem), nudPHeight.Value.ToString(), nudPPosition.Value.ToString(), cbxPAttachments.GetItemText(cbxPAttachments.SelectedItem), nudPTilt.Value.ToString(), nudCHeight.Value.ToString(), cbxCOrientation.GetItemText(cbxCOrientation.SelectedItem), nudCTilt.Value.ToString(), nudCPosition.Value.ToString(), nudSHipFlexion.Value.ToString(), nudSFootPlateTilt.Value.ToString(), nudSKneeFlexion.Value.ToString(), nudSAnkleFlexion.Value.ToString(), nudSShoulderAbduction.Value.ToString(), nudSShoulderFlexion.Value.ToString(), cbxCoMode.GetItemText(cbxCoMode.SelectedItem), cbxCoCushion.GetItemText(cbxCoCushion.SelectedItem), cbxCoSensitivity.GetItemText(cbxCoSensitivity.SelectedItem), nudCoROMUpper.Value.ToString(), nudCoROMLower.Value.ToString(), nudCoPercentROM.Value.ToString(), nudCoEccentricSpeed.Value.ToString(), nudCoPassiveSpeed.Value.ToString(), nudCoTorqueLimit.Value.ToString(), nudCoPause.Value.ToString(),nudCoIsokineticSpeed.Value.ToString(), nudSElbowFlexion.Value.ToString());
-            //long settingsID = DAO.insertIntoSettings(settings);
-            //BiodexReport biodexReport = new BiodexReport(-1, torque,angle, angleVelocity,cbxEExercise.GetItemText(cbxEExercise.SelectedItem), cbxEMuscle.GetItemText(cbxEMuscle.SelectedItem), cbxERepetitions.GetItemText(cbxERepetitions.SelectedItem), settingsID);
-            //await DAO.insertIntoBiodexReportAsync(biodexReport);
-            //medicalData medicaldata = new medicalData(-1, txtbHIStartDate.Text, txtbHIEndDate.Text, txtbHIHospitalAdress.Text, txtbHIDepartment.Text, txtbHIAdmissionNumber.Text, txtbHIHospitalName.Text, txtbHIHospitalConatct.Text, txtbHIResponsibleDoctor.Text, txtbDStateRelease.Text, txtbDSummary.Text, txtbDFutureMedication.Text, txtbDRehabilitationAim.Text, txtbDRecommendedMeasuremnts.Text, txtbDPhysicalIssue.Text, txtbMDActionsHospital.Text, txtbMDMedicationStay.Text, txtbMDMedicationArrival.Text, txtbMDRisksAllergies.Text, txtbMDPreviousDisease.Text, txtbMDAnamnesis.Text, txtbMDAdmissionReason.Text);
-            //medicaldata.medicalDataID =  DAO.insertIntoMedicalDataAsync(medicaldata);
-            //personalData personaldata = new personalData(txtbPDSVNumber.Text, txtbPDFamilyStatus.Text, txtbPDEmail.Text, txtbPDAdress.Text, txtbPDLegalGuardian.Text, txtbPDReligion.Text, txtbPDLanguage.Text, txtbPDInsurance.Text, txtbPDPhoneNumber.Text, txtbPDPlaceOfBirth.Text, txtbPDDateOfBirth.Text, txtbPDGender.Text, txtbPDTitleName.Text);
-            //personaldata.SV_Number =  DAO.insertIntoPersonalDataAsync(personaldata);
-            //elgaReport elgareport = new elgaReport(-1);
-            //elgareport.elgaID = DAO.insertIntoElgaReport(elgareport);
-            //Proband proband = new Proband()
-            #endregion some useful test code 
-            //REFRESH BUTTON, displays the updated values from the Database
-            display_table();
-            MessageBox.Show("Table Displays Current Database Entries", "Table Refreshed", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-
 
         #region SENDING THE DATA TO THE DATABASE
         private void btnExport_Click(object sender, EventArgs e)
@@ -1076,7 +868,6 @@ namespace Biodex_Client
 
 
 
-
             //insert into the may_contain table
             int contains_feedback = 0;
             try
@@ -1146,8 +937,6 @@ namespace Biodex_Client
 			display_table();
         }
         #endregion
-
-
 
         #region Loading Data From The DATABASE 
         //after selecting a existing record, the data can be loaded via the LOAD BUTTON: this will plot the data in the graphs window. Optionally, a CSV File can be created via the CREATE CSV FILE BUTTON
@@ -1232,8 +1021,6 @@ namespace Biodex_Client
             Data plotData = new Data(torqueStringFromDB, velocityStringFromDB, angleStringFromDB);
         }
 		#endregion
-
-
 
 		#region Creating a CSV-file in the selected path
 
@@ -1321,25 +1108,208 @@ namespace Biodex_Client
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*
  * ¯\_(ツ)_/¯
  *Just some attempts of implementing plotting with vs chart
  *Left here in the case it could be needed 
+ *Everything below is commented out
  * ¯\_(ツ)_/¯
  */
+#region savebutton_click, loadtestbutton_click
+/*
+//fills _mProperties and _patientData with values from GUI
+private async void btnSave_ClickAsync(object sender, EventArgs e)
+{
+    #region some useful test code
+    /*_mProperties = new MProperties(cbxEExercise.GetItemText(cbxEExercise.SelectedItem),
+                                              cbxEMuscle.GetItemText(cbxEMuscle.SelectedItem),
+                                              cbxERepetitions.GetItemText(cbxERepetitions.SelectedItem),
+
+                                              cbxPOrientation.GetItemText(cbxPOrientation.SelectedItem),
+                                              nudPTilt.Value.ToString(),
+                                              nudPHeight.Value.ToString(),
+                                              nudPPosition.Value.ToString(),
+                                              cbxPAttachments.GetItemText(cbxPAttachments.SelectedItem),
+
+                                              cbxCOrientation.GetItemText(cbxCOrientation.SelectedItem),
+                                              nudCTilt.Value.ToString(),
+                                              nudCHeight.Value.ToString(),
+                                              nudCPosition.Value.ToString(),
+
+                                              cbxCoMode.GetItemText(cbxCoMode.SelectedItem),
+                                              cbxCoCushion.GetItemText(cbxCoCushion.SelectedItem),
+                                              cbxCoSensitivity.GetItemText(cbxCoSensitivity.SelectedItem),
+                                              nudCoPause.Value.ToString(),
+                                              nudCoEccentricSpeed.Value.ToString(),
+                                              nudCoPassiveSpeed.Value.ToString(),
+                                              nudCoIsokineticSpeed.Value.ToString(),
+                                              nudCoTorqueLimit.Value.ToString(),
+                                              nudCoPercentROM.Value.ToString(),
+                                              nudCoROMLower.Value.ToString(),
+                                              nudCoROMUpper.Value.ToString(),
+
+                                              nudSHipFlexion.Value.ToString(),
+                                              nudSFootPlateTilt.Value.ToString(),
+                                              nudSAnkleFlexion.Value.ToString(),
+                                              nudSKneeFlexion.Value.ToString(),
+                                              nudSShoulderAbduction.Value.ToString(),
+                                              nudSShoulderFlexion.Value.ToString(),
+                                              nudSElbowFlexion.Value.ToString());
+
+    _patientData = new PatientData(txtbPDTitleName.Text,
+                                              txtbPDSVNumber.Text,
+                                              txtbPDPlaceOfBirth.Text,
+                                              txtbPDGender.Text,
+                                              txtbPDDateOfBirth.Text,
+                                              txtbPDPhoneNumber.Text,
+                                              txtbPDInsurance.Text,
+                                              txtbPDLanguage.Text,
+                                              txtbPDReligion.Text,
+                                              txtbPDLegalGuardian.Text,
+                                              txtbPDAdress.Text,
+                                              txtbPDEmail.Text,
+                                              txtbPDFamilyStatus.Text,
+
+                                              txtbHIHospitalName.Text,
+                                              txtbHIDepartment.Text,
+                                              txtbHIHospitalAdress.Text,
+                                              txtbHIHospitalConatct.Text,
+                                              txtbHIStartDate.Text,
+                                              txtbHIEndDate.Text,
+                                              txtbHIAdmissionNumber.Text,
+                                              txtbHIResponsibleDoctor.Text,
+
+                                              txtbMDAdmissionReason.Text,
+                                              txtbMDAnamnesis.Text,
+                                              txtbMDPreviousDisease.Text,
+                                              txtbMDRisksAllergies.Text,
+                                              txtbMDMedicationArrival.Text,
+                                              txtbMDMedicationStay.Text,
+                                              txtbMDActionsHospital.Text,
+
+                                              txtbDStateRelease.Text,
+                                              txtbDPhysicalIssue.Text,
+                                              txtbDRecommendedMeasuremnts.Text,
+                                              txtbDRehabilitationAim.Text,
+                                              txtbDFutureMedication.Text,
+                                              txtbDSummary.Text);
+
+    //DataAccessObject DAO = new DataAccessObject();
+    //float[] torque = convertDoubleToFloat(_data.Torque);
+    //float[] angle = convertDoubleToFloat(_data.Angle);
+    //float[] angleVelocity = convertDoubleToFloat(_data.Velocity);
+    //Settings settings = new Settings(-1, cbxPOrientation.GetItemText(cbxPOrientation.SelectedItem), nudPHeight.Value.ToString(), nudPPosition.Value.ToString(), cbxPAttachments.GetItemText(cbxPAttachments.SelectedItem), nudPTilt.Value.ToString(), nudCHeight.Value.ToString(), cbxCOrientation.GetItemText(cbxCOrientation.SelectedItem), nudCTilt.Value.ToString(), nudCPosition.Value.ToString(), nudSHipFlexion.Value.ToString(), nudSFootPlateTilt.Value.ToString(), nudSKneeFlexion.Value.ToString(), nudSAnkleFlexion.Value.ToString(), nudSShoulderAbduction.Value.ToString(), nudSShoulderFlexion.Value.ToString(), cbxCoMode.GetItemText(cbxCoMode.SelectedItem), cbxCoCushion.GetItemText(cbxCoCushion.SelectedItem), cbxCoSensitivity.GetItemText(cbxCoSensitivity.SelectedItem), nudCoROMUpper.Value.ToString(), nudCoROMLower.Value.ToString(), nudCoPercentROM.Value.ToString(), nudCoEccentricSpeed.Value.ToString(), nudCoPassiveSpeed.Value.ToString(), nudCoTorqueLimit.Value.ToString(), nudCoPause.Value.ToString(),nudCoIsokineticSpeed.Value.ToString(), nudSElbowFlexion.Value.ToString());
+    //long settingsID = DAO.insertIntoSettings(settings);
+    //BiodexReport biodexReport = new BiodexReport(-1, torque,angle, angleVelocity,cbxEExercise.GetItemText(cbxEExercise.SelectedItem), cbxEMuscle.GetItemText(cbxEMuscle.SelectedItem), cbxERepetitions.GetItemText(cbxERepetitions.SelectedItem), settingsID);
+    //await DAO.insertIntoBiodexReportAsync(biodexReport);
+    //medicalData medicaldata = new medicalData(-1, txtbHIStartDate.Text, txtbHIEndDate.Text, txtbHIHospitalAdress.Text, txtbHIDepartment.Text, txtbHIAdmissionNumber.Text, txtbHIHospitalName.Text, txtbHIHospitalConatct.Text, txtbHIResponsibleDoctor.Text, txtbDStateRelease.Text, txtbDSummary.Text, txtbDFutureMedication.Text, txtbDRehabilitationAim.Text, txtbDRecommendedMeasuremnts.Text, txtbDPhysicalIssue.Text, txtbMDActionsHospital.Text, txtbMDMedicationStay.Text, txtbMDMedicationArrival.Text, txtbMDRisksAllergies.Text, txtbMDPreviousDisease.Text, txtbMDAnamnesis.Text, txtbMDAdmissionReason.Text);
+    //medicaldata.medicalDataID =  DAO.insertIntoMedicalDataAsync(medicaldata);
+    //personalData personaldata = new personalData(txtbPDSVNumber.Text, txtbPDFamilyStatus.Text, txtbPDEmail.Text, txtbPDAdress.Text, txtbPDLegalGuardian.Text, txtbPDReligion.Text, txtbPDLanguage.Text, txtbPDInsurance.Text, txtbPDPhoneNumber.Text, txtbPDPlaceOfBirth.Text, txtbPDDateOfBirth.Text, txtbPDGender.Text, txtbPDTitleName.Text);
+    //personaldata.SV_Number =  DAO.insertIntoPersonalDataAsync(personaldata);
+    //elgaReport elgareport = new elgaReport(-1);
+    //elgareport.elgaID = DAO.insertIntoElgaReport(elgareport);
+    //Proband proband = new Proband()
+    #endregion some useful test code 
+    //REFRESH BUTTON, displays the updated values from the Database
+    display_table();
+    MessageBox.Show("Table Displays Current Database Entries", "Table Refreshed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+}
+
+/*
+ * just for test purposes
+ * reads test file for plotting and starts new thread for plotting
+ * function will be removed when serialport+ loadbutton_click is implemented
+ */
+/*
+private void btnLoadTest_Click(object sender, EventArgs e)
+{
+    string path = "C:/Users/jgtha/OneDrive/BBE/Biodex/Biodex Client/csv data to read for load(test)/Armin_Messung";
+    int[][] data = readCSV(path);
+    _data = new Data(data);
+    refreshCharts();
+    threadAddValuesToChart = new Thread(new ThreadStart(addValuesToChart));
+    threadAddValuesToChart.Start();           
+}*/
+
+/*
+* reads test csv file and returns int data array
+* function will be deleted as soon as serialport and loadbutton work
+*/
+/*
+int[][] readCSV(string path)
+{
+    if (File.Exists(path))
+    {
+        string[] lines = File.ReadAllLines(path, Encoding.Default);
+        string[][] dataString = new string[lines.Length][];
+        int[][] data = new int[lines.Length][];
+
+        for (int i = 0; i < lines.Length; i++)
+        {
+            dataString[i] = lines[i].Split(',');
+            int[] temp = new int[dataString[i].Length];
+            for (int j = 0; j < dataString[i].Length; j++)
+            {
+                temp[j] = Convert.ToInt32(dataString[i][j]);
+            }
+            data[i] = temp;
+        }
+        data = Transpose(data);
+        return data;
+    }
+    else
+    {
+        throw new FileNotFoundException();
+    }
+}
+
+/*
+ * transposes parameter matrix
+ * function will be deleted as soon as serialport and loadbutton work
+ */
+/*
+int[][] Transpose(int[][] matrix)
+{
+    int w = matrix.GetLength(0);
+    int h = matrix[0].GetLength(0);
+
+    int[][] result = new int[h][];
+    int[] temp = null;
+
+    for (int i = 0; i < h; i++)
+    {
+        temp = new int[w];
+        for (int j = 0; j < w; j++)
+        {
+            temp[j] = matrix[j][i];
+        }
+        result[i] = temp;
+    }
+
+    return result;
+}
+
+
+private float[] convertDoubleToFloat(double[] doubleArray)
+{
+    try
+    {
+        float[] floatArray = new float[doubleArray.Length];
+        for (int i = 0; i < doubleArray.Length; i++)
+        {
+            floatArray[i] = (float)doubleArray[i];
+        }
+        return floatArray;
+    }
+    catch (Exception e)
+    {
+        return null;
+    }
+}
+*/
+
+#endregion, 
+
 #region safecalldelegate to update chart live
 /*
        delegate void SafeCallDelegate(ValuePoint valuePoint);
@@ -1426,4 +1396,3 @@ private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerComple
 
 
 #endregion
-
