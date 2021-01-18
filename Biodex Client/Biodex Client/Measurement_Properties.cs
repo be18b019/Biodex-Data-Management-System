@@ -29,9 +29,9 @@ namespace Biodex_Client
         MProperties _mProperties = null;
         PatientData _patientData = null;
 
-        public ChartValues<ValuePoint> ChartValuesTorqueValues { get; set; }
-        public ChartValues<ValuePoint> ChartValuesVelocityValues { get; set; }
-        public ChartValues<ValuePoint> ChartValuesAngleValues { get; set; }
+        //public ChartValues<ValuePoint> ChartValuesTorqueValues { get; set; }
+        //public ChartValues<ValuePoint> ChartValuesVelocityValues { get; set; }
+        //public ChartValues<ValuePoint> ChartValuesAngleValues { get; set; }
 
         Thread threadAddValuesToChart;
         #endregion
@@ -76,71 +76,71 @@ namespace Biodex_Client
             _data = data;
             this.serialportsave = serialportsave;
 
-            var mapper = Mappers.Xy<ValuePoint>()
-                 .X(model => model.Frame)
-                 .Y(model => model.Value);
+            //var mapper = Mappers.Xy<ValuePoint>()
+            //     .X(model => model.Frame)
+            //     .Y(model => model.Value);
 
-            Charting.For<ValuePoint>(mapper);
+            //Charting.For<ValuePoint>(mapper);
 
-            ChartValuesTorqueValues = new ChartValues<ValuePoint>();
-            ChartValuesVelocityValues = new ChartValues<ValuePoint>();
-            ChartValuesAngleValues = new ChartValues<ValuePoint>();
+            //ChartValuesTorqueValues = new ChartValues<ValuePoint>();
+            //ChartValuesVelocityValues = new ChartValues<ValuePoint>();
+            //ChartValuesAngleValues = new ChartValues<ValuePoint>();
 
 
-            //chartTorqueInitialisation
-            _FormGraphs.chartTorque.DisableAnimations = true;
-            _FormGraphs.chartTorque.AxisX.Add(new LiveCharts.Wpf.Axis
-            {
-                Title = "Frames",
-                //DisableAnimations = true,
-                //MaxValue = graphData.Time.Length
-            });
+            ////chartTorqueInitialisation
+            //_FormGraphs.chartTorque.DisableAnimations = true;
+            //_FormGraphs.chartTorque.AxisX.Add(new LiveCharts.Wpf.Axis
+            //{
+            //    Title = "Frames",
+            //    //DisableAnimations = true,
+            //    //MaxValue = graphData.Time.Length
+            //});
 
-            _FormGraphs.chartTorque.AxisY.Add(new LiveCharts.Wpf.Axis
-            {
-                Title = "Torque",
-                //DisableAnimations = true,
-                //MaxValue = 600, 
-                //MinValue=400
-            });
+            //_FormGraphs.chartTorque.AxisY.Add(new LiveCharts.Wpf.Axis
+            //{
+            //    Title = "Torque",
+            //    //DisableAnimations = true,
+            //    //MaxValue = 600, 
+            //    //MinValue=400
+            //});
 
             
 
-            //chartVelocityInitialisation
-            _FormGraphs.chartVelocity.DisableAnimations = true;
-            _FormGraphs.chartVelocity.AxisX.Add(new LiveCharts.Wpf.Axis
-            {
-                Title = "Frames",
-                //DisableAnimations = true,
-                //MaxValue = graphData.Time.Length
-            });
+            ////chartVelocityInitialisation
+            //_FormGraphs.chartVelocity.DisableAnimations = true;
+            //_FormGraphs.chartVelocity.AxisX.Add(new LiveCharts.Wpf.Axis
+            //{
+            //    Title = "Frames",
+            //    //DisableAnimations = true,
+            //    //MaxValue = graphData.Time.Length
+            //});
 
-            _FormGraphs.chartVelocity.AxisY.Add(new LiveCharts.Wpf.Axis
-            {
-                Title = "Angular Velocity",
-                //DisableAnimations = true,
-                //MaxValue = 600, 
-                //MinValue=400
-            });
+            //_FormGraphs.chartVelocity.AxisY.Add(new LiveCharts.Wpf.Axis
+            //{
+            //    Title = "Angular Velocity",
+            //    //DisableAnimations = true,
+            //    //MaxValue = 600, 
+            //    //MinValue=400
+            //});
 
            
 
-            //chartAngleInitialisation
-            _FormGraphs.chartAngle.DisableAnimations = true;
-            _FormGraphs.chartAngle.AxisX.Add(new LiveCharts.Wpf.Axis
-            {
-                Title = "Frames",
-                //DisableAnimations = true,
-                //MaxValue = graphData.Time.Length
-            });
+            ////chartAngleInitialisation
+            //_FormGraphs.chartAngle.DisableAnimations = true;
+            //_FormGraphs.chartAngle.AxisX.Add(new LiveCharts.Wpf.Axis
+            //{
+            //    Title = "Frames",
+            //    //DisableAnimations = true,
+            //    //MaxValue = graphData.Time.Length
+            //});
 
-            _FormGraphs.chartAngle.AxisY.Add(new LiveCharts.Wpf.Axis
-            {
-                Title = "Angle",
-                //DisableAnimations = true,
-                //MaxValue = 600, 
-                //MinValue=400
-            });
+            //_FormGraphs.chartAngle.AxisY.Add(new LiveCharts.Wpf.Axis
+            //{
+            //    Title = "Angle",
+            //    //DisableAnimations = true,
+            //    //MaxValue = 600, 
+            //    //MinValue=400
+            //});
 
             InitializeComponent();
         }
@@ -209,102 +209,6 @@ namespace Biodex_Client
                 }
             }
             return cntrls;
-        }
-        #endregion
-
-        #region plot interaction
-        /*
-         * generates Valuepoint objects which are added to the chart series
-         */
-        
-        void addValuesToChart()
-        { 
-            //for live plotting loop has to be removed and function has to be called from event handler
-            // eventargs need to contain current values from serialport
-            for (int i = 0; i < _data.Time.Length; i++)
-            {
-                //maybe change those points to the calibrated version
-                ValuePoint ValuePointTorque=new ValuePoint(_data.Time[i], _data.Torque[i]);
-                ValuePoint ValuePointVelocity = new ValuePoint(_data.Time[i], _data.Velocity[i]);
-                ValuePoint ValuePointAngle = new ValuePoint(_data.Time[i], _data.Angle[i]);
-                ChartValuesTorqueValues.Add(ValuePointTorque);
-                ChartValuesVelocityValues.Add(ValuePointVelocity);
-                ChartValuesAngleValues.Add(ValuePointAngle);
-                //Thread.Sleep(10); //for showing liveplotting
-                //Update max and min of axis for liveplotting
-            }
-            threadAddValuesToChart.Abort();
-        }
-
-        /*
-         * clears chartvalue members and initializes current Lineseries with new ones
-         * Is needed because _FormGraphs.chartTorque.Series.Clear() does not work.
-         * This is an already known issue by the livecharts comunity but it has not been solved yet
-         */
-        public void refreshCharts()
-        {
-            ChartValuesTorqueValues.Clear();
-            ChartValuesVelocityValues.Clear();
-            ChartValuesAngleValues.Clear();
-
-            SeriesCollection helperTorqueSeries = new SeriesCollection
-            {
-                    new LineSeries
-                    {
-                        Values=ChartValuesTorqueValues,
-                        Title="Torque",
-                        StrokeThickness = 1, //maybe change
-                        PointGeometrySize = 0,
-                        Stroke=System.Windows.Media.Brushes.LightSkyBlue, //lightskyblue, tomato, khaki
-                        Fill=System.Windows.Media.Brushes.Transparent
-                    }
-            };
-
-            SeriesCollection helperVelocitySeries = new SeriesCollection
-            {
-                    new LineSeries
-                    {
-                        Values=ChartValuesVelocityValues,
-                        Title="Angle Velocity",
-                        StrokeThickness = 1, //maybe change
-                        PointGeometrySize = 0,
-                        Stroke=System.Windows.Media.Brushes.Tomato, //lightskyblue, tomato, khaki
-                        Fill=System.Windows.Media.Brushes.Transparent
-                    }
-            };
-
-            SeriesCollection helperAngleSeries = new SeriesCollection
-            {
-                    new LineSeries
-                    {
-                        Values=ChartValuesAngleValues,
-                        Title="Angle",
-                        StrokeThickness = 1, //maybe change
-                        PointGeometrySize = 0,
-                        Stroke=System.Windows.Media.Brushes.Khaki, //lightskyblue, tomato, khaki
-                        Fill=System.Windows.Media.Brushes.Transparent
-                    }
-            };
-
-            _FormGraphs.chartTorque.Series = helperTorqueSeries;
-            _FormGraphs.chartVelocity.Series = helperVelocitySeries;
-            _FormGraphs.chartAngle.Series = helperAngleSeries;
-        }
-
-        /*
-         * class which generates Valuepoint objects that can be added to a Series
-         * maybe this class will be pushed into its own cs file
-         */
-        public class ValuePoint
-        {
-            public double Frame { get; }
-            public double Value { get; }
-
-            public ValuePoint(double frame, double value)
-            {
-                Frame = frame;
-                Value = value;
-            }
         }
         #endregion
 
@@ -1647,4 +1551,100 @@ private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerComple
 }*/
 
 
+#endregion
+
+#region plot interaction
+/*
+ * generates Valuepoint objects which are added to the chart series
+ */
+
+//void addValuesToChart()
+//{ 
+//    //for live plotting loop has to be removed and function has to be called from event handler
+//    // eventargs need to contain current values from serialport
+//    for (int i = 0; i < _data.Time.Length; i++)
+//    {
+//        //maybe change those points to the calibrated version
+//        ValuePoint ValuePointTorque=new ValuePoint(_data.Time[i], _data.Torque[i]);
+//        ValuePoint ValuePointVelocity = new ValuePoint(_data.Time[i], _data.Velocity[i]);
+//        ValuePoint ValuePointAngle = new ValuePoint(_data.Time[i], _data.Angle[i]);
+//        ChartValuesTorqueValues.Add(ValuePointTorque);
+//        ChartValuesVelocityValues.Add(ValuePointVelocity);
+//        ChartValuesAngleValues.Add(ValuePointAngle);
+//        //Thread.Sleep(10); //for showing liveplotting
+//        //Update max and min of axis for liveplotting
+//    }
+//    threadAddValuesToChart.Abort();
+//}
+
+/*
+ * clears chartvalue members and initializes current Lineseries with new ones
+ * Is needed because _FormGraphs.chartTorque.Series.Clear() does not work.
+ * This is an already known issue by the livecharts comunity but it has not been solved yet
+ */
+//public void refreshCharts()
+//{
+//    ChartValuesTorqueValues.Clear();
+//    ChartValuesVelocityValues.Clear();
+//    ChartValuesAngleValues.Clear();
+
+//    SeriesCollection helperTorqueSeries = new SeriesCollection
+//    {
+//            new LineSeries
+//            {
+//                Values=ChartValuesTorqueValues,
+//                Title="Torque",
+//                StrokeThickness = 1, //maybe change
+//                PointGeometrySize = 0,
+//                Stroke=System.Windows.Media.Brushes.LightSkyBlue, //lightskyblue, tomato, khaki
+//                Fill=System.Windows.Media.Brushes.Transparent
+//            }
+//    };
+
+//    SeriesCollection helperVelocitySeries = new SeriesCollection
+//    {
+//            new LineSeries
+//            {
+//                Values=ChartValuesVelocityValues,
+//                Title="Angle Velocity",
+//                StrokeThickness = 1, //maybe change
+//                PointGeometrySize = 0,
+//                Stroke=System.Windows.Media.Brushes.Tomato, //lightskyblue, tomato, khaki
+//                Fill=System.Windows.Media.Brushes.Transparent
+//            }
+//    };
+
+//    SeriesCollection helperAngleSeries = new SeriesCollection
+//    {
+//            new LineSeries
+//            {
+//                Values=ChartValuesAngleValues,
+//                Title="Angle",
+//                StrokeThickness = 1, //maybe change
+//                PointGeometrySize = 0,
+//                Stroke=System.Windows.Media.Brushes.Khaki, //lightskyblue, tomato, khaki
+//                Fill=System.Windows.Media.Brushes.Transparent
+//            }
+//    };
+
+//    _FormGraphs.chartTorque.Series = helperTorqueSeries;
+//    _FormGraphs.chartVelocity.Series = helperVelocitySeries;
+//    _FormGraphs.chartAngle.Series = helperAngleSeries;
+//}
+
+/*
+ * class which generates Valuepoint objects that can be added to a Series
+ * maybe this class will be pushed into its own cs file
+ */
+//public class ValuePoint
+//{
+//    public double Frame { get; }
+//    public double Value { get; }
+
+//    public ValuePoint(double frame, double value)
+//    {
+//        Frame = frame;
+//        Value = value;
+//    }
+//}
 #endregion
