@@ -349,12 +349,6 @@ namespace Biodex_Client
             angleStringFromDB = null;
             velocityStringFromDB = null;
 
-            //resetting the lists from the Data Object
-            Data myData = serialportsave.myData;
-            myData.aTorqueList.Clear();
-            myData.aAngleList.Clear();
-            myData.aVelocityList.Clear();
-
             MessageBox.Show("ALL VALUES HAVE BEEN RESET", "VALUES TO NULL", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         #endregion
@@ -1020,12 +1014,12 @@ namespace Biodex_Client
             //handing the strings to the DATA object - to plot the selection
             Data plotData = new Data(torqueStringFromDB, velocityStringFromDB, angleStringFromDB);
         }
-		#endregion
+        #endregion
 
-		#region Creating a CSV-file in the selected path
+        #region Creating a CSV-file in the selected path
 
-		//creating the CSV-File with the currently measured values and from the DB imported values
-		public void createCSV(string torque, string velocity, string angle) 
+        //creating the CSV-File with the currently measured values and from the DB imported values
+        public void createCSV(string torque, string velocity, string angle)
         {
             //spitting the string into three seperate Arrays
             string[] seperator = { ";" };
@@ -1036,6 +1030,7 @@ namespace Biodex_Client
             int[] lengths = { torqueArray.Length, velocityArray.Length, angleArray.Length };
             int maxLength = lengths.Max();
 
+            #region filling strings to put them into the CSV (exercise data and relevant settings)
             //filling strings with identification information for the header
             string timestampHeader = null;
             string exerciseHeader = null;
@@ -1043,32 +1038,289 @@ namespace Biodex_Client
             string repetitionHeader = null;
             string nameTitleHeader = null;
 
+            //filling the strings of the exercise data
+            string PorientationHeader = null;
+            string PtiltHeader = null;
+            string PheightHeader = null;
+            string PpositionHeader = null;
+            string PattachementHeader = null;
+
+            string CheightHeader = null;
+            string CorientationHeader = null;
+            string CtilitHeader = null;
+            string CpositionHeader = null;
+
+            string SmodeHeader = null;
+            string ScushionHeader = null;
+            string SsensitivityHeader = null;
+            string SpauseHeader = null;
+            string SespeedHeader = null;
+            string SispeedHeader = null;
+            string SpspeedHeader = null;
+            string StlimitHeader = null;
+            string SrompercentHeader = null;
+            string SromlowerlimitHeader = null;
+            string SromupperlimitHeader = null;
+
+            string hipflexionHeader = null;
+            string footplateHeader = null;
+            string aflexionHeader = null;
+            string kflexionHeader = null;
+            string sabductionHeader = null;
+            string sflexionHeader = null;
+            string eflexionHeader = null;
+
             DateTime localDate = DateTime.Now;
             localDate = localDate.AddSeconds(-localDate.Second);
 
-			if (rowIndex <= 0)          //nothing is selected
-			{
-				timestampHeader = localDate.ToString();
-				exerciseHeader = cbxEExercise.Text;
-				muscleHeader = cbxEMuscle.Text;
-				repetitionHeader = cbxERepetitions.Text;
-				nameTitleHeader = txtbPDTitleName.Text;
-			}
-			else
-			{
-				timestampHeader = dgvAMmeasurements.CurrentRow.Cells["created_at"].Value.ToString();
-				exerciseHeader = dgvAMmeasurements.CurrentRow.Cells["exercise"].Value.ToString();
-				muscleHeader = dgvAMmeasurements.CurrentRow.Cells["muscle"].Value.ToString();
-				repetitionHeader = dgvAMmeasurements.CurrentRow.Cells["repetition"].Value.ToString();
-				nameTitleHeader = dgvAMmeasurements.CurrentRow.Cells["name_title"].Value.ToString();
-			}
+            //filling the strings with the values from the GUI OR DATABASE
+            if (rowIndex <= 0)          //nothing is selected
+            {
+                timestampHeader = localDate.ToString();
+                exerciseHeader = cbxEExercise.Text;
+                muscleHeader = cbxEMuscle.Text;
+                repetitionHeader = cbxERepetitions.Text;
+                nameTitleHeader = txtbPDTitleName.Text;
 
-			//creating the CSV-File
-			System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            sb.AppendLine("Timestamp;Exercise;Muscle;Repetition;Name and Title");
-            sb.AppendLine(timestampHeader+ ";" + exerciseHeader + ";" + muscleHeader + ";" + repetitionHeader + ";" + nameTitleHeader).AppendLine();            //the header will contain the basic information for identification
+                PorientationHeader = cbxPOrientation.Text;
+                PtiltHeader = nudPTilt.Value.ToString();
+                PheightHeader = nudPHeight.Value.ToString();
+                PpositionHeader = nudPPosition.Value.ToString();
+                PattachementHeader = cbxPAttachments.Text;
+
+                CheightHeader = nudCHeight.Value.ToString();
+                CorientationHeader = cbxCOrientation.Text;
+                CtilitHeader = nudCTilt.Value.ToString();
+                CpositionHeader = nudCPosition.Value.ToString();
+
+                SmodeHeader = cbxCoMode.Text;
+                ScushionHeader = cbxCoCushion.Text;
+                SsensitivityHeader = cbxCoSensitivity.Text;
+                SpauseHeader = nudCoPause.Value.ToString();
+                SespeedHeader = nudCoEccentricSpeed.Value.ToString();
+                SispeedHeader = nudCoIsokineticSpeed.Value.ToString();
+                SpspeedHeader = nudCoPassiveSpeed.Value.ToString();
+                StlimitHeader = nudCoTorqueLimit.Value.ToString();
+                SrompercentHeader = nudCoPercentROM.Value.ToString();
+                SromlowerlimitHeader = nudCoROMLower.Value.ToString();
+                SromupperlimitHeader = nudCoROMUpper.Value.ToString();
+
+                hipflexionHeader = nudSHipFlexion.Value.ToString();
+                footplateHeader = nudSFootPlateTilt.Value.ToString();
+                aflexionHeader = nudSAnkleFlexion.Value.ToString();
+                kflexionHeader = nudSKneeFlexion.Value.ToString();
+                sabductionHeader = nudSShoulderAbduction.Value.ToString();
+                sflexionHeader = nudSShoulderFlexion.Value.ToString();
+                eflexionHeader = nudSElbowFlexion.Value.ToString();
+            }
+            else
+            {
+                conn.Open();
+
+                timestampHeader = dgvAMmeasurements.CurrentRow.Cells["created_at"].Value.ToString();
+                exerciseHeader = dgvAMmeasurements.CurrentRow.Cells["exercise"].Value.ToString();
+                muscleHeader = dgvAMmeasurements.CurrentRow.Cells["muscle"].Value.ToString();
+                repetitionHeader = dgvAMmeasurements.CurrentRow.Cells["repetition"].Value.ToString();
+                nameTitleHeader = dgvAMmeasurements.CurrentRow.Cells["name_title"].Value.ToString();
+
+
+                //POWERHEAD
+                sql = @"SELECT * FROM get_porientation(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                PorientationHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_powerhead_tilt(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                PtiltHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_powerhead_height(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                PheightHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_powerhead_position(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                PpositionHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_powerhead_attachment(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                PattachementHeader = (string)cmd.ExecuteScalar();
+
+
+
+                //SEAT/CHAIR
+                sql = @"SELECT * FROM get_seat_height(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                CheightHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_seat_orientation(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                CorientationHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_seat_tilt(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                CtilitHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_seat_position(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                CpositionHeader = (string)cmd.ExecuteScalar();
+
+
+
+                //CONTROLLER
+                sql = @"SELECT * FROM get_controller_mode(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                SmodeHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_controller_cushion(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                ScushionHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_controller_sensitivity(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                SsensitivityHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_controller_pause(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                SpauseHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_controller_eccentric_speed(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                SespeedHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_controller_isokinetic_speed(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                SispeedHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_controller_passive_speed(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                SpspeedHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_controller_torque_limits(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                StlimitHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_controller_rom_percentage(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                SrompercentHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_controller_rom_lower_limit(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                SromlowerlimitHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_controller_rom_upper_limit(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                SromupperlimitHeader = (string)cmd.ExecuteScalar();
+
+
+
+
+                //SET-UP AND POSITIONING
+                sql = @"SELECT * FROM get_hip_flexion(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                hipflexionHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_footplate_tilt(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                footplateHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_ankle_flexion(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                aflexionHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_knee_flexion(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                kflexionHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_shoulder_abduction(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                sabductionHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_shoulder_flexion(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                sflexionHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_elbow_flexion(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                eflexionHeader = (string)cmd.ExecuteScalar();
+
+                conn.Close();
+            }
+
+            //creating the CSV-File
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+
+            sb.AppendLine("Timestamp;"+ timestampHeader);
+            sb.AppendLine("Exercise;" + exerciseHeader);
+            sb.AppendLine("Muscle;" + muscleHeader);
+            sb.AppendLine("Repetition;" + repetitionHeader);
+            sb.AppendLine("Name and Title;" + nameTitleHeader).AppendLine();
+
+            sb.AppendLine("POWERHEAD SETTINGS:");
+            sb.AppendLine("Orientation [°];" + PorientationHeader);
+            sb.AppendLine("Tilt [°];" + PtiltHeader);
+            sb.AppendLine("Height [cm];" + PheightHeader);
+            sb.AppendLine("Position [cm];" + PpositionHeader);
+            sb.AppendLine("Attachment;" + PattachementHeader).AppendLine();
+
+            sb.AppendLine("CHAIR ADJUSTMENTS:");
+            sb.AppendLine("Height [cm];" + CheightHeader);
+            sb.AppendLine("Orientation [°];" + CorientationHeader);
+            sb.AppendLine("Tilt [°];" + CtilitHeader);
+            sb.AppendLine("Position [cm];" + CpositionHeader).AppendLine();
+
+            sb.AppendLine("CONTROLLER SETTINGS:");
+            sb.AppendLine("Mode;" + SmodeHeader);
+            sb.AppendLine("Cushion;" + ScushionHeader);
+            sb.AppendLine("Sensitivity;" + SsensitivityHeader);
+            sb.AppendLine("Pause [s];" + SpauseHeader);
+            sb.AppendLine("Eccentric Speed [°/s];" + SespeedHeader);
+            sb.AppendLine("Isokinetic Speed [°/s];" + SispeedHeader);
+            sb.AppendLine("Passive Speed [°/s];" + SpspeedHeader);
+            sb.AppendLine("Torque Limit[ft·lbf];" + StlimitHeader);
+            sb.AppendLine("ROM Percentage [%];" + SrompercentHeader);
+            sb.AppendLine("ROM Lower Limit;" + SromlowerlimitHeader);
+            sb.AppendLine("ROM Upper Limit;" + SromupperlimitHeader).AppendLine();
+
+            sb.AppendLine("SET-UP AND POSITIONING:");
+            sb.AppendLine("Hip Flexion [°];" + hipflexionHeader);
+            sb.AppendLine("Foot Plate Tilt [°];" + footplateHeader);
+            sb.AppendLine("Ankle Flexion [°];" + aflexionHeader);
+            sb.AppendLine("Knee Flexion[°];" + kflexionHeader);
+            sb.AppendLine("Shoulder Abduction[°];" + sabductionHeader);
+            sb.AppendLine("Shoulder Flexion[°];" + sflexionHeader);
+            sb.AppendLine("Elbow Flexion[°];" + eflexionHeader).AppendLine().AppendLine().AppendLine();
+
+            #endregion
+
+            //filling the CSV File with the exercise values TORQUE, VELOCITY and ANGLE
             sb.AppendLine("Torque;Velocity;Angle");
-
             for (int i = 0; i < maxLength; i++)
             {
                 sb.AppendLine(torqueArray[i] + ";" + velocityArray[i] + ";" + angleArray[i]);           //starts new line with the three values and in between there is a ; (torque; velocity; angle)
@@ -1077,7 +1329,7 @@ namespace Biodex_Client
             //pop up window, to save the data ... tips from: https://www.youtube.com/watch?v=5hQQg7S_5GQ
             SaveFileDialog save = new SaveFileDialog();
             save.Filter = "CSV Files (*.csv)|*.csv|All Files (*.*)|*.*";
-            if (save.ShowDialog() == System.Windows.Forms.DialogResult.OK) 
+            if (save.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 StreamWriter write = new StreamWriter(File.Create(save.FileName));
                 write.Write(sb.ToString());
@@ -1103,9 +1355,9 @@ namespace Biodex_Client
             }
         }
 
-		#endregion
+        #endregion
 
-	}
+    }
 }
 
 /*

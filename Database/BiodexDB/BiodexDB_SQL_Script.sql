@@ -604,6 +604,211 @@ END $$ LANGUAGE plpgsql;
 
 
 
+---------------------------------------------------------------------------------is needed to call the values from the DB to insert them into the CSV
+CREATE OR REPLACE FUNCTION get_porientation(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT powerhead_orientation FROM settings WHERE settings_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+
+
+CREATE OR REPLACE FUNCTION get_powerhead_height(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT powerhead_height FROM settings WHERE settings_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_powerhead_position(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT powerhead_position FROM settings WHERE settings_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_powerhead_attachment(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT powerhead_attachment FROM settings WHERE settings_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_powerhead_tilt(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT powerhead_tilt FROM settings WHERE settings_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+
+
+
+
+CREATE OR REPLACE FUNCTION get_seat_height(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT seat_height FROM settings WHERE settings_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_seat_orientation(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT seat_orientation FROM settings WHERE settings_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_seat_tilt(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT seat_tilt FROM settings WHERE settings_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_seat_position(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT seat_position FROM settings WHERE settings_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+
+
+
+
+CREATE OR REPLACE FUNCTION get_controller_mode(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT controller_mode FROM settings WHERE settings_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_controller_cushion(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT controller_cushion FROM settings WHERE settings_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_controller_sensitivity(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT controller_sensitivity FROM settings WHERE settings_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_controller_rom_upper_limit(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT controller_rom_upper_limit FROM settings WHERE settings_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_controller_rom_lower_limit(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT controller_rom_lower_limit FROM settings WHERE settings_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_controller_rom_percentage(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT controller_rom_percentage FROM settings WHERE settings_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_controller_eccentric_speed(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT controller_eccentric_speed FROM settings WHERE settings_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_controller_passive_speed(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT controller_passive_speed FROM settings WHERE settings_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_controller_torque_limits(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT controller_torque_limits FROM settings WHERE settings_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_controller_pause(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT controller_pause FROM settings WHERE settings_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_controller_isokinetic_speed(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT controller_isokinetic_speed FROM settings WHERE settings_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+
+
+
+
+
+CREATE OR REPLACE FUNCTION get_hip_flexion(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT hip_flexion FROM settings WHERE settings_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_footplate_tilt(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT footplate_tilt FROM settings WHERE settings_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_knee_flexion(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT knee_flexion FROM settings WHERE settings_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_ankle_flexion(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT ankle_flexion FROM settings WHERE settings_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_shoulder_abduction(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT shoulder_abduction FROM settings WHERE settings_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_shoulder_flexion(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT shoulder_flexion FROM settings WHERE settings_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_elbow_flexion(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT elbow_flexion FROM settings WHERE settings_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
 ----------------------------------------------------------------------------------will be used in emergency cases, when the IDs from each grand table do not match
 ALTER SEQUENCE report_result_report_id_seq RESTART WITH 1;
 ALTER SEQUENCE biodex_report_biodex_report_id_seq RESTART WITH 1;
