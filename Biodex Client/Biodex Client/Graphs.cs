@@ -17,6 +17,7 @@ namespace Biodex_Client
         SerialPort BiodexSerialPort;
         private SerialPortSave settings;
 
+
         public formGraphs()
         {
             InitializeComponent();
@@ -94,6 +95,9 @@ namespace Biodex_Client
             {
                 BiodexSerialPort.Close();
                 BiodexSerialPort.DataReceived -= DataReceivedHandler;
+
+                settings.myData = _data;
+
             }
             catch (Exception SerialPortCloseException)
             {
