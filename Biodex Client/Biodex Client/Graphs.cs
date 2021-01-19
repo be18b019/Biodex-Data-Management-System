@@ -115,9 +115,9 @@ namespace Biodex_Client
                 settings.myData = _data;
 
             }
-            catch (Exception SerialPortCloseException)
+            catch (Exception)
             {
-                MessageBox.Show("Serial Port could not be closed " + SerialPortCloseException.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Start a recording before you try to stop it!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }   
         }
     }
