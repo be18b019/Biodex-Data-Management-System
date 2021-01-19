@@ -12,5 +12,7 @@ namespace Biodex_Client
          * required to have the Serial Port in the Graph class as well as in the Microcontroller class
          */
         public string sSerialPort { get; set; }
+
+        public Data myData { get; set; }
     }
 }

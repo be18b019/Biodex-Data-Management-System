@@ -115,13 +115,13 @@
             this.cbxSerialPort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(53)))));
             this.cbxSerialPort.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxSerialPort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxSerialPort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxSerialPort.ForeColor = System.Drawing.Color.DarkGray;
             this.cbxSerialPort.FormattingEnabled = true;
             this.cbxSerialPort.Location = new System.Drawing.Point(53, 3);
             this.cbxSerialPort.Name = "cbxSerialPort";
             this.cbxSerialPort.Size = new System.Drawing.Size(248, 32);
             this.cbxSerialPort.TabIndex = 6;
+            this.cbxSerialPort.SelectedIndexChanged += new System.EventHandler(this.cbxSerialPort_SelectedIndexChanged);
             // 
             // formMicrocontrollerStatus
             // 

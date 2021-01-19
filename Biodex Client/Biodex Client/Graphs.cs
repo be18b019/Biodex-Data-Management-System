@@ -17,8 +17,11 @@ namespace Biodex_Client
         SerialPort BiodexSerialPort;
         private SerialPortSave settings;
 
+
         public formGraphs()
         {
+           
+
             InitializeComponent();
         }
 
@@ -36,7 +39,8 @@ namespace Biodex_Client
         {
             try
             {
-                Biodex_Client.FormMeasurementProperties.refreshCharts();
+                //Biodex_Client.FormMeasurementProperties.refreshCharts();
+                Biodex_Client.GraphPlotting.refreshCharts();
                 _data.ClearLists();
 
                 BiodexSerialPort = new SerialPort(settings.sSerialPort);
@@ -47,6 +51,15 @@ namespace Biodex_Client
             }
             catch (Exception SerialPortOpenException)
             {
+                if (settings.sSerialPort == null)
+                {
+                    MessageBox.Show("Before plotting, a serial port has to chosen in the Microcontroller Status tab.", "NO SERIAL PORT", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Serial port could not be opened.", "SERIAL PORT ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                       
                 System.Console.WriteLine("Serial Port could not be opened " + SerialPortOpenException.Message);
             }
 
@@ -75,9 +88,12 @@ namespace Biodex_Client
                     var velocity = _data.aVelocityList.Last();
                     var angle = _data.aAngleList.Last();
 
-                    Biodex_Client.FormMeasurementProperties.ChartValuesTorqueValues.Add(new formMeasurementProperties.ValuePoint(time, torque));
-                    Biodex_Client.FormMeasurementProperties.ChartValuesVelocityValues.Add(new formMeasurementProperties.ValuePoint(time, velocity));
-                    Biodex_Client.FormMeasurementProperties.ChartValuesAngleValues.Add(new formMeasurementProperties.ValuePoint(time, angle));
+                    //Biodex_Client.FormMeasurementProperties.ChartValuesTorqueValues.Add(new formMeasurementProperties.ValuePoint(time, torque));
+                    Biodex_Client.GraphPlotting.ChartValuesTorqueValues.Add(new ValuePoint(time, torque));
+                    //Biodex_Client.FormMeasurementProperties.ChartValuesVelocityValues.Add(new formMeasurementProperties.ValuePoint(time, velocity));
+                    Biodex_Client.GraphPlotting.ChartValuesVelocityValues.Add(new ValuePoint(time, velocity));
+                    //Biodex_Client.FormMeasurementProperties.ChartValuesAngleValues.Add(new formMeasurementProperties.ValuePoint(time, angle));
+                    Biodex_Client.GraphPlotting.ChartValuesAngleValues.Add(new ValuePoint(time, angle));
 
                 }
             }
@@ -92,13 +108,18 @@ namespace Biodex_Client
         {
             try
             {
+
                 BiodexSerialPort.Close();
                 BiodexSerialPort.DataReceived -= DataReceivedHandler;
+
+                settings.myData = _data;
+
             }
             catch (Exception SerialPortCloseException)
             {
                 System.Console.WriteLine("Serial Port could not be closed " + SerialPortCloseException.Message);
-            }
+            }   
         }
     }
 }
+

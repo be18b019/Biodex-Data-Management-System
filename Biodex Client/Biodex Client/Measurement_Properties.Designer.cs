@@ -30,11 +30,9 @@
         {
             this.tlpPropertiesButtons = new System.Windows.Forms.TableLayoutPanel();
             this.btnCreateCSV = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.btnLoad = new System.Windows.Forms.Button();
-            this.btnExport = new System.Windows.Forms.Button();
-            this.btnLoadTest = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
             this.panelMain = new System.Windows.Forms.Panel();
             this.tlpMeasurementProperties = new System.Windows.Forms.TableLayoutPanel();
             this.gbSetup = new System.Windows.Forms.GroupBox();
@@ -218,9 +216,8 @@
             this.tlpAMChooseExercise = new System.Windows.Forms.TableLayoutPanel();
             this.cbxAMChooseExercise = new System.Windows.Forms.ComboBox();
             this.lblAMChooseExercise = new System.Windows.Forms.Label();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.cbxAMAvailableMeasurements = new System.Windows.Forms.ComboBox();
-            this.lblAMMeasurements = new System.Windows.Forms.Label();
+            this.tlpAMDataGrid = new System.Windows.Forms.TableLayoutPanel();
+            this.dgvAMmeasurements = new System.Windows.Forms.DataGridView();
             this.gbPersonalData = new System.Windows.Forms.GroupBox();
             this.tlpPersonalData = new System.Windows.Forms.TableLayoutPanel();
             this.tlpPDLanguage = new System.Windows.Forms.TableLayoutPanel();
@@ -360,7 +357,8 @@
             this.gbAvailableMeasurements.SuspendLayout();
             this.tlpAvailableMeasuremnets.SuspendLayout();
             this.tlpAMChooseExercise.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.tlpAMDataGrid.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAMmeasurements)).BeginInit();
             this.gbPersonalData.SuspendLayout();
             this.tlpPersonalData.SuspendLayout();
             this.tlpPDLanguage.SuspendLayout();
@@ -380,19 +378,16 @@
             // 
             // tlpPropertiesButtons
             // 
-            this.tlpPropertiesButtons.ColumnCount = 6;
-            this.tlpPropertiesButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66708F));
-            this.tlpPropertiesButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66708F));
-            this.tlpPropertiesButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66708F));
-            this.tlpPropertiesButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66542F));
-            this.tlpPropertiesButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tlpPropertiesButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tlpPropertiesButtons.Controls.Add(this.btnCreateCSV, 0, 0);
-            this.tlpPropertiesButtons.Controls.Add(this.btnSave, 4, 0);
+            this.tlpPropertiesButtons.ColumnCount = 4;
+            this.tlpPropertiesButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00063F));
+            this.tlpPropertiesButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
+            this.tlpPropertiesButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.00062F));
+            this.tlpPropertiesButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.99813F));
+            this.tlpPropertiesButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpPropertiesButtons.Controls.Add(this.btnCreateCSV, 2, 0);
             this.tlpPropertiesButtons.Controls.Add(this.btnLoad, 0, 0);
-            this.tlpPropertiesButtons.Controls.Add(this.btnExport, 2, 0);
-            this.tlpPropertiesButtons.Controls.Add(this.btnLoadTest, 1, 0);
-            this.tlpPropertiesButtons.Controls.Add(this.btnClear, 2, 0);
+            this.tlpPropertiesButtons.Controls.Add(this.btnClear, 3, 0);
+            this.tlpPropertiesButtons.Controls.Add(this.btnExport, 1, 0);
             this.tlpPropertiesButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tlpPropertiesButtons.Location = new System.Drawing.Point(0, 554);
             this.tlpPropertiesButtons.Name = "tlpPropertiesButtons";
@@ -410,29 +405,13 @@
             this.btnCreateCSV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreateCSV.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCreateCSV.ForeColor = System.Drawing.Color.DarkGray;
-            this.btnCreateCSV.Location = new System.Drawing.Point(161, 3);
+            this.btnCreateCSV.Location = new System.Drawing.Point(477, 3);
             this.btnCreateCSV.Name = "btnCreateCSV";
-            this.btnCreateCSV.Size = new System.Drawing.Size(152, 65);
+            this.btnCreateCSV.Size = new System.Drawing.Size(231, 65);
             this.btnCreateCSV.TabIndex = 10;
             this.btnCreateCSV.Text = "Create CSV File";
             this.btnCreateCSV.UseVisualStyleBackColor = false;
-            // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.btnSave.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSave.FlatAppearance.BorderSize = 0;
-            this.btnSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.Color.DarkGray;
-            this.btnSave.Location = new System.Drawing.Point(793, 3);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(154, 65);
-            this.btnSave.TabIndex = 9;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_ClickAsync);
+            this.btnCreateCSV.Click += new System.EventHandler(this.btnCreateCSV_Click);
             // 
             // btnLoad
             // 
@@ -445,43 +424,11 @@
             this.btnLoad.ForeColor = System.Drawing.Color.DarkGray;
             this.btnLoad.Location = new System.Drawing.Point(3, 3);
             this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(152, 65);
+            this.btnLoad.Size = new System.Drawing.Size(231, 65);
             this.btnLoad.TabIndex = 5;
-            this.btnLoad.Text = "Load";
+            this.btnLoad.Text = "Load and Plot";
             this.btnLoad.UseVisualStyleBackColor = false;
-            // 
-            // btnExport
-            // 
-            this.btnExport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.btnExport.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnExport.FlatAppearance.BorderSize = 0;
-            this.btnExport.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExport.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExport.ForeColor = System.Drawing.Color.DarkGray;
-            this.btnExport.Location = new System.Drawing.Point(635, 3);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(152, 65);
-            this.btnExport.TabIndex = 7;
-            this.btnExport.Text = "Export";
-            this.btnExport.UseVisualStyleBackColor = false;
-            // 
-            // btnLoadTest
-            // 
-            this.btnLoadTest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.btnLoadTest.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnLoadTest.FlatAppearance.BorderSize = 0;
-            this.btnLoadTest.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btnLoadTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLoadTest.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLoadTest.ForeColor = System.Drawing.Color.DarkGray;
-            this.btnLoadTest.Location = new System.Drawing.Point(319, 3);
-            this.btnLoadTest.Name = "btnLoadTest";
-            this.btnLoadTest.Size = new System.Drawing.Size(152, 65);
-            this.btnLoadTest.TabIndex = 6;
-            this.btnLoadTest.Text = "Load (Test)";
-            this.btnLoadTest.UseVisualStyleBackColor = false;
-            this.btnLoadTest.Click += new System.EventHandler(this.btnLoadTest_Click);
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
             // btnClear
             // 
@@ -492,13 +439,30 @@
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.ForeColor = System.Drawing.Color.DarkGray;
-            this.btnClear.Location = new System.Drawing.Point(477, 3);
+            this.btnClear.Location = new System.Drawing.Point(714, 3);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(152, 65);
+            this.btnClear.Size = new System.Drawing.Size(233, 65);
             this.btnClear.TabIndex = 8;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnExport
+            // 
+            this.btnExport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.btnExport.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnExport.FlatAppearance.BorderSize = 0;
+            this.btnExport.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExport.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExport.ForeColor = System.Drawing.Color.DarkGray;
+            this.btnExport.Location = new System.Drawing.Point(240, 3);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(231, 65);
+            this.btnExport.TabIndex = 7;
+            this.btnExport.Text = "Export";
+            this.btnExport.UseVisualStyleBackColor = false;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // panelMain
             // 
@@ -554,7 +518,6 @@
             this.tlpMeasurementProperties.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tlpMeasurementProperties.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpMeasurementProperties.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tlpMeasurementProperties.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpMeasurementProperties.Size = new System.Drawing.Size(950, 554);
             this.tlpMeasurementProperties.TabIndex = 0;
             // 
@@ -564,7 +527,7 @@
             this.gbSetup.Controls.Add(this.tlpSetup);
             this.gbSetup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbSetup.ForeColor = System.Drawing.Color.DarkGray;
-            this.gbSetup.Location = new System.Drawing.Point(3, 1488);
+            this.gbSetup.Location = new System.Drawing.Point(3, 1800);
             this.gbSetup.Name = "gbSetup";
             this.gbSetup.Size = new System.Drawing.Size(944, 263);
             this.gbSetup.TabIndex = 4;
@@ -939,7 +902,7 @@
             this.gbController.Controls.Add(this.tlpController);
             this.gbController.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbController.ForeColor = System.Drawing.Color.DarkGray;
-            this.gbController.Location = new System.Drawing.Point(3, 1069);
+            this.gbController.Location = new System.Drawing.Point(3, 1381);
             this.gbController.Name = "gbController";
             this.gbController.Size = new System.Drawing.Size(944, 363);
             this.gbController.TabIndex = 3;
@@ -1041,7 +1004,6 @@
             this.cbxCoMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(53)))));
             this.cbxCoMode.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxCoMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxCoMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxCoMode.ForeColor = System.Drawing.Color.DarkGray;
             this.cbxCoMode.FormattingEnabled = true;
             this.cbxCoMode.Items.AddRange(new object[] {
@@ -1087,7 +1049,6 @@
             this.cbxCoCushion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(53)))));
             this.cbxCoCushion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxCoCushion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxCoCushion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxCoCushion.ForeColor = System.Drawing.Color.DarkGray;
             this.cbxCoCushion.FormattingEnabled = true;
             this.cbxCoCushion.Items.AddRange(new object[] {
@@ -1174,7 +1135,6 @@
             this.cbxCoSensitivity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(53)))));
             this.cbxCoSensitivity.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxCoSensitivity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxCoSensitivity.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxCoSensitivity.ForeColor = System.Drawing.Color.DarkGray;
             this.cbxCoSensitivity.FormattingEnabled = true;
             this.cbxCoSensitivity.Items.AddRange(new object[] {
@@ -1452,7 +1412,7 @@
             this.gbChair.Controls.Add(this.tlpChair);
             this.gbChair.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbChair.ForeColor = System.Drawing.Color.DarkGray;
-            this.gbChair.Location = new System.Drawing.Point(3, 830);
+            this.gbChair.Location = new System.Drawing.Point(3, 1142);
             this.gbChair.Name = "gbChair";
             this.gbChair.Size = new System.Drawing.Size(944, 183);
             this.gbChair.TabIndex = 2;
@@ -1552,7 +1512,6 @@
             this.cbxCOrientation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(53)))));
             this.cbxCOrientation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxCOrientation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxCOrientation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxCOrientation.ForeColor = System.Drawing.Color.DarkGray;
             this.cbxCOrientation.FormattingEnabled = true;
             this.cbxCOrientation.Items.AddRange(new object[] {
@@ -1682,7 +1641,7 @@
             this.gbPowerhead.Controls.Add(this.tlpPowerhead);
             this.gbPowerhead.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbPowerhead.ForeColor = System.Drawing.Color.DarkGray;
-            this.gbPowerhead.Location = new System.Drawing.Point(3, 511);
+            this.gbPowerhead.Location = new System.Drawing.Point(3, 823);
             this.gbPowerhead.Name = "gbPowerhead";
             this.gbPowerhead.Size = new System.Drawing.Size(944, 263);
             this.gbPowerhead.TabIndex = 1;
@@ -1734,7 +1693,6 @@
             this.cbxPOrientation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(53)))));
             this.cbxPOrientation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxPOrientation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxPOrientation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxPOrientation.ForeColor = System.Drawing.Color.DarkGray;
             this.cbxPOrientation.FormattingEnabled = true;
             this.cbxPOrientation.Items.AddRange(new object[] {
@@ -1927,7 +1885,6 @@
             this.cbxPAttachments.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(53)))));
             this.cbxPAttachments.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxPAttachments.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxPAttachments.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxPAttachments.ForeColor = System.Drawing.Color.DarkGray;
             this.cbxPAttachments.FormattingEnabled = true;
             this.cbxPAttachments.Items.AddRange(new object[] {
@@ -1961,7 +1918,7 @@
             this.gbExercise.Controls.Add(this.tlpExercise);
             this.gbExercise.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbExercise.ForeColor = System.Drawing.Color.DarkGray;
-            this.gbExercise.Location = new System.Drawing.Point(3, 272);
+            this.gbExercise.Location = new System.Drawing.Point(3, 584);
             this.gbExercise.Name = "gbExercise";
             this.gbExercise.Size = new System.Drawing.Size(944, 183);
             this.gbExercise.TabIndex = 0;
@@ -2011,7 +1968,6 @@
             this.cbxEExercise.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(53)))));
             this.cbxEExercise.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxEExercise.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxEExercise.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxEExercise.ForeColor = System.Drawing.Color.DarkGray;
             this.cbxEExercise.FormattingEnabled = true;
             this.cbxEExercise.Items.AddRange(new object[] {
@@ -2074,7 +2030,6 @@
             this.cbxEMuscle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(53)))));
             this.cbxEMuscle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxEMuscle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxEMuscle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxEMuscle.ForeColor = System.Drawing.Color.DarkGray;
             this.cbxEMuscle.FormattingEnabled = true;
             this.cbxEMuscle.Items.AddRange(new object[] {
@@ -2131,7 +2086,6 @@
             this.cbxERepetitions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(53)))));
             this.cbxERepetitions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxERepetitions.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxERepetitions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxERepetitions.ForeColor = System.Drawing.Color.DarkGray;
             this.cbxERepetitions.FormattingEnabled = true;
             this.cbxERepetitions.Items.AddRange(new object[] {
@@ -2168,7 +2122,7 @@
             this.gbHospitalInformation.Controls.Add(this.tlpHospitalInformation);
             this.gbHospitalInformation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbHospitalInformation.ForeColor = System.Drawing.Color.DarkGray;
-            this.gbHospitalInformation.Location = new System.Drawing.Point(3, 2545);
+            this.gbHospitalInformation.Location = new System.Drawing.Point(3, 2857);
             this.gbHospitalInformation.Name = "gbHospitalInformation";
             this.gbHospitalInformation.Size = new System.Drawing.Size(944, 263);
             this.gbHospitalInformation.TabIndex = 6;
@@ -2522,7 +2476,7 @@
             this.gbMedicalData.Controls.Add(this.tlpMedicalData);
             this.gbMedicalData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbMedicalData.ForeColor = System.Drawing.Color.DarkGray;
-            this.gbMedicalData.Location = new System.Drawing.Point(3, 2864);
+            this.gbMedicalData.Location = new System.Drawing.Point(3, 3176);
             this.gbMedicalData.Name = "gbMedicalData";
             this.gbMedicalData.Size = new System.Drawing.Size(944, 263);
             this.gbMedicalData.TabIndex = 7;
@@ -2836,7 +2790,7 @@
             this.gbDiagnosis.Controls.Add(this.tlpDiagnosis);
             this.gbDiagnosis.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbDiagnosis.ForeColor = System.Drawing.Color.DarkGray;
-            this.gbDiagnosis.Location = new System.Drawing.Point(3, 3183);
+            this.gbDiagnosis.Location = new System.Drawing.Point(3, 3495);
             this.gbDiagnosis.Name = "gbDiagnosis";
             this.gbDiagnosis.Size = new System.Drawing.Size(944, 263);
             this.gbDiagnosis.TabIndex = 8;
@@ -3110,7 +3064,7 @@
             this.gbPatientDataSimulator.Controls.Add(this.tlpPatientSimulator);
             this.gbPatientDataSimulator.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbPatientDataSimulator.ForeColor = System.Drawing.Color.DarkGray;
-            this.gbPatientDataSimulator.Location = new System.Drawing.Point(3, 1807);
+            this.gbPatientDataSimulator.Location = new System.Drawing.Point(3, 2119);
             this.gbPatientDataSimulator.Name = "gbPatientDataSimulator";
             this.gbPatientDataSimulator.Size = new System.Drawing.Size(944, 163);
             this.gbPatientDataSimulator.TabIndex = 10;
@@ -3159,7 +3113,6 @@
             this.cbxPDSChoosePatient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(53)))));
             this.cbxPDSChoosePatient.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxPDSChoosePatient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxPDSChoosePatient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxPDSChoosePatient.ForeColor = System.Drawing.Color.DarkGray;
             this.cbxPDSChoosePatient.FormattingEnabled = true;
             this.cbxPDSChoosePatient.Items.AddRange(new object[] {
@@ -3222,7 +3175,7 @@
             this.gbAvailableMeasurements.ForeColor = System.Drawing.Color.DarkGray;
             this.gbAvailableMeasurements.Location = new System.Drawing.Point(3, 53);
             this.gbAvailableMeasurements.Name = "gbAvailableMeasurements";
-            this.gbAvailableMeasurements.Size = new System.Drawing.Size(944, 163);
+            this.gbAvailableMeasurements.Size = new System.Drawing.Size(944, 475);
             this.gbAvailableMeasurements.TabIndex = 11;
             this.gbAvailableMeasurements.TabStop = false;
             this.gbAvailableMeasurements.Text = "Available Measurements:";
@@ -3230,22 +3183,21 @@
             // tlpAvailableMeasuremnets
             // 
             this.tlpAvailableMeasuremnets.AutoSize = true;
-            this.tlpAvailableMeasuremnets.ColumnCount = 4;
-            this.tlpAvailableMeasuremnets.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpAvailableMeasuremnets.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpAvailableMeasuremnets.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpAvailableMeasuremnets.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpAvailableMeasuremnets.ColumnCount = 3;
+            this.tlpAvailableMeasuremnets.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tlpAvailableMeasuremnets.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpAvailableMeasuremnets.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tlpAvailableMeasuremnets.Controls.Add(this.tlpAMChooseExercise, 1, 1);
-            this.tlpAvailableMeasuremnets.Controls.Add(this.tableLayoutPanel2, 2, 1);
+            this.tlpAvailableMeasuremnets.Controls.Add(this.tlpAMDataGrid, 1, 2);
             this.tlpAvailableMeasuremnets.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpAvailableMeasuremnets.Location = new System.Drawing.Point(3, 20);
             this.tlpAvailableMeasuremnets.Name = "tlpAvailableMeasuremnets";
-            this.tlpAvailableMeasuremnets.RowCount = 3;
+            this.tlpAvailableMeasuremnets.RowCount = 4;
             this.tlpAvailableMeasuremnets.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpAvailableMeasuremnets.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tlpAvailableMeasuremnets.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpAvailableMeasuremnets.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpAvailableMeasuremnets.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tlpAvailableMeasuremnets.Size = new System.Drawing.Size(938, 140);
+            this.tlpAvailableMeasuremnets.Size = new System.Drawing.Size(938, 452);
             this.tlpAvailableMeasuremnets.TabIndex = 1;
             // 
             // tlpAMChooseExercise
@@ -3256,12 +3208,12 @@
             this.tlpAMChooseExercise.Controls.Add(this.cbxAMChooseExercise, 0, 1);
             this.tlpAMChooseExercise.Controls.Add(this.lblAMChooseExercise, 0, 0);
             this.tlpAMChooseExercise.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpAMChooseExercise.Location = new System.Drawing.Point(237, 23);
+            this.tlpAMChooseExercise.Location = new System.Drawing.Point(103, 23);
             this.tlpAMChooseExercise.Name = "tlpAMChooseExercise";
             this.tlpAMChooseExercise.RowCount = 2;
             this.tlpAMChooseExercise.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tlpAMChooseExercise.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpAMChooseExercise.Size = new System.Drawing.Size(228, 94);
+            this.tlpAMChooseExercise.Size = new System.Drawing.Size(732, 94);
             this.tlpAMChooseExercise.TabIndex = 6;
             // 
             // cbxAMChooseExercise
@@ -3269,10 +3221,10 @@
             this.cbxAMChooseExercise.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(53)))));
             this.cbxAMChooseExercise.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cbxAMChooseExercise.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxAMChooseExercise.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxAMChooseExercise.ForeColor = System.Drawing.Color.DarkGray;
             this.cbxAMChooseExercise.FormattingEnabled = true;
             this.cbxAMChooseExercise.Items.AddRange(new object[] {
+            "Show All Records",
             "Knee Extension/Flexion",
             "Knee Tibial Internal/External Rotation",
             "Ankle Plantar/Dorsiflexion (Seated)",
@@ -3297,8 +3249,9 @@
             "Custom Exercise"});
             this.cbxAMChooseExercise.Location = new System.Drawing.Point(3, 33);
             this.cbxAMChooseExercise.Name = "cbxAMChooseExercise";
-            this.cbxAMChooseExercise.Size = new System.Drawing.Size(222, 23);
+            this.cbxAMChooseExercise.Size = new System.Drawing.Size(726, 23);
             this.cbxAMChooseExercise.TabIndex = 4;
+            this.cbxAMChooseExercise.SelectedIndexChanged += new System.EventHandler(this.cbxAMChooseExercise_SelectedIndexChanged);
             // 
             // lblAMChooseExercise
             // 
@@ -3306,52 +3259,46 @@
             this.lblAMChooseExercise.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblAMChooseExercise.Location = new System.Drawing.Point(3, 0);
             this.lblAMChooseExercise.Name = "lblAMChooseExercise";
-            this.lblAMChooseExercise.Size = new System.Drawing.Size(222, 30);
+            this.lblAMChooseExercise.Size = new System.Drawing.Size(726, 30);
             this.lblAMChooseExercise.TabIndex = 1;
             this.lblAMChooseExercise.Text = "choose exercise:";
             this.lblAMChooseExercise.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // tableLayoutPanel2
+            // tlpAMDataGrid
             // 
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Controls.Add(this.cbxAMAvailableMeasurements, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.lblAMMeasurements, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(471, 23);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(228, 94);
-            this.tableLayoutPanel2.TabIndex = 7;
+            this.tlpAMDataGrid.AutoSize = true;
+            this.tlpAMDataGrid.ColumnCount = 1;
+            this.tlpAMDataGrid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpAMDataGrid.Controls.Add(this.dgvAMmeasurements, 0, 0);
+            this.tlpAMDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpAMDataGrid.Location = new System.Drawing.Point(103, 123);
+            this.tlpAMDataGrid.Name = "tlpAMDataGrid";
+            this.tlpAMDataGrid.RowCount = 1;
+            this.tlpAMDataGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpAMDataGrid.Size = new System.Drawing.Size(732, 306);
+            this.tlpAMDataGrid.TabIndex = 8;
             // 
-            // cbxAMAvailableMeasurements
+            // dgvAMmeasurements
             // 
-            this.cbxAMAvailableMeasurements.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(53)))), ((int)(((byte)(53)))));
-            this.cbxAMAvailableMeasurements.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbxAMAvailableMeasurements.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxAMAvailableMeasurements.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbxAMAvailableMeasurements.ForeColor = System.Drawing.Color.DarkGray;
-            this.cbxAMAvailableMeasurements.FormattingEnabled = true;
-            this.cbxAMAvailableMeasurements.Items.AddRange(new object[] {
-            "None"});
-            this.cbxAMAvailableMeasurements.Location = new System.Drawing.Point(3, 33);
-            this.cbxAMAvailableMeasurements.Name = "cbxAMAvailableMeasurements";
-            this.cbxAMAvailableMeasurements.Size = new System.Drawing.Size(222, 23);
-            this.cbxAMAvailableMeasurements.TabIndex = 5;
-            // 
-            // lblAMMeasurements
-            // 
-            this.lblAMMeasurements.AutoSize = true;
-            this.lblAMMeasurements.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblAMMeasurements.Location = new System.Drawing.Point(3, 0);
-            this.lblAMMeasurements.Name = "lblAMMeasurements";
-            this.lblAMMeasurements.Size = new System.Drawing.Size(222, 30);
-            this.lblAMMeasurements.TabIndex = 1;
-            this.lblAMMeasurements.Text = "measurement:";
-            this.lblAMMeasurements.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.dgvAMmeasurements.AllowUserToAddRows = false;
+            this.dgvAMmeasurements.AllowUserToDeleteRows = false;
+            this.dgvAMmeasurements.AllowUserToOrderColumns = true;
+            this.dgvAMmeasurements.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvAMmeasurements.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvAMmeasurements.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
+            this.dgvAMmeasurements.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAMmeasurements.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvAMmeasurements.Location = new System.Drawing.Point(3, 3);
+            this.dgvAMmeasurements.MinimumSize = new System.Drawing.Size(732, 100);
+            this.dgvAMmeasurements.MultiSelect = false;
+            this.dgvAMmeasurements.Name = "dgvAMmeasurements";
+            this.dgvAMmeasurements.ReadOnly = true;
+            this.dgvAMmeasurements.RowHeadersWidth = 51;
+            this.dgvAMmeasurements.RowTemplate.Height = 28;
+            this.dgvAMmeasurements.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAMmeasurements.Size = new System.Drawing.Size(732, 300);
+            this.dgvAMmeasurements.TabIndex = 7;
+            this.dgvAMmeasurements.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAMmeasurements_CellClick);
             // 
             // gbPersonalData
             // 
@@ -3359,7 +3306,7 @@
             this.gbPersonalData.Controls.Add(this.tlpPersonalData);
             this.gbPersonalData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbPersonalData.ForeColor = System.Drawing.Color.DarkGray;
-            this.gbPersonalData.Location = new System.Drawing.Point(3, 2026);
+            this.gbPersonalData.Location = new System.Drawing.Point(3, 2338);
             this.gbPersonalData.Name = "gbPersonalData";
             this.gbPersonalData.Size = new System.Drawing.Size(944, 463);
             this.gbPersonalData.TabIndex = 5;
@@ -4083,10 +4030,11 @@
             this.gbAvailableMeasurements.ResumeLayout(false);
             this.gbAvailableMeasurements.PerformLayout();
             this.tlpAvailableMeasuremnets.ResumeLayout(false);
+            this.tlpAvailableMeasuremnets.PerformLayout();
             this.tlpAMChooseExercise.ResumeLayout(false);
             this.tlpAMChooseExercise.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
+            this.tlpAMDataGrid.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAMmeasurements)).EndInit();
             this.gbPersonalData.ResumeLayout(false);
             this.gbPersonalData.PerformLayout();
             this.tlpPersonalData.ResumeLayout(false);
@@ -4124,7 +4072,6 @@
 
         private System.Windows.Forms.TableLayoutPanel tlpPropertiesButtons;
         private System.Windows.Forms.Button btnExport;
-        private System.Windows.Forms.Button btnLoadTest;
         private System.Windows.Forms.Button btnLoad;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Panel panelMain;
@@ -4228,7 +4175,6 @@
         private System.Windows.Forms.TableLayoutPanel tlpCoROMLower;
         private System.Windows.Forms.NumericUpDown nudCoROMLower;
         private System.Windows.Forms.Label lblCoROMLower;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.GroupBox gbPersonalData;
         private System.Windows.Forms.TableLayoutPanel tlpPersonalData;
         private System.Windows.Forms.TableLayoutPanel tlpPDSVNumber;
@@ -4350,11 +4296,10 @@
         private System.Windows.Forms.Button btnCreateCSV;
         private System.Windows.Forms.GroupBox gbAvailableMeasurements;
         private System.Windows.Forms.TableLayoutPanel tlpAvailableMeasuremnets;
-        private System.Windows.Forms.ComboBox cbxAMAvailableMeasurements;
         private System.Windows.Forms.TableLayoutPanel tlpAMChooseExercise;
         private System.Windows.Forms.ComboBox cbxAMChooseExercise;
         private System.Windows.Forms.Label lblAMChooseExercise;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Label lblAMMeasurements;
+        private System.Windows.Forms.DataGridView dgvAMmeasurements;
+        private System.Windows.Forms.TableLayoutPanel tlpAMDataGrid;
     }
 }
