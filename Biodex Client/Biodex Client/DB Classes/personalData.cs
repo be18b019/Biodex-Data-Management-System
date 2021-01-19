@@ -8,35 +8,35 @@ namespace Biodex_Client.DB_Classes
 {
     class PersonalData
     {
-        public string SV_Number { get; set; }
-        public string FamilyStatus { get; set; }
-        public string Email { get; set; }
-        public string Adress { get; set; }
-        public string LegalGuardian { get; set; }
-        public string Religion { get; set; }
-        public string Laguage { get; set; }
-        public string Insurance { get; set; }
-        public string TelNumber { get; set; }
-        public string BirthPlace { get; set; }
-        public string BirthDATE { get; set; }
-        public string Gender { get; set; }
-        public string NameTitel { get; set; }
+        public string sSVNumber { get; set; }
+        public string sFamilyStatus { get; set; }
+        public string sEmail { get; set; }
+        public string sAddress { get; set; }
+        public string sLegalGuardian { get; set; }
+        public string sReligion { get; set; }
+        public string sLanguage { get; set; }
+        public string sInsurance { get; set; }
+        public string sTelNumber { get; set; }
+        public string sBirthPlace { get; set; }
+        public string sBirthDate { get; set; }
+        public string sGender { get; set; }
+        public string sNameTitle { get; set; }
 
-        public PersonalData(string sV_Number, string familyStatus, string email, string adress, string legalGuardian, string religion, string language, string insurance, string telNumber, string birthPlace, string birthDATE, string gender, string nameTitel)
+        public PersonalData(string sSVNumber, string sFamilyStatus, string sEmail, string sAddress, string sLegalGuardian, string sReligion, string sLanguage, string sInsurance, string sTelNumber, string sBirthPlace, string sBirthDate, string sGender, string sNameTitle)
         {
-            SV_Number = sV_Number;
-            this.FamilyStatus = familyStatus;
-            Email = email;
-            this.Adress = adress;
-            this.LegalGuardian = legalGuardian;
-            this.Religion = religion;
-            this.Laguage = Laguage;
-            this.Insurance = insurance;
-            this.TelNumber = telNumber;
-            this.BirthPlace = birthPlace;
-            this.BirthDATE = birthDATE;
-            this.Gender = gender;
-            NameTitel = nameTitel;
+            this.sSVNumber = sSVNumber;
+            this.sFamilyStatus = sFamilyStatus;
+            this.sEmail = sEmail;
+            this.sAddress = sAddress;
+            this.sLegalGuardian = sLegalGuardian;
+            this.sReligion = sReligion;
+            this.sLanguage = sLanguage;
+            this.sInsurance = sInsurance;
+            this.sTelNumber = sTelNumber;
+            this.sBirthPlace = sBirthPlace;
+            this.sBirthDate = sBirthDate;
+            this.sGender = sGender;
+            this.sNameTitle = sNameTitle;
         }
     }
 }

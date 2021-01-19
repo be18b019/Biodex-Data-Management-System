@@ -8,16 +8,16 @@ namespace Biodex_Client.DB_Classes
 {
     class ReportResult
     {
-        public long ReportID { get; set; }
-        public string MatriculationNumber { get; set; }
+        public long nReportID { get; set; }
+        public string sMatriculationNumber { get; set; }
 
-        public DateTime Date { get; set; }
+        public DateTime aDate { get; set; }
 
-        public ReportResult(long reportID, DateTime date, string matriculationNumber)
+        public ReportResult(long nReportID, DateTime aDate, string sMatriculationNumber)
         {
-            ReportID = reportID;
-            Date = date;
-            MatriculationNumber = matriculationNumber;
+            this.nReportID = nReportID;
+            this.aDate = aDate;
+            this.sMatriculationNumber = sMatriculationNumber;
         }
     }
 }

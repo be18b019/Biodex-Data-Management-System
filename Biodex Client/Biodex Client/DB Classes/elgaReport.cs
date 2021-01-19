@@ -8,11 +8,11 @@ namespace Biodex_Client.DB_Classes
 {
     class ElgaReport
     {
-        public long ElgaID { get; set; }
+        public long nElgaID { get; set; }
 
-        public ElgaReport(long elgaID)
+        public ElgaReport(long nElgaID)
         {
-            this.ElgaID = elgaID;
+            this.nElgaID = nElgaID;
         }
     }
 }

@@ -8,23 +8,23 @@ namespace Biodex_Client.DB_Classes
 {
     class ExerciseData
     {
-        public long Exercise_id { get; set; }
-        public float[] Torque { get; set; }
-        public float[] Angle { get; set; }
-        public float[] Velocity { get; set; }
-        public string Muscle { get; set; }
-        public string Exercise { get; set; }      
-        public string Repetition { get; set; }
+        public long nExerciseID { get; set; }
+        public float[] nTorque { get; set; }
+        public float[] nAngle { get; set; }
+        public float[] nVelocity { get; set; }
+        public string sMuscle { get; set; }
+        public string sExercise { get; set; }      
+        public string sRepetition { get; set; }
 
-        public ExerciseData(long exercise_id, float[] torque, float[] angle, float[] velocity, string muscle, string exercise, string repetition)
+        public ExerciseData(long nExerciseID, float[] nTorque, float[] nAngle, float[] nVelocity, string sMuscle, string sExercise, string sRepetition)
         {
-            Exercise_id = exercise_id;
-            Torque = torque;
-            Angle = angle;
-            Velocity = velocity;
-            Muscle = muscle;
-            Exercise = exercise;
-            Repetition = repetition;
+            this.nExerciseID = nExerciseID;
+            this.nTorque = nTorque;
+            this.nAngle = nAngle;
+            this.nVelocity = nVelocity;
+            this.sMuscle = sMuscle;
+            this.sExercise = sExercise;
+            this.sRepetition = sRepetition;
         }
     }
 }

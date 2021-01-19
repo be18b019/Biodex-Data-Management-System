@@ -8,14 +8,14 @@ namespace Biodex_Client.DB_Classes
 {
     class BiodexReport
     {
-        public long BiodexReportID { get; set; }
+        public long nBiodexReportID { get; set; }
         
-        public long SettingsID { get; set; }
+        public long nSettingsID { get; set; }
 
-        public BiodexReport(long biodexReportID, long settingsID)
+        public BiodexReport(long nBiodexReportID, long nSettingsID)
         {
-            BiodexReportID = biodexReportID;
-            SettingsID = settingsID;
+            this.nBiodexReportID = nBiodexReportID;
+            this.nSettingsID = nSettingsID;
         }
     }
 }

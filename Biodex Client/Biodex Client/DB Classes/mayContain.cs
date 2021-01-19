@@ -8,15 +8,15 @@ namespace Biodex_Client.DB_Classes
 {
     class MayContain
     {
-        public long ReportID { get; set; }
-        public long ElgaID { get; set; }
-        public long BiodexReportID { get; set; }
+        public long nReportID { get; set; }
+        public long nElgaID { get; set; }
+        public long nBiodexReportID { get; set; }
 
-        public MayContain(long reportID, long elgaID, long biodexReportID)
+        public MayContain(long nReportID, long nElgaID, long nBiodexReportID)
         {
-            ReportID = reportID;
-            ElgaID = elgaID;
-            BiodexReportID = biodexReportID;
+            this.nReportID = nReportID;
+            this.nElgaID = nElgaID;
+            this.nBiodexReportID = nBiodexReportID;
         }
     }
 }

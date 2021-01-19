@@ -78,15 +78,15 @@ namespace Biodex_Client
                 {
                     aTimeList.Add(aTimeList.Count + 1);
 
-                    Biodex_Client.GraphPlotting.ChartValuesTorqueValues.Add(new ValuePoint(aTimeList[i], aTorqueList[i]));
-                    Biodex_Client.GraphPlotting.ChartValuesVelocityValues.Add(new ValuePoint(aTimeList[i], aVelocityList[i]));
-                    Biodex_Client.GraphPlotting.ChartValuesAngleValues.Add(new ValuePoint(aTimeList[i], aAngleList[i]));
+                    Biodex_Client.GraphPlotting.m_aChartValuesTorqueValues.Add(new ValuePoint(aTimeList[i], aTorqueList[i]));
+                    Biodex_Client.GraphPlotting.m_aChartValuesVelocityValues.Add(new ValuePoint(aTimeList[i], aVelocityList[i]));
+                    Biodex_Client.GraphPlotting.m_aChartValuesAngleValues.Add(new ValuePoint(aTimeList[i], aAngleList[i]));
                 }
 
                 MessageBox.Show("Loaded Former Records From Database Successfully and PLOTTED THEM. Now You Can Also Create a CSV-File", "Loading Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
-			catch (Exception ex)
+			catch (Exception)
 			{
                 MessageBox.Show("The Record Can NOT BE PLOTTED. HINT: The Lists Torque, Velocity or Angle are EMPTY", "CANNOT PLOT", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

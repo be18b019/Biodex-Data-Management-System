@@ -11,37 +11,37 @@ namespace Biodex_Client
 {
     public class GraphPlotting
     {
-        formGraphs _FormGraphs = null;
-        public ChartValues<ValuePoint> ChartValuesTorqueValues { get; set; }
-        public ChartValues<ValuePoint> ChartValuesVelocityValues { get; set; }
-        public ChartValues<ValuePoint> ChartValuesAngleValues { get; set; }
+        formGraphs m_aFormGraphs = null;
+        public ChartValues<ValuePoint> m_aChartValuesTorqueValues { get; set; }
+        public ChartValues<ValuePoint> m_aChartValuesVelocityValues { get; set; }
+        public ChartValues<ValuePoint> m_aChartValuesAngleValues { get; set; }
 
-        public GraphPlotting(formGraphs FormGraphs)
+        public GraphPlotting(formGraphs aFormGraphs)
         {
-            _FormGraphs = FormGraphs;
+            m_aFormGraphs = aFormGraphs;
             
 
             var mapper = Mappers.Xy<ValuePoint>()
-                 .X(model => model.Frame)
-                 .Y(model => model.Value);
+                 .X(model => model.m_nFrame)
+                 .Y(model => model.m_nValue);
 
             Charting.For<ValuePoint>(mapper);
 
-            ChartValuesTorqueValues = new ChartValues<ValuePoint>();
-            ChartValuesVelocityValues = new ChartValues<ValuePoint>();
-            ChartValuesAngleValues = new ChartValues<ValuePoint>();
+            m_aChartValuesTorqueValues = new ChartValues<ValuePoint>();
+            m_aChartValuesVelocityValues = new ChartValues<ValuePoint>();
+            m_aChartValuesAngleValues = new ChartValues<ValuePoint>();
 
 
             //chartTorqueInitialisation
-            _FormGraphs.chartTorque.DisableAnimations = true;
-            _FormGraphs.chartTorque.AxisX.Add(new LiveCharts.Wpf.Axis
+            m_aFormGraphs.chartTorque.DisableAnimations = true;
+            m_aFormGraphs.chartTorque.AxisX.Add(new LiveCharts.Wpf.Axis
             {
                 Title = "Frames",
                 //DisableAnimations = true,
                 //MaxValue = graphData.Time.Length
             });
 
-            _FormGraphs.chartTorque.AxisY.Add(new LiveCharts.Wpf.Axis
+            m_aFormGraphs.chartTorque.AxisY.Add(new LiveCharts.Wpf.Axis
             {
                 Title = "Torque",
                 //DisableAnimations = true,
@@ -52,15 +52,15 @@ namespace Biodex_Client
 
 
             //chartVelocityInitialisation
-            _FormGraphs.chartVelocity.DisableAnimations = true;
-            _FormGraphs.chartVelocity.AxisX.Add(new LiveCharts.Wpf.Axis
+            m_aFormGraphs.chartVelocity.DisableAnimations = true;
+            m_aFormGraphs.chartVelocity.AxisX.Add(new LiveCharts.Wpf.Axis
             {
                 Title = "Frames",
                 //DisableAnimations = true,
                 //MaxValue = graphData.Time.Length
             });
 
-            _FormGraphs.chartVelocity.AxisY.Add(new LiveCharts.Wpf.Axis
+            m_aFormGraphs.chartVelocity.AxisY.Add(new LiveCharts.Wpf.Axis
             {
                 Title = "Angular Velocity",
                 //DisableAnimations = true,
@@ -71,15 +71,15 @@ namespace Biodex_Client
 
 
             //chartAngleInitialisation
-            _FormGraphs.chartAngle.DisableAnimations = true;
-            _FormGraphs.chartAngle.AxisX.Add(new LiveCharts.Wpf.Axis
+            m_aFormGraphs.chartAngle.DisableAnimations = true;
+            m_aFormGraphs.chartAngle.AxisX.Add(new LiveCharts.Wpf.Axis
             {
                 Title = "Frames",
                 //DisableAnimations = true,
                 //MaxValue = graphData.Time.Length
             });
 
-            _FormGraphs.chartAngle.AxisY.Add(new LiveCharts.Wpf.Axis
+            m_aFormGraphs.chartAngle.AxisY.Add(new LiveCharts.Wpf.Axis
             {
                 Title = "Angle",
                 //DisableAnimations = true,
@@ -90,15 +90,15 @@ namespace Biodex_Client
 
         public void refreshCharts()
         {
-            ChartValuesTorqueValues.Clear();
-            ChartValuesVelocityValues.Clear();
-            ChartValuesAngleValues.Clear();
+            m_aChartValuesTorqueValues.Clear();
+            m_aChartValuesVelocityValues.Clear();
+            m_aChartValuesAngleValues.Clear();
 
             SeriesCollection helperTorqueSeries = new SeriesCollection
             {
                     new LineSeries
                     {
-                        Values=ChartValuesTorqueValues,
+                        Values=m_aChartValuesTorqueValues,
                         Title="Torque",
                         StrokeThickness = 1, //maybe change
                         PointGeometrySize = 0,
@@ -111,7 +111,7 @@ namespace Biodex_Client
             {
                     new LineSeries
                     {
-                        Values=ChartValuesVelocityValues,
+                        Values=m_aChartValuesVelocityValues,
                         Title="Angle Velocity",
                         StrokeThickness = 1, //maybe change
                         PointGeometrySize = 0,
@@ -124,7 +124,7 @@ namespace Biodex_Client
             {
                     new LineSeries
                     {
-                        Values=ChartValuesAngleValues,
+                        Values=m_aChartValuesAngleValues,
                         Title="Angle",
                         StrokeThickness = 1, //maybe change
                         PointGeometrySize = 0,
@@ -133,9 +133,9 @@ namespace Biodex_Client
                     }
             };
 
-            _FormGraphs.chartTorque.Series = helperTorqueSeries;
-            _FormGraphs.chartVelocity.Series = helperVelocitySeries;
-            _FormGraphs.chartAngle.Series = helperAngleSeries;
+            m_aFormGraphs.chartTorque.Series = helperTorqueSeries;
+            m_aFormGraphs.chartVelocity.Series = helperVelocitySeries;
+            m_aFormGraphs.chartAngle.Series = helperAngleSeries;
 
         }
 
@@ -143,13 +143,13 @@ namespace Biodex_Client
 
     public class ValuePoint
     {
-        public double Frame { get; }
-        public double Value { get; }
+        public double m_nFrame { get; }
+        public double m_nValue { get; }
 
-        public ValuePoint(double frame, double value)
+        public ValuePoint(double nFrame, double nValue)
         {
-            Frame = frame;
-            Value = value;
+            m_nFrame = nFrame;
+            m_nValue = nValue;
         }
     }
 }

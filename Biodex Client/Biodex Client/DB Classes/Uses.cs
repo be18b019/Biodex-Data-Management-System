@@ -8,15 +8,15 @@ namespace Biodex_Client.DB_Classes
 {
     class Uses
     {
-        public long Biodexreport_id { get; set; }
-        public long Exercise_id { get; set; }
-        public long Settings_id { get; set; }
+        public long nBiodexReportID { get; set; }
+        public long nExerciseID { get; set; }
+        public long nSettingsID { get; set; }
 
-        public Uses(long biodexreport_id, long exercise_id, long settings_id)
+        public Uses(long nBiodexReportID, long nExerciseID, long nSettingsID)
         {
-            Biodexreport_id = biodexreport_id;
-            Exercise_id = exercise_id;
-            Settings_id = settings_id;
+            this.nBiodexReportID = nBiodexReportID;
+            this.nExerciseID = nExerciseID;
+            this.nSettingsID = nSettingsID;
         }
     }
 }
