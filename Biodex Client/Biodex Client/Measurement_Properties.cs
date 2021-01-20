@@ -26,14 +26,14 @@ namespace Biodex_Client
         formGraphs _FormGraphs = null;
         Data _data = null;
         SerialPortSave serialportsave = null;
-        MProperties _mProperties = null;
-        PatientData _patientData = null;
+        //MProperties _mProperties = null;
+        //PatientData _patientData = null;
 
         //public ChartValues<ValuePoint> ChartValuesTorqueValues { get; set; }
         //public ChartValues<ValuePoint> ChartValuesVelocityValues { get; set; }
         //public ChartValues<ValuePoint> ChartValuesAngleValues { get; set; }
 
-        Thread threadAddValuesToChart;
+        //Thread threadAddValuesToChart;
         #endregion
 
         #region initializing Database objects and variables
@@ -64,7 +64,7 @@ namespace Biodex_Client
         #region formMeasurement Constructors, initializing of some plotting stuff
         public formMeasurementProperties()
         {
-            InitializeComponent();        
+            InitializeComponent();
         }
 
         /*
@@ -104,7 +104,7 @@ namespace Biodex_Client
             //    //MinValue=400
             //});
 
-            
+
 
             ////chartVelocityInitialisation
             //_FormGraphs.chartVelocity.DisableAnimations = true;
@@ -123,7 +123,7 @@ namespace Biodex_Client
             //    //MinValue=400
             //});
 
-           
+
 
             ////chartAngleInitialisation
             //_FormGraphs.chartAngle.DisableAnimations = true;
@@ -237,8 +237,9 @@ namespace Biodex_Client
                 }
 
                 _data = null;
-                _mProperties = null;
-                _patientData = null;
+                serialportsave.myData = null;
+                //_mProperties = null;
+                //_patientData = null;
             }
 
             //resetting the selection in the Datagrid View (Database Table)
@@ -259,67 +260,70 @@ namespace Biodex_Client
 
         #region insert Dummy Data into the text boxes from the Patient Data Section
         private void btnPDSSimulatePatientData_Click(object sender, EventArgs e)
-		{
-			//generating the dummy data according to the ELGA Entlassungsbrief
-			string DummyData;
-			string[] seperator = { "|$|" };
+        {
+            //generating the dummy data according to the ELGA Entlassungsbrief
+            string DummyData;
+            string[] seperator = { "|$|" };
 
-			//depending on the choice from the dropdown cbxPDSChoosePatient a dummy dataset will be displayed
-			if (cbxPDSChoosePatient.Text == "Patient 1")
-			{
-				DummyData = "Dipl.Ing. Hofrat Mustermann, BSc, MBA|$|1111241261|$|Männlich|$|24. Dezember 1961|$|Graz|$|+43 2682 40400|$|Wiener Gebietskrankenkasse|$|Deutsch (spricht: ausgezeichnet), bevorzugt|$|Römisch-Katholisch|$|Susi Sorgenvoll|$|Musterstraße 13a 7000 Eisenstadt, Burgenland|$|herberthannes.mustermann@provider.at|$|Vater|$|Amadeus Spital|$|Chirurgische Abteilung|$|Mozartgasse 1-7 5350 St.Wolfgang, Salzburg|$|+43 6138 3453446 0, info@amadeusspital.at|$|30. Juli 2016 um 10:46|$|17. August 2016 um 12:00 Uhr|$|Az123456|$|Univ.-Prof. Dr. Sigrid Kollmann|$|Gelenksempyem im linken Knie|$|Sturz bei sportlicher Betätigung|$|Trichterbrustoperation in der Jugend|$|Penicillin|$|Nasirin 0,05 %, Ciproxin 400 mg|$|Augmentin 2g, Ciproxin 400mg, Fosfomycin 2g|$|Antimikrobielle Therapie|$|Patient mobil eingeschränkt|$|rezidivierende Rückenschmerzen|$|Schonung, absolutes Sportverbot|$|Mobilität/Stab ges. WS, Bodentransfer|$|Diazepam, Zithromax, Nasivin|$|Revisions-OP, antimikrobielle Therapie|$||$||$|";
-			}
-			else if (cbxPDSChoosePatient.Text == "Patient 2")
-			{
-				DummyData = "Dr. Donald Duck|$|0123456789|$|male duck|$|24. January 1944|$|California|$|+1 2682 40400|$|World Disney|$| English (speaks: excellent), preferred |$|no specification|$|Daisy Duck (Wife)|$|Duckburg 13a 7000 , Calisota|$|donald.duck@disney.at|$|Dad and Husband|$|Charité - Universitätsmedizin Berlin (Berlin, Germany)|$|Surgical Department|$| 9500 Euclid Ave. Cleveland , Ohio 44195 |$| +1 216-444-2200, info@clevelandclinic.at|$|14. February 2008 at 10:46|$|5. August 2008 at 12:00|$|WDDD123456|$|Univ.-Prof. Dr. Martin Arrowsmith |$| joint empyema in the left knee |$| Fall during sporting activity |$| Funnel chest surgery in youth |$|Methicillin|$| Bactrim 0,1 %, Welchol 700 mg|$|Tadalafil 7g, Purelax 400mg, Fosfomycin 2g|$| Antimicrobial therapy|$| Patient with limited mobility |$|recurrent back pain |$| Rest, absolute ban on sport |$|Restoring Mobility|$| Fleet Bisacodyl, Senna S, Docuzen |$| Revisions-OP, Antimicrobial therapy|$||$||$|";
-			}
-			else if (cbxPDSChoosePatient.Text == "Patient 3")
-			{
-				DummyData = "Peter Parker|$|9876543210|$|male|$|26. March 1998|$|Vienna|$|+1 0676 133|$|Daily Bugle|$| French (speaks: excellent), preferred, also German |$|peace and hapiness|$|May Parker (Aunt)|$|20 Ingram Street in Forest Hills, Queens|$|spiderman@avengers.at|$|single|$|Massachusetts General Hospital (Boston)|$|Radiology Department|$| 55 Fruit St, Boston, MA 02114 |$| +1 617-726-2000, info@bostonclinic.at|$|8. October 2009 at 10:46|$|5. August 2010 at 12:00|$|MASM987456|$|Univ.-Prof. Dr. Curtis Connors|$| nullum venenum aranea |$| bitten by a radioactive spider |$| torn ligaments of the legs in youth |$|Mefenamic acid|$| Bactrim 0,1 %, Welchol 700 mg|$|Tadalafil 7g, Purelax 400mg, Fosfomycin 2g|$|monoclonal antibody therapy|$| Patient with weaked immune system and low stamina |$|recurrent ligament|$| Rest, absolute ban on sport |$|Gaining back strength|$| Fleet Bisacodyl, Senna S, Docuzen |$| water cure (therapy), neutron therapy |$||$||$|";
-			}
-			else
-			{
-				DummyData = "Name Titel|$|SV-Number|$|Gender|$|Birth Date|$|Birth Place|$|Phone Number|$|Insurance|$|Language|$|Religion|$|Guardian|$|Adress|$|Email|$|Family Status|$|Hospital Name|$|Hospital Department|$|Hospital Adress|$|Hospital Contact|$|Start Date|$|End Date|$|Admission Number|$|Responsible Doctor|$|Admission Reason|$|Anamnesis|$|Previous Diseases|$|Risk and Allergies|$|Medication At Arrival|$|Medication During Stay|$|Actions By Hospital|$|State At Release|$|Pysical Issue|$|Recommended Measurements|$|Rehabilitation Aim|$|Future Medication|$|Diagnosis Summary|$||$||$|";
-			}
-            
+            //depending on the choice from the dropdown cbxPDSChoosePatient a dummy dataset will be displayed
+            if (cbxPDSChoosePatient.Text == "Patient 1")
+            {
+                DummyData = "Dipl.Ing. Hofrat Mustermann, BSc, MBA|$|1111241261|$|Männlich|$|24. Dezember 1961|$|Graz|$|+43 2682 40400|$|Wiener Gebietskrankenkasse|$|Deutsch (spricht: ausgezeichnet), bevorzugt|$|Römisch-Katholisch|$|Susi Sorgenvoll|$|Musterstraße 13a 7000 Eisenstadt, Burgenland|$|herberthannes.mustermann@provider.at|$|Vater|$|Amadeus Spital|$|Chirurgische Abteilung|$|Mozartgasse 1-7 5350 St.Wolfgang, Salzburg|$|+43 6138 3453446 0, info@amadeusspital.at|$|30. Juli 2016 um 10:46|$|17. August 2016 um 12:00 Uhr|$|Az123456|$|Univ.-Prof. Dr. Sigrid Kollmann|$|Gelenksempyem im linken Knie|$|Sturz bei sportlicher Betätigung|$|Trichterbrustoperation in der Jugend|$|Penicillin|$|Nasirin 0,05 %, Ciproxin 400 mg|$|Augmentin 2g, Ciproxin 400mg, Fosfomycin 2g|$|Antimikrobielle Therapie|$|Patient mobil eingeschränkt|$|rezidivierende Rückenschmerzen|$|Schonung, absolutes Sportverbot|$|Mobilität/Stab ges. WS, Bodentransfer|$|Diazepam, Zithromax, Nasivin|$|Revisions-OP, antimikrobielle Therapie|$||$||$|";
+            }
+            else if (cbxPDSChoosePatient.Text == "Patient 2")
+            {
+                DummyData = "Dr. Donald Duck|$|0123456789|$|male duck|$|24. January 1944|$|California|$|+1 2682 40400|$|World Disney|$| English (speaks: excellent), preferred |$|no specification|$|Daisy Duck (Wife)|$|Duckburg 13a 7000 , Calisota|$|donald.duck@disney.at|$|Dad and Husband|$|Charité - Universitätsmedizin Berlin (Berlin, Germany)|$|Surgical Department|$| 9500 Euclid Ave. Cleveland , Ohio 44195 |$| +1 216-444-2200, info@clevelandclinic.at|$|14. February 2008 at 10:46|$|5. August 2008 at 12:00|$|WDDD123456|$|Univ.-Prof. Dr. Martin Arrowsmith |$| joint empyema in the left knee |$| Fall during sporting activity |$| Funnel chest surgery in youth |$|Methicillin|$| Bactrim 0,1 %, Welchol 700 mg|$|Tadalafil 7g, Purelax 400mg, Fosfomycin 2g|$| Antimicrobial therapy|$| Patient with limited mobility |$|recurrent back pain |$| Rest, absolute ban on sport |$|Restoring Mobility|$| Fleet Bisacodyl, Senna S, Docuzen |$| Revisions-OP, Antimicrobial therapy|$||$||$|";
+            }
+            else if (cbxPDSChoosePatient.Text == "Patient 3")
+            {
+                DummyData = "Peter Parker|$|9876543210|$|male|$|26. March 1998|$|Vienna|$|+1 0676 133|$|Daily Bugle|$| French (speaks: excellent), preferred, also German |$|peace and hapiness|$|May Parker (Aunt)|$|20 Ingram Street in Forest Hills, Queens|$|spiderman@avengers.at|$|single|$|Massachusetts General Hospital (Boston)|$|Radiology Department|$| 55 Fruit St, Boston, MA 02114 |$| +1 617-726-2000, info@bostonclinic.at|$|8. October 2009 at 10:46|$|5. August 2010 at 12:00|$|MASM987456|$|Univ.-Prof. Dr. Curtis Connors|$| nullum venenum aranea |$| bitten by a radioactive spider |$| torn ligaments of the legs in youth |$|Mefenamic acid|$| Bactrim 0,1 %, Welchol 700 mg|$|Tadalafil 7g, Purelax 400mg, Fosfomycin 2g|$|monoclonal antibody therapy|$| Patient with weaked immune system and low stamina |$|recurrent ligament|$| Rest, absolute ban on sport |$|Gaining back strength|$| Fleet Bisacodyl, Senna S, Docuzen |$| water cure (therapy), neutron therapy |$||$||$|";
+            }
+            else
+            {
+                MessageBox.Show("Please select a patient.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+                //DummyData = "Name Titel|$|SV-Number|$|Gender|$|Birth Date|$|Birth Place|$|Phone Number|$|Insurance|$|Language|$|Religion|$|Guardian|$|Adress|$|Email|$|Family Status|$|Hospital Name|$|Hospital Department|$|Hospital Adress|$|Hospital Contact|$|Start Date|$|End Date|$|Admission Number|$|Responsible Doctor|$|Admission Reason|$|Anamnesis|$|Previous Diseases|$|Risk and Allergies|$|Medication At Arrival|$|Medication During Stay|$|Actions By Hospital|$|State At Release|$|Pysical Issue|$|Recommended Measurements|$|Rehabilitation Aim|$|Future Medication|$|Diagnosis Summary|$||$||$|";
+            }
+
             string[] DummyDataArray = DummyData.Split(seperator, StringSplitOptions.None);
 
-			//inserting the values from the String Array Dummy Data into each Text Box
-			int i = 0;
-			txtbPDTitleName.Text = DummyDataArray[i++];
-			txtbPDSVNumber.Text = DummyDataArray[i++];
-			txtbPDGender.Text = DummyDataArray[i++];
-			txtbPDDateOfBirth.Text = DummyDataArray[i++];
-			txtbPDPlaceOfBirth.Text = DummyDataArray[i++];
-			txtbPDPhoneNumber.Text = DummyDataArray[i++];
-			txtbPDInsurance.Text = DummyDataArray[i++];
-			txtbPDLanguage.Text = DummyDataArray[i++];
-			txtbPDReligion.Text = DummyDataArray[i++];
-			txtbPDLegalGuardian.Text = DummyDataArray[i++];
-			txtbPDAdress.Text = DummyDataArray[i++];
-			txtbPDEmail.Text = DummyDataArray[i++];
-			txtbPDFamilyStatus.Text = DummyDataArray[i++];
-			txtbHIHospitalName.Text = DummyDataArray[i++];
-			txtbHIDepartment.Text = DummyDataArray[i++];
-			txtbHIHospitalAdress.Text = DummyDataArray[i++];
-			txtbHIHospitalConatct.Text = DummyDataArray[i++];
-			txtbHIStartDate.Text = DummyDataArray[i++];
-			txtbHIEndDate.Text = DummyDataArray[i++];
-			txtbHIAdmissionNumber.Text = DummyDataArray[i++];
-			txtbHIResponsibleDoctor.Text = DummyDataArray[i++];
-			txtbMDAdmissionReason.Text = DummyDataArray[i++];
-			txtbMDAnamnesis.Text = DummyDataArray[i++];
-			txtbMDPreviousDisease.Text = DummyDataArray[i++];
-			txtbMDRisksAllergies.Text = DummyDataArray[i++];
-			txtbMDMedicationArrival.Text = DummyDataArray[i++];
-			txtbMDMedicationStay.Text = DummyDataArray[i++];
-			txtbMDActionsHospital.Text = DummyDataArray[i++];
-			txtbDStateRelease.Text = DummyDataArray[i++];
-			txtbDPhysicalIssue.Text = DummyDataArray[i++];
-			txtbDRecommendedMeasuremnts.Text = DummyDataArray[i++];
-			txtbDRehabilitationAim.Text = DummyDataArray[i++];
-			txtbDFutureMedication.Text = DummyDataArray[i++];
-			txtbDSummary.Text = DummyDataArray[i++];
+            //inserting the values from the String Array Dummy Data into each Text Box
+            int i = 0;
+            txtbPDTitleName.Text = DummyDataArray[i++];
+            txtbPDSVNumber.Text = DummyDataArray[i++];
+            txtbPDGender.Text = DummyDataArray[i++];
+            txtbPDDateOfBirth.Text = DummyDataArray[i++];
+            txtbPDPlaceOfBirth.Text = DummyDataArray[i++];
+            txtbPDPhoneNumber.Text = DummyDataArray[i++];
+            txtbPDInsurance.Text = DummyDataArray[i++];
+            txtbPDLanguage.Text = DummyDataArray[i++];
+            txtbPDReligion.Text = DummyDataArray[i++];
+            txtbPDLegalGuardian.Text = DummyDataArray[i++];
+            txtbPDAdress.Text = DummyDataArray[i++];
+            txtbPDEmail.Text = DummyDataArray[i++];
+            txtbPDFamilyStatus.Text = DummyDataArray[i++];
+            txtbHIHospitalName.Text = DummyDataArray[i++];
+            txtbHIDepartment.Text = DummyDataArray[i++];
+            txtbHIHospitalAdress.Text = DummyDataArray[i++];
+            txtbHIHospitalConatct.Text = DummyDataArray[i++];
+            txtbHIStartDate.Text = DummyDataArray[i++];
+            txtbHIEndDate.Text = DummyDataArray[i++];
+            txtbHIAdmissionNumber.Text = DummyDataArray[i++];
+            txtbHIResponsibleDoctor.Text = DummyDataArray[i++];
+            txtbMDAdmissionReason.Text = DummyDataArray[i++];
+            txtbMDAnamnesis.Text = DummyDataArray[i++];
+            txtbMDPreviousDisease.Text = DummyDataArray[i++];
+            txtbMDRisksAllergies.Text = DummyDataArray[i++];
+            txtbMDMedicationArrival.Text = DummyDataArray[i++];
+            txtbMDMedicationStay.Text = DummyDataArray[i++];
+            txtbMDActionsHospital.Text = DummyDataArray[i++];
+            txtbDStateRelease.Text = DummyDataArray[i++];
+            txtbDPhysicalIssue.Text = DummyDataArray[i++];
+            txtbDRecommendedMeasuremnts.Text = DummyDataArray[i++];
+            txtbDRehabilitationAim.Text = DummyDataArray[i++];
+            txtbDFutureMedication.Text = DummyDataArray[i++];
+            txtbDSummary.Text = DummyDataArray[i++];
+            MessageBox.Show("Patient data was entered in the fields below.", "SUCCESS", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         #endregion
 
@@ -328,8 +332,8 @@ namespace Biodex_Client
         //connect to the DB and displays the current (predefined) values from the DB in the DataGridView
         private void display_table()
         {
-			if (cbxAMChooseExercise.Text == "Show All Records" || cbxAMChooseExercise.SelectedIndex == -1)
-			{
+            if (cbxAMChooseExercise.Text == "Show All Records" || cbxAMChooseExercise.SelectedIndex == -1)
+            {
                 try
                 {
                     conn.Open();
@@ -350,34 +354,34 @@ namespace Biodex_Client
                     MessageBox.Show("Error: " + ex.Message);
                 }
             }
-			else
-			{
-				try
-				{
-					conn.Open();
+            else
+            {
+                try
+                {
+                    conn.Open();
 
-					string selected = cbxAMChooseExercise.Text;
+                    string selected = cbxAMChooseExercise.Text;
 
-					sql = @"SELECT * FROM display_selection(:_selection);";         //copy the desired function into this string - TIP: try it out on Admin beforehand
-					cmd = new NpgsqlCommand(sql, conn);
+                    sql = @"SELECT * FROM display_selection(:_selection);";         //copy the desired function into this string - TIP: try it out on Admin beforehand
+                    cmd = new NpgsqlCommand(sql, conn);
 
                     cmd.Parameters.AddWithValue("_selection", selected);
 
                     dt = new DataTable();
-					dt.Load(cmd.ExecuteReader());               //fills the DataTable with data from the source, takes everything, also naming from postgres
+                    dt.Load(cmd.ExecuteReader());               //fills the DataTable with data from the source, takes everything, also naming from postgres
 
-					conn.Close();
+                    conn.Close();
 
-					dgvAMmeasurements.DataSource = null;                  //reset datagridview
-					dgvAMmeasurements.DataSource = dt;                    //connects to the source from which the data should be displayed
-				}
-				catch (Exception ex)
-				{
-					conn.Close();
-					MessageBox.Show("Error: " + ex.Message);
-				}
-			}
-		}
+                    dgvAMmeasurements.DataSource = null;                  //reset datagridview
+                    dgvAMmeasurements.DataSource = dt;                    //connects to the source from which the data should be displayed
+                }
+                catch (Exception ex)
+                {
+                    conn.Close();
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+        }
 
         //when item from combobox is choosen, the datagridview shows the selection
         private void cbxAMChooseExercise_SelectedIndexChanged(object sender, EventArgs e)
@@ -395,16 +399,17 @@ namespace Biodex_Client
 
         #region SENDING THE DATA TO THE DATABASE
         private void btnExport_Click(object sender, EventArgs e)
-		{
+        {
             //resetting the selection in the Datagrid View (Database Table)
             rowIndex = -1;
             dgvAMmeasurements.ClearSelection();
 
             //insert into the exercise_data table
             int exercise_data_LastId = 0;
-			try
-			{
-				conn.Open();
+            Data myData = serialportsave.myData;
+            try
+            {
+                conn.Open();
 
                 sql = @"SELECT * FROM insert_exercise_data(
                                                             :_torque,
@@ -416,40 +421,39 @@ namespace Biodex_Client
 
                 cmd = new NpgsqlCommand(sql, conn);
 
-                Data myData = serialportsave.myData;
-
                 torqueStringToDB = string.Join(";", myData.aTorqueList.ToArray());
                 angleStringToDB = string.Join(";", myData.aAngleList.ToArray());
                 velocityStringToDB = string.Join(";", myData.aVelocityList.ToArray());
 
                 cmd.Parameters.AddWithValue("_torque", torqueStringToDB);
-				cmd.Parameters.AddWithValue("_angle", angleStringToDB);
-				cmd.Parameters.AddWithValue("_velocity", velocityStringToDB);
-				cmd.Parameters.AddWithValue("_muscle", cbxEMuscle.Text);
-				cmd.Parameters.AddWithValue("_exercise", cbxEExercise.Text);
-				cmd.Parameters.AddWithValue("_repetition", cbxERepetitions.Text);
+                cmd.Parameters.AddWithValue("_angle", angleStringToDB);
+                cmd.Parameters.AddWithValue("_velocity", velocityStringToDB);
+                cmd.Parameters.AddWithValue("_muscle", cbxEMuscle.Text);
+                cmd.Parameters.AddWithValue("_exercise", cbxEExercise.Text);
+                cmd.Parameters.AddWithValue("_repetition", cbxERepetitions.Text);
 
 
-				exercise_data_LastId = (int)cmd.ExecuteScalar();
+                exercise_data_LastId = (int)cmd.ExecuteScalar();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Unable to export data to DB. Please record an exercise.","ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                conn.Close();
+            }
 
-				conn.Close();
 
-			}
-			catch (Exception ex)
-			{
-				conn.Close();
-				MessageBox.Show("Inserted Fail. Error: " + ex.Message);
-			}
+            if (myData != null)
+            {
+                //insert into the settings table
+                int settings_LastId = 0;
+                try
+                {
+                    conn.Open();
 
-
-
-			//insert into the settings table
-			int settings_LastId = 0;
-			try
-			{
-				conn.Open();
-
-				sql = @"SELECT * FROM insert_settings(
+                    sql = @"SELECT * FROM insert_settings(
                                                         :_powerhead_orientation,
                                                         :_powerhead_height,
                                                         :_powerhead_position,
@@ -481,60 +485,61 @@ namespace Biodex_Client
                                                         :_controller_pause,
                                                         :_controller_isokinetic_speed)";
 
-				cmd = new NpgsqlCommand(sql, conn);
+                    cmd = new NpgsqlCommand(sql, conn);
 
-				cmd.Parameters.AddWithValue("_powerhead_orientation", cbxPOrientation.Text);
-				cmd.Parameters.AddWithValue("_powerhead_height", nudPHeight.Text);
-				cmd.Parameters.AddWithValue("_powerhead_position", nudPPosition.Text);
-				cmd.Parameters.AddWithValue("_powerhead_attachment", cbxPAttachments.Text);
-				cmd.Parameters.AddWithValue("_powerhead_tilt", nudPTilt.Text);
+                    cmd.Parameters.AddWithValue("_powerhead_orientation", cbxPOrientation.Text);
+                    cmd.Parameters.AddWithValue("_powerhead_height", nudPHeight.Text);
+                    cmd.Parameters.AddWithValue("_powerhead_position", nudPPosition.Text);
+                    cmd.Parameters.AddWithValue("_powerhead_attachment", cbxPAttachments.Text);
+                    cmd.Parameters.AddWithValue("_powerhead_tilt", nudPTilt.Text);
 
-				cmd.Parameters.AddWithValue("_seat_height", nudCHeight.Text);
-				cmd.Parameters.AddWithValue("_seat_orientation", cbxCOrientation.Text);
-				cmd.Parameters.AddWithValue("_seat_tilt", nudCTilt.Text);
-				cmd.Parameters.AddWithValue("_seat_position", nudCPosition.Text);
+                    cmd.Parameters.AddWithValue("_seat_height", nudCHeight.Text);
+                    cmd.Parameters.AddWithValue("_seat_orientation", cbxCOrientation.Text);
+                    cmd.Parameters.AddWithValue("_seat_tilt", nudCTilt.Text);
+                    cmd.Parameters.AddWithValue("_seat_position", nudCPosition.Text);
 
-				cmd.Parameters.AddWithValue("_hip_flexion", nudSHipFlexion.Text);
-				cmd.Parameters.AddWithValue("_footplate_tilt", nudSFootPlateTilt.Text);
-				cmd.Parameters.AddWithValue("_knee_flexion", nudSKneeFlexion.Text);
-				cmd.Parameters.AddWithValue("_ankle_flexion", nudSAnkleFlexion.Text);
-				cmd.Parameters.AddWithValue("_shoulder_abduction", nudSShoulderAbduction.Text);
-				cmd.Parameters.AddWithValue("_shoulder_flexion", nudSShoulderFlexion.Text);
-				cmd.Parameters.AddWithValue("_elbow_flexion", nudSElbowFlexion.Text);
+                    cmd.Parameters.AddWithValue("_hip_flexion", nudSHipFlexion.Text);
+                    cmd.Parameters.AddWithValue("_footplate_tilt", nudSFootPlateTilt.Text);
+                    cmd.Parameters.AddWithValue("_knee_flexion", nudSKneeFlexion.Text);
+                    cmd.Parameters.AddWithValue("_ankle_flexion", nudSAnkleFlexion.Text);
+                    cmd.Parameters.AddWithValue("_shoulder_abduction", nudSShoulderAbduction.Text);
+                    cmd.Parameters.AddWithValue("_shoulder_flexion", nudSShoulderFlexion.Text);
+                    cmd.Parameters.AddWithValue("_elbow_flexion", nudSElbowFlexion.Text);
 
-				cmd.Parameters.AddWithValue("_controller_mode", cbxCoMode.Text);
-				cmd.Parameters.AddWithValue("_controller_cushion", cbxCoCushion.Text);
-				cmd.Parameters.AddWithValue("_controller_sensitivity", cbxCoSensitivity.Text);
-				cmd.Parameters.AddWithValue("_controller_rom_upper_limit", nudCoROMUpper.Text);
-				cmd.Parameters.AddWithValue("_controller_rom_lower_limit", nudCoROMLower.Text);
-				cmd.Parameters.AddWithValue("_controller_rom_percentage", nudCoPercentROM.Text);
-				cmd.Parameters.AddWithValue("_controller_eccentric_speed", nudCoEccentricSpeed.Text);
-				cmd.Parameters.AddWithValue("_controller_passive_speed", nudCoPassiveSpeed.Text);
-				cmd.Parameters.AddWithValue("_controller_torque_limits", nudCoTorqueLimit.Text);
-				cmd.Parameters.AddWithValue("_controller_pause", nudCoPause.Text);
-				cmd.Parameters.AddWithValue("_controller_isokinetic_speed", nudCoIsokineticSpeed.Text);
-
-
-				settings_LastId = (int)cmd.ExecuteScalar();
-
-				conn.Close();
-
-			}
-			catch (Exception ex)
-			{
-				conn.Close();
-				MessageBox.Show("Inserted Fail. Error: " + ex.Message);
-			}
+                    cmd.Parameters.AddWithValue("_controller_mode", cbxCoMode.Text);
+                    cmd.Parameters.AddWithValue("_controller_cushion", cbxCoCushion.Text);
+                    cmd.Parameters.AddWithValue("_controller_sensitivity", cbxCoSensitivity.Text);
+                    cmd.Parameters.AddWithValue("_controller_rom_upper_limit", nudCoROMUpper.Text);
+                    cmd.Parameters.AddWithValue("_controller_rom_lower_limit", nudCoROMLower.Text);
+                    cmd.Parameters.AddWithValue("_controller_rom_percentage", nudCoPercentROM.Text);
+                    cmd.Parameters.AddWithValue("_controller_eccentric_speed", nudCoEccentricSpeed.Text);
+                    cmd.Parameters.AddWithValue("_controller_passive_speed", nudCoPassiveSpeed.Text);
+                    cmd.Parameters.AddWithValue("_controller_torque_limits", nudCoTorqueLimit.Text);
+                    cmd.Parameters.AddWithValue("_controller_pause", nudCoPause.Text);
+                    cmd.Parameters.AddWithValue("_controller_isokinetic_speed", nudCoIsokineticSpeed.Text);
 
 
+                    settings_LastId = (int)cmd.ExecuteScalar();
 
-			//insert into the personal_data table
-			int personal_data_LastId = 0;
-			try
-			{
-				conn.Open();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Inserted Fail. Error: " + ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
 
-				sql = @"SELECT * FROM insert_personal_data(
+
+
+                //insert into the personal_data table
+                int personal_data_LastId = 0;
+                try
+                {
+                    conn.Open();
+
+                    sql = @"SELECT * FROM insert_personal_data(
 				                                        :_sv_number,
 				                                        :_family_status,
 				                                        :_email,
@@ -549,42 +554,43 @@ namespace Biodex_Client
 				                                        :_gender,
 				                                        :_name_title)";
 
-				cmd = new NpgsqlCommand(sql, conn);
+                    cmd = new NpgsqlCommand(sql, conn);
 
-				cmd.Parameters.AddWithValue("_sv_number", txtbPDSVNumber.Text);
-				cmd.Parameters.AddWithValue("_family_status", txtbPDFamilyStatus.Text);
-				cmd.Parameters.AddWithValue("_email", txtbPDEmail.Text);
-				cmd.Parameters.AddWithValue("_address", txtbPDAdress.Text);
-				cmd.Parameters.AddWithValue("_legal_guardian", txtbPDLegalGuardian.Text);
-				cmd.Parameters.AddWithValue("_religion", txtbPDReligion.Text);
-				cmd.Parameters.AddWithValue("_language", txtbPDLanguage.Text);
-				cmd.Parameters.AddWithValue("_insurance", txtbPDInsurance.Text);
-				cmd.Parameters.AddWithValue("_telephone_number", txtbPDPhoneNumber.Text);
-				cmd.Parameters.AddWithValue("_birth_place", txtbPDPlaceOfBirth.Text);
-				cmd.Parameters.AddWithValue("_birth_date", txtbPDDateOfBirth.Text);
-				cmd.Parameters.AddWithValue("_gender", txtbPDGender.Text);
-				cmd.Parameters.AddWithValue("_name_title", txtbPDTitleName.Text);
-
-
-                personal_data_LastId = (int)cmd.ExecuteScalar();
-
-				conn.Close();
-			}
-			catch (Exception ex)
-			{
-				conn.Close();
-				MessageBox.Show("Inserted Fail. Error: " + ex.Message);
-			}
+                    cmd.Parameters.AddWithValue("_sv_number", txtbPDSVNumber.Text);
+                    cmd.Parameters.AddWithValue("_family_status", txtbPDFamilyStatus.Text);
+                    cmd.Parameters.AddWithValue("_email", txtbPDEmail.Text);
+                    cmd.Parameters.AddWithValue("_address", txtbPDAdress.Text);
+                    cmd.Parameters.AddWithValue("_legal_guardian", txtbPDLegalGuardian.Text);
+                    cmd.Parameters.AddWithValue("_religion", txtbPDReligion.Text);
+                    cmd.Parameters.AddWithValue("_language", txtbPDLanguage.Text);
+                    cmd.Parameters.AddWithValue("_insurance", txtbPDInsurance.Text);
+                    cmd.Parameters.AddWithValue("_telephone_number", txtbPDPhoneNumber.Text);
+                    cmd.Parameters.AddWithValue("_birth_place", txtbPDPlaceOfBirth.Text);
+                    cmd.Parameters.AddWithValue("_birth_date", txtbPDDateOfBirth.Text);
+                    cmd.Parameters.AddWithValue("_gender", txtbPDGender.Text);
+                    cmd.Parameters.AddWithValue("_name_title", txtbPDTitleName.Text);
 
 
+                    personal_data_LastId = (int)cmd.ExecuteScalar();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Inserted Fail. Error: " + ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
 
-            //insert into the medical_data table
-            int medical_data_LastId = 0;
-			try
-			{
-                conn.Open();
 
-                sql = @"SELECT * FROM insert_medical_data(
+
+                //insert into the medical_data table
+                int medical_data_LastId = 0;
+                try
+                {
+                    conn.Open();
+
+                    sql = @"SELECT * FROM insert_medical_data(
                                                             	:_hospital_start_date,
                                                                 :_hospital_end_date,
                                                                 :_hospital_address,
@@ -609,241 +615,249 @@ namespace Biodex_Client
                                                                 :_medical_anamnesis,
                                                                 :_medical_admission_reason)";
 
-                cmd = new NpgsqlCommand(sql, conn);
+                    cmd = new NpgsqlCommand(sql, conn);
 
-                cmd.Parameters.AddWithValue("_hospital_start_date", txtbHIStartDate.Text);
-                cmd.Parameters.AddWithValue("_hospital_end_date", txtbHIEndDate.Text);
-                cmd.Parameters.AddWithValue("_hospital_address", txtbHIHospitalAdress.Text);
-                cmd.Parameters.AddWithValue("_hospital_department", txtbHIDepartment.Text);
-                cmd.Parameters.AddWithValue("_hospital_admission_number", txtbHIAdmissionNumber.Text);
-                cmd.Parameters.AddWithValue("_hospital_name", txtbHIHospitalName.Text);
-                cmd.Parameters.AddWithValue("_hospital_contact", txtbHIHospitalConatct.Text);
-                cmd.Parameters.AddWithValue("_hospital_responsible_doctor", txtbHIResponsibleDoctor.Text);
+                    cmd.Parameters.AddWithValue("_hospital_start_date", txtbHIStartDate.Text);
+                    cmd.Parameters.AddWithValue("_hospital_end_date", txtbHIEndDate.Text);
+                    cmd.Parameters.AddWithValue("_hospital_address", txtbHIHospitalAdress.Text);
+                    cmd.Parameters.AddWithValue("_hospital_department", txtbHIDepartment.Text);
+                    cmd.Parameters.AddWithValue("_hospital_admission_number", txtbHIAdmissionNumber.Text);
+                    cmd.Parameters.AddWithValue("_hospital_name", txtbHIHospitalName.Text);
+                    cmd.Parameters.AddWithValue("_hospital_contact", txtbHIHospitalConatct.Text);
+                    cmd.Parameters.AddWithValue("_hospital_responsible_doctor", txtbHIResponsibleDoctor.Text);
 
-                cmd.Parameters.AddWithValue("_diagnosis_state_at_release", txtbDStateRelease.Text);
-                cmd.Parameters.AddWithValue("_diagnosis_summary", txtbDSummary.Text);
-                cmd.Parameters.AddWithValue("_diagnosis_future_medication", txtbDFutureMedication.Text);
-                cmd.Parameters.AddWithValue("_diagnosis_rehabilitation_aim", txtbDRehabilitationAim.Text);
-                cmd.Parameters.AddWithValue("_diagnosis_recommended_measurements", txtbDRecommendedMeasuremnts.Text);
-                cmd.Parameters.AddWithValue("_diagnosis_physical_issue", txtbDPhysicalIssue.Text);
+                    cmd.Parameters.AddWithValue("_diagnosis_state_at_release", txtbDStateRelease.Text);
+                    cmd.Parameters.AddWithValue("_diagnosis_summary", txtbDSummary.Text);
+                    cmd.Parameters.AddWithValue("_diagnosis_future_medication", txtbDFutureMedication.Text);
+                    cmd.Parameters.AddWithValue("_diagnosis_rehabilitation_aim", txtbDRehabilitationAim.Text);
+                    cmd.Parameters.AddWithValue("_diagnosis_recommended_measurements", txtbDRecommendedMeasuremnts.Text);
+                    cmd.Parameters.AddWithValue("_diagnosis_physical_issue", txtbDPhysicalIssue.Text);
 
-                cmd.Parameters.AddWithValue("_medical_actions_by_hospital", txtbMDActionsHospital.Text);
-                cmd.Parameters.AddWithValue("_medical_medication_during_stay", txtbMDMedicationStay.Text);
-                cmd.Parameters.AddWithValue("_medical_medication_at_arrival", txtbMDMedicationArrival.Text);
-                cmd.Parameters.AddWithValue("_medical_risk_allergies", txtbMDRisksAllergies.Text);
-                cmd.Parameters.AddWithValue("_medical_previous_diseases", txtbMDPreviousDisease.Text);
-                cmd.Parameters.AddWithValue("_medical_anamnesis", txtbMDAnamnesis.Text);
-                cmd.Parameters.AddWithValue("_medical_admission_reason", txtbMDAdmissionReason.Text);
-
-
-                medical_data_LastId = (int)cmd.ExecuteScalar();
-
-                conn.Close();
-			}
-			catch (Exception ex)
-			{
-                conn.Close();
-                MessageBox.Show("Inserted Fail. Error: " + ex.Message);
-            }
+                    cmd.Parameters.AddWithValue("_medical_actions_by_hospital", txtbMDActionsHospital.Text);
+                    cmd.Parameters.AddWithValue("_medical_medication_during_stay", txtbMDMedicationStay.Text);
+                    cmd.Parameters.AddWithValue("_medical_medication_at_arrival", txtbMDMedicationArrival.Text);
+                    cmd.Parameters.AddWithValue("_medical_risk_allergies", txtbMDRisksAllergies.Text);
+                    cmd.Parameters.AddWithValue("_medical_previous_diseases", txtbMDPreviousDisease.Text);
+                    cmd.Parameters.AddWithValue("_medical_anamnesis", txtbMDAnamnesis.Text);
+                    cmd.Parameters.AddWithValue("_medical_admission_reason", txtbMDAdmissionReason.Text);
 
 
-
-            //insert into the biodex_report table
-            int biodex_report_LastId = 0;
-			try
-			{
-                conn.Open();
-
-                sql = @"SELECT * FROM insert_biodex_report()";
-
-                cmd = new NpgsqlCommand(sql, conn);
-
-                biodex_report_LastId = (int)cmd.ExecuteScalar();
-
-                conn.Close();
-            }
-			catch (Exception ex)
-			{
-                conn.Close();
-                MessageBox.Show("Inserted Fail. Error: " + ex.Message);
-			}
+                    medical_data_LastId = (int)cmd.ExecuteScalar();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Inserted Fail. Error: " + ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
 
 
+                //insert into the biodex_report table
+                int biodex_report_LastId = 0;
+                try
+                {
+                    conn.Open();
 
-            //insert into the elga_report table
-            int elga_report_LastId = 0;
-            try
-            {
-                conn.Open();
+                    sql = @"SELECT * FROM insert_biodex_report()";
 
-                sql = @"SELECT * FROM insert_elga_report()";
+                    cmd = new NpgsqlCommand(sql, conn);
 
-                cmd = new NpgsqlCommand(sql, conn);
-
-                elga_report_LastId = (int)cmd.ExecuteScalar();
-
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                conn.Close();
-                MessageBox.Show("Inserted Fail. Error: " + ex.Message);
-            }
+                    biodex_report_LastId = (int)cmd.ExecuteScalar();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Inserted Fail. Error: " + ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
 
 
 
-            //insert into the report_result table
-            int report_result_LastId = 0;
-            try
-            {
-                conn.Open();
+                //insert into the elga_report table
+                int elga_report_LastId = 0;
+                try
+                {
+                    conn.Open();
 
-                sql = @"SELECT * FROM insert_report_result()";
+                    sql = @"SELECT * FROM insert_elga_report()";
 
-                cmd = new NpgsqlCommand(sql, conn);
+                    cmd = new NpgsqlCommand(sql, conn);
 
-                report_result_LastId = (int)cmd.ExecuteScalar();
-
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                conn.Close();
-                MessageBox.Show("Inserted Fail. Error: " + ex.Message);
-            }
-
-
-
-            //insert into the uses table
-            int uses_table_feedback = 0;
-            try
-            {
-                conn.Open();
-
-                sql = @"SELECT * FROM insert_uses(:_biodex_report_id, :_exercise_id, :_settings_id)";
-
-                cmd = new NpgsqlCommand(sql, conn);
-
-                cmd.Parameters.AddWithValue("_biodex_report_id", biodex_report_LastId);
-                cmd.Parameters.AddWithValue("_exercise_id", exercise_data_LastId);
-                cmd.Parameters.AddWithValue("_settings_id", settings_LastId);
-
-                uses_table_feedback = (int)cmd.ExecuteScalar();
-
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                conn.Close();
-                MessageBox.Show("Inserted Fail. Error: " + ex.Message);
-            }
+                    elga_report_LastId = (int)cmd.ExecuteScalar();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Inserted Fail. Error: " + ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
 
 
 
-            //insert into the gives_information table
-            int gives_information_feedback = 0;
-            try
-            {
-                conn.Open();
+                //insert into the report_result table
+                int report_result_LastId = 0;
+                try
+                {
+                    conn.Open();
 
-                sql = @"SELECT * FROM insert_gives_information(:_elga_report_id, :_personal_data_id, :_medical_data_id)";
+                    sql = @"SELECT * FROM insert_report_result()";
 
-                cmd = new NpgsqlCommand(sql, conn);
+                    cmd = new NpgsqlCommand(sql, conn);
 
-                cmd.Parameters.AddWithValue("_elga_report_id", elga_report_LastId);
-                cmd.Parameters.AddWithValue("_personal_data_id", personal_data_LastId);
-                cmd.Parameters.AddWithValue("_medical_data_id", medical_data_LastId);
-
-                gives_information_feedback = (int)cmd.ExecuteScalar();
-
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                conn.Close();
-                MessageBox.Show("Inserted Fail. Error: " + ex.Message);
-            }
+                    report_result_LastId = (int)cmd.ExecuteScalar();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Inserted Fail. Error: " + ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
 
 
 
-            //insert into the may_contain table
-            int contains_feedback = 0;
-            try
-            {
-                conn.Open();
+                //insert into the uses table
+                int uses_table_feedback;
+                try
+                {
+                    conn.Open();
 
-                sql = @"SELECT * FROM insert_contains(:_report_id, :_biodex_report_id, :_elga_report_id)";
+                    sql = @"SELECT * FROM insert_uses(:_biodex_report_id, :_exercise_id, :_settings_id)";
 
-                cmd = new NpgsqlCommand(sql, conn);
+                    cmd = new NpgsqlCommand(sql, conn);
 
-                cmd.Parameters.AddWithValue("_report_id", report_result_LastId);
-                cmd.Parameters.AddWithValue("_biodex_report_id", biodex_report_LastId);
-                cmd.Parameters.AddWithValue("_elga_report_id", elga_report_LastId);
+                    cmd.Parameters.AddWithValue("_biodex_report_id", biodex_report_LastId);
+                    cmd.Parameters.AddWithValue("_exercise_id", exercise_data_LastId);
+                    cmd.Parameters.AddWithValue("_settings_id", settings_LastId);
 
-                contains_feedback = (int)cmd.ExecuteScalar();
+                    uses_table_feedback = (int)cmd.ExecuteScalar();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Inserted Fail. Error: " + ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
 
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                conn.Close();
-                MessageBox.Show("Inserted Fail. Error: " + ex.Message);
-            }
 
 
-            # region checking if the IDs are the same for each created table to ensure, that for every measurement the Database always creates the diffrent Tables with the same ID
-			List<int> lastIdListA = new List<int>() { exercise_data_LastId, settings_LastId, personal_data_LastId, medical_data_LastId };
-            List<int> lastIdListB = new List<int>() { biodex_report_LastId, elga_report_LastId, report_result_LastId, exercise_data_LastId };
+                //insert into the gives_information table
+                int gives_information_feedback;
+                try
+                {
+                    conn.Open();
 
-            if (lastIdListA.SequenceEqual(lastIdListB))     //if both lists have the same IDs, then everything is fine and the data will be stored as planned
-            {
+                    sql = @"SELECT * FROM insert_gives_information(:_elga_report_id, :_personal_data_id, :_medical_data_id)";
+
+                    cmd = new NpgsqlCommand(sql, conn);
+
+                    cmd.Parameters.AddWithValue("_elga_report_id", elga_report_LastId);
+                    cmd.Parameters.AddWithValue("_personal_data_id", personal_data_LastId);
+                    cmd.Parameters.AddWithValue("_medical_data_id", medical_data_LastId);
+
+                    gives_information_feedback = (int)cmd.ExecuteScalar();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Inserted Fail. Error: " + ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+
+
+
+                //insert into the may_contain table
+                int contains_feedback;
+                try
+                {
+                    conn.Open();
+
+                    sql = @"SELECT * FROM insert_contains(:_report_id, :_biodex_report_id, :_elga_report_id)";
+
+                    cmd = new NpgsqlCommand(sql, conn);
+
+                    cmd.Parameters.AddWithValue("_report_id", report_result_LastId);
+                    cmd.Parameters.AddWithValue("_biodex_report_id", biodex_report_LastId);
+                    cmd.Parameters.AddWithValue("_elga_report_id", elga_report_LastId);
+
+                    contains_feedback = (int)cmd.ExecuteScalar();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Inserted Fail. Error: " + ex.Message);
+                }
+                finally
+                {
+                    conn.Close();
+                }
                 MessageBox.Show("Inserted New Record Successfully Into The Database", "Record Exported", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                /*
+                #region checking if the IDs are the same for each created table to ensure, that for every measurement the Database always creates the diffrent Tables with the same ID
+                List<int> lastIdListA = new List<int>() { exercise_data_LastId, settings_LastId, personal_data_LastId, medical_data_LastId };
+                List<int> lastIdListB = new List<int>() { biodex_report_LastId, elga_report_LastId, report_result_LastId, exercise_data_LastId };
+
+                if (lastIdListA.SequenceEqual(lastIdListB))     //if both lists have the same IDs, then everything is fine and the data will be stored as planned
+                {
+                    MessageBox.Show("Inserted New Record Successfully Into The Database", "Record Exported", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else //if the IDs are not the same, the maximum value will be choosen. all other tables will start from the new ID
+                {
+                    //TO-DO Postgres Reset ID
+                    #region ignore this
+                    ////is needed to allign the IDs again
+                    //List<int> lastIdListCal = new List<int>() { exercise_data_LastId, settings_LastId, personal_data_LastId, medical_data_LastId, biodex_report_LastId, elga_report_LastId, report_result_LastId };
+                    //int maxID = lastIdListCal.Max();
+                    //int renew_feedback = 0;
+
+                    //try
+                    //{
+                    //	conn.Open();
+
+                    //	sql = @"SELECT * FROM renew_ids(:_newid)";
+
+                    //	cmd = new NpgsqlCommand(sql, conn);
+
+                    //	cmd.Parameters.AddWithValue("_newid", maxID);
+
+                    //	renew_feedback = (int)cmd.ExecuteScalar();
+
+                    //	conn.Close();
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //	conn.Close();
+                    //	MessageBox.Show("Renewing IDs Failed. Error: " + ex.Message);
+                    //}
+                    #endregion
+                    MessageBox.Show("There Were Some COMPLICATIONS, WHEN EXPORTING THE DATA TO THE DATABASE. THE IDs HAVE TO BE ADJUSTED", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                #endregion
+                */
+
+                display_table();
             }
-			else //if the IDs are not the same, the maximum value will be choosen. all other tables will start from the new ID
-			{
-                //TO-DO Postgres Reset ID
-				#region ignore this
-				////is needed to allign the IDs again
-				//List<int> lastIdListCal = new List<int>() { exercise_data_LastId, settings_LastId, personal_data_LastId, medical_data_LastId, biodex_report_LastId, elga_report_LastId, report_result_LastId };
-				//int maxID = lastIdListCal.Max();
-				//int renew_feedback = 0;
-
-				//try
-				//{
-				//	conn.Open();
-
-				//	sql = @"SELECT * FROM renew_ids(:_newid)";
-
-				//	cmd = new NpgsqlCommand(sql, conn);
-
-				//	cmd.Parameters.AddWithValue("_newid", maxID);
-
-				//	renew_feedback = (int)cmd.ExecuteScalar();
-
-				//	conn.Close();
-				//}
-				//catch (Exception ex)
-				//{
-				//	conn.Close();
-				//	MessageBox.Show("Renewing IDs Failed. Error: " + ex.Message);
-				//}
-				#endregion
-				MessageBox.Show("There Were Some COMPLICATIONS, WHEN EXPORTING THE DATA TO THE DATABASE. THE IDs HAVE TO BE ADJUSTED", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
-			#endregion
-
-			display_table();
         }
         #endregion
 
         #region Loading Data From The DATABASE 
         //after selecting a existing record, the data can be loaded via the LOAD BUTTON: this will plot the data in the graphs window. Optionally, a CSV File can be created via the CREATE CSV FILE BUTTON
         private void btnLoad_Click(object sender, EventArgs e)
-		{
+        {
             //if nothing is selected, then the user will be reminded to select a record from the table
             if (rowIndex <= 0)
-			{
-                MessageBox.Show("Before Loading: Please Select An Available Record From The Table: AVAILABLE MEASUREMENT", "Please Select", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            {
+                MessageBox.Show("Before Loading: Please Select An Available Record From The Table 'Available Measurements'", "Please Select", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -860,13 +874,14 @@ namespace Biodex_Client
                 cmd.Parameters.AddWithValue(":_id", rowIndex);
 
                 torqueStringFromDB = (string)cmd.ExecuteScalar();
-
-                conn.Close();
             }
             catch (Exception ex)
             {
-                conn.Close();
                 MessageBox.Show("Loading Failed. Error: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
             }
 
 
@@ -883,13 +898,14 @@ namespace Biodex_Client
                 cmd.Parameters.AddWithValue(":_id", rowIndex);
 
                 angleStringFromDB = (string)cmd.ExecuteScalar();
-
-                conn.Close();
             }
             catch (Exception ex)
             {
-                conn.Close();
                 MessageBox.Show("Loading Failed. Error: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
             }
 
 
@@ -906,17 +922,18 @@ namespace Biodex_Client
                 cmd.Parameters.AddWithValue(":_id", rowIndex);
 
                 velocityStringFromDB = (string)cmd.ExecuteScalar();
-
-                conn.Close();
             }
             catch (Exception ex)
             {
-                conn.Close();
                 MessageBox.Show("Loading Failed. Error: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
             }
 
             //handing the strings to the DATA object - to plot the selection
-            Data plotData = new Data(torqueStringFromDB, velocityStringFromDB, angleStringFromDB);
+            new Data(torqueStringFromDB, velocityStringFromDB, angleStringFromDB);
         }
         #endregion
 
@@ -1180,7 +1197,7 @@ namespace Biodex_Client
             //creating the CSV-File
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
 
-            sb.AppendLine("Timestamp;"+ timestampHeader);
+            sb.AppendLine("Timestamp;" + timestampHeader);
             sb.AppendLine("Exercise;" + exerciseHeader);
             sb.AppendLine("Muscle;" + muscleHeader);
             sb.AppendLine("Repetition;" + repetitionHeader);
@@ -1235,7 +1252,7 @@ namespace Biodex_Client
             save.Filter = "CSV Files (*.csv)|*.csv|All Files (*.*)|*.*";
             if (save.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                StreamWriter write = new StreamWriter(File.Create(save.FileName));
+                StreamWriter write = new StreamWriter(File.Create(save.FileName), new UTF8Encoding(true));
                 write.Write(sb.ToString());
                 write.Dispose();
             }
@@ -1247,15 +1264,28 @@ namespace Biodex_Client
             if (rowIndex <= 0)      // if-statement means nothing is selected from the Data Table (Available Measurement)
             {
                 Data myData = serialportsave.myData;
-                torqueStringToDB = string.Join(";", myData.aTorqueList.ToArray());
-                angleStringToDB = string.Join(";", myData.aAngleList.ToArray());
-                velocityStringToDB = string.Join(";", myData.aVelocityList.ToArray());
-
-                createCSV(torqueStringToDB, velocityStringToDB, angleStringToDB);
+                try
+                {
+                    torqueStringToDB = string.Join(";", myData.aTorqueList.ToArray());
+                    angleStringToDB = string.Join(";", myData.aAngleList.ToArray());
+                    velocityStringToDB = string.Join(";", myData.aVelocityList.ToArray());
+                    createCSV(torqueStringToDB, velocityStringToDB, angleStringToDB);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Please select a record from the table or record a new exercise", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
-                createCSV(torqueStringFromDB, velocityStringFromDB, angleStringFromDB);
+                try
+                {
+                    createCSV(torqueStringFromDB, velocityStringFromDB, angleStringFromDB);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("You have to 'Load And Plot' the record first", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

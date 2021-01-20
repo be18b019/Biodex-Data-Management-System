@@ -89,17 +89,17 @@ namespace Biodex_Client
                     var angle = _data.aAngleList.Last();
 
                     //Biodex_Client.FormMeasurementProperties.ChartValuesTorqueValues.Add(new formMeasurementProperties.ValuePoint(time, torque));
-                    Biodex_Client.GraphPlotting.ChartValuesTorqueValues.Add(new ValuePoint(time, torque));
+                    Biodex_Client.GraphPlotting.m_aChartValuesTorqueValues.Add(new ValuePoint(time, torque));
                     //Biodex_Client.FormMeasurementProperties.ChartValuesVelocityValues.Add(new formMeasurementProperties.ValuePoint(time, velocity));
-                    Biodex_Client.GraphPlotting.ChartValuesVelocityValues.Add(new ValuePoint(time, velocity));
+                    Biodex_Client.GraphPlotting.m_aChartValuesVelocityValues.Add(new ValuePoint(time, velocity));
                     //Biodex_Client.FormMeasurementProperties.ChartValuesAngleValues.Add(new formMeasurementProperties.ValuePoint(time, angle));
-                    Biodex_Client.GraphPlotting.ChartValuesAngleValues.Add(new ValuePoint(time, angle));
+                    Biodex_Client.GraphPlotting.m_aChartValuesAngleValues.Add(new ValuePoint(time, angle));
 
                 }
             }
             catch (TimeoutException timeoutException)
             {
-                System.Console.WriteLine("Timeout during read " + timeoutException.Message);
+                MessageBox.Show("Timeout during read " + timeoutException.Message,"ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -115,9 +115,9 @@ namespace Biodex_Client
                 settings.myData = _data;
 
             }
-            catch (Exception SerialPortCloseException)
+            catch (Exception)
             {
-                System.Console.WriteLine("Serial Port could not be closed " + SerialPortCloseException.Message);
+                MessageBox.Show("Start a recording before you try to stop it!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }   
         }
     }

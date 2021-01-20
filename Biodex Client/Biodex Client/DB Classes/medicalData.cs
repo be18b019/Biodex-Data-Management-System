@@ -8,53 +8,53 @@ namespace Biodex_Client.DB_Classes
 {
     class MedicalData
     {
-        public long MedicalDataID { get; set; }
-        public string HospitalStartDate { get; set; }
-        public string HospitalEndDate { get; set; }
-        public string HospitalAdress { get; set; }
-        public string HospitalDepartment { get; set; }
-        public string HospitalAdmissionNumber { get; set; }
-        public string HospitalName { get; set; }
-        public string HospitalContact { get; set; }
-        public string HospitalResposibleDoctor { get; set; }
-        public string MedAdmissionReason { get; set; }
-        public string MedAnamnesis { get; set; }
-        public string MedPreviousDisease { get; set; }
-        public string MedRiskAlergies { get; set; }
-        public string MedMedicationAtArrival { get; set; }
-        public string MedMedicationDurringStay { get; set; }
-        public string MedActionsByHospital { get; set; }
-        public string DiagPhysicalIssue { get; set; }
-        public string DiagRecommendedMeasurement { get; set; }
-        public string DiagRehaAim { get; set; }
-        public string DiagFutureMedication { get; set; }
-        public string DiagSummary { get; set; }
-        public string DiagStateAtRelease { get; set; }
+        public long nMedicalDataID { get; set; }
+        public string sHospitalStartDate { get; set; }
+        public string sHospitalEndDate { get; set; }
+        public string sHospitalAdress { get; set; }
+        public string sHospitalDepartment { get; set; }
+        public string sHospitalAdmissionNumber { get; set; }
+        public string sHospitalName { get; set; }
+        public string sHospitalContact { get; set; }
+        public string sHospitalResposibleDoctor { get; set; }
+        public string sMedAdmissionReason { get; set; }
+        public string sMedAnamnesis { get; set; }
+        public string sMedPreviousDisease { get; set; }
+        public string sMedRiskAlergies { get; set; }
+        public string sMedMedicationAtArrival { get; set; }
+        public string sMedMedicationDurringStay { get; set; }
+        public string sMedActionsByHospital { get; set; }
+        public string sDiagPhysicalIssue { get; set; }
+        public string sDiagRecommendedMeasurement { get; set; }
+        public string sDiagRehaAim { get; set; }
+        public string sDiagFutureMedication { get; set; }
+        public string sDiagSummary { get; set; }
+        public string sDiagStateAtRelease { get; set; }
 
-        public MedicalData(long medicalDataID, string hospitalStartDate, string hospitalEndDate, string hospitalAdress, string hospitalDepartment, string hospitalAdmissionNumber, string hospitalName, string hospitalContact, string hospitalResposibleDoctor, string diagStateAtRelease, string diagSummary, string diagFutureMedication, string diagRehaAim, string diagRecommendedMeasurement, string diagPhysicalIssue,  string medActionsByHospital, string medMedicationDurringStay, string medMedicationAtArrival, string medRiskAlergies, string medPreviousDisease, string medAnamnesis, string medAdmissionReason)
+        public MedicalData(long nMedicalDataID, string sHospitalStartDate, string sHospitalEndDate, string sHospitalAdress, string sHospitalDepartment, string sHospitalAdmissionNumber, string sHospitalName, string sHospitalContact, string sHospitalResposibleDoctor, string sDiagStateAtRelease, string sDiagSummary, string sDiagFutureMedication, string sDiagRehaAim, string sDiagRecommendedMeasurement, string sDiagPhysicalIssue,  string sMedActionsByHospital, string sMedMedicationDurringStay, string sMedMedicationAtArrival, string sMedRiskAlergies, string sMedPreviousDisease, string sMedAnamnesis, string sMedAdmissionReason)
         {
-            this.MedicalDataID = medicalDataID;
-            this.HospitalStartDate = hospitalStartDate;
-            this.HospitalEndDate = hospitalEndDate;
-            this.HospitalAdress = hospitalAdress;
-            this.HospitalDepartment = hospitalDepartment;
-            this.HospitalAdmissionNumber = hospitalAdmissionNumber;
-            this.HospitalName = hospitalName;
-            this.HospitalContact = hospitalContact;
-            this.HospitalResposibleDoctor = hospitalResposibleDoctor;
-            this.MedAdmissionReason = medAdmissionReason;
-            this.MedAnamnesis = medAnamnesis;
-            this.MedPreviousDisease = medPreviousDisease;
-            this.MedRiskAlergies = medRiskAlergies;
-            this.MedMedicationAtArrival = medMedicationAtArrival;
-            this.MedMedicationDurringStay = medMedicationDurringStay;
-            this.MedActionsByHospital = medActionsByHospital;
-            this.DiagPhysicalIssue = diagPhysicalIssue;
-            this.DiagRecommendedMeasurement = diagRecommendedMeasurement;
-            this.DiagRehaAim = diagRehaAim;
-            this.DiagFutureMedication = diagFutureMedication;
-            this.DiagSummary = diagSummary;
-            this.DiagStateAtRelease = diagStateAtRelease;
+            this.nMedicalDataID = nMedicalDataID;
+            this.sHospitalStartDate = sHospitalStartDate;
+            this.sHospitalEndDate = sHospitalEndDate;
+            this.sHospitalAdress = sHospitalAdress;
+            this.sHospitalDepartment = sHospitalDepartment;
+            this.sHospitalAdmissionNumber = sHospitalAdmissionNumber;
+            this.sHospitalName = sHospitalName;
+            this.sHospitalContact = sHospitalContact;
+            this.sHospitalResposibleDoctor = sHospitalResposibleDoctor;
+            this.sMedAdmissionReason = sMedAdmissionReason;
+            this.sMedAnamnesis = sMedAnamnesis;
+            this.sMedPreviousDisease = sMedPreviousDisease;
+            this.sMedRiskAlergies = sMedRiskAlergies;
+            this.sMedMedicationAtArrival = sMedMedicationAtArrival;
+            this.sMedMedicationDurringStay = sMedMedicationDurringStay;
+            this.sMedActionsByHospital = sMedActionsByHospital;
+            this.sDiagPhysicalIssue = sDiagPhysicalIssue;
+            this.sDiagRecommendedMeasurement = sDiagRecommendedMeasurement;
+            this.sDiagRehaAim = sDiagRehaAim;
+            this.sDiagFutureMedication = sDiagFutureMedication;
+            this.sDiagSummary = sDiagSummary;
+            this.sDiagStateAtRelease = sDiagStateAtRelease;
         }
     }
 }
