@@ -237,6 +237,7 @@ namespace Biodex_Client
                 }
 
                 _data = null;
+                serialportsave.myData = null;
                 //_mProperties = null;
                 //_patientData = null;
             }
