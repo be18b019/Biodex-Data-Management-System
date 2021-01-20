@@ -22,6 +22,7 @@ namespace Biodex_Client
 
     public partial class formMeasurementProperties : Form
     {
+
         #region initializing form members and Chartvalues
         formGraphs _FormGraphs = null;
         Data _data = null;
@@ -392,8 +393,11 @@ namespace Biodex_Client
         //when one cell of the dgvAMmeasurements is clicked, it will collect the whole rows index
         private void dgvAMmeasurements_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //gets the exercise_id of the currently selected record from the dataGridView
-            rowIndex = int.Parse(dgvAMmeasurements.Rows[e.RowIndex].Cells["id"].Value.ToString());
+            if (e.RowIndex >= 0)
+            {
+                //gets the exercise_id of the currently selected record from the dataGridView
+                rowIndex = int.Parse(dgvAMmeasurements.Rows[e.RowIndex].Cells["id"].Value.ToString());
+            }
         }
         #endregion
 
@@ -1246,6 +1250,342 @@ namespace Biodex_Client
             {
                 sb.AppendLine(torqueArray[i] + ";" + velocityArray[i] + ";" + angleArray[i]);           //starts new line with the three values and in between there is a ; (torque; velocity; angle)
             }
+
+            #region second section of the CSV: Patient/Medical Data, filling strings to put them into the CSV (Personal, Hospital, Medical, Diagnosis)
+
+            sb.AppendLine();
+            sb.AppendLine();
+            sb.AppendLine();
+
+            sb.AppendLine("ELGA Medical Report").AppendLine();
+
+            #region ELGA HEADER Strings
+            //personal data strings
+            //personal data
+            string pSVHeader = null;
+            string pfamiliyHeader = null;
+            string pemailHeader = null;
+            string padressHeader = null;
+            string pguardianHeader = null;
+            string preligionHeader = null;
+            string planguageHeader = null;
+            string pinsuranceHeader = null;
+            string ptelHeader = null;
+            string pbirthPlaceHeader = null;
+            string pbirthDateHeader = null;
+            string pgenderHeader = null;
+
+
+            //ELGA HEADER: medical data string
+            //hospital
+            string hospital_start_date = null;
+            string hospital_end_date = null;
+            string hospital_address = null;
+            string hospital_department = null;
+            string hospital_admission_number = null;
+            string hospital_name = null;
+            string hospital_contact = null;
+            string hospital_responsible_doctor = null;
+
+            //diagnosis
+            string diagnosis_state_at_release = null;
+            string diagnosis_summary = null;
+            string diagnosis_future_medication = null;
+            string diagnosis_rehabilitation_aim = null;
+            string diagnosis_recommended_measurements = null;
+            string diagnosis_physical_issue = null;
+
+            //medical
+            string medical_actions_by_hospital = null;
+            string medical_medication_during_stay = null;
+            string medical_medication_at_arrival = null;
+            string medical_risk_allergies = null;
+            string medical_previous_diseases = null;
+            string medical_anamnesis = null;
+            string medical_admission_reason = null;
+            #endregion
+
+            if (rowIndex <= 0)          //will be executed, when a new record is taken and not any of the entires of the 'Available Meaurement' Table is klicked
+            {
+                //ELGA HEADER: personal data string
+                //personal data
+                pSVHeader = txtbPDSVNumber.Text;
+                pfamiliyHeader = txtbPDFamilyStatus.Text;
+                pemailHeader = txtbPDEmail.Text;
+                padressHeader = txtbPDAdress.Text;
+                pguardianHeader = txtbPDLegalGuardian.Text;
+                preligionHeader = txtbPDReligion.Text;
+                planguageHeader = txtbPDLanguage.Text;
+                pinsuranceHeader = txtbPDInsurance.Text;
+                ptelHeader = txtbPDPhoneNumber.Text;
+                pbirthPlaceHeader = txtbPDPlaceOfBirth.Text;
+                pbirthDateHeader = txtbPDDateOfBirth.Text;
+                pgenderHeader = txtbPDGender.Text;
+
+
+                //ELGA HEADER: medical data string
+                //hospital
+                hospital_start_date = txtbHIStartDate.Text;
+                hospital_end_date = txtbHIEndDate.Text;
+                hospital_address = txtbHIHospitalAdress.Text;
+                hospital_department = txtbHIDepartment.Text;
+                hospital_admission_number = txtbHIAdmissionNumber.Text;
+                hospital_name = txtbHIHospitalName.Text;
+                hospital_contact = txtbHIHospitalConatct.Text;
+                hospital_responsible_doctor = txtbHIResponsibleDoctor.Text;
+
+                //diagnosis
+                diagnosis_state_at_release = txtbDStateRelease.Text;
+                diagnosis_summary = txtbDSummary.Text;
+                diagnosis_future_medication = txtbDFutureMedication.Text;
+                diagnosis_rehabilitation_aim = txtbDRehabilitationAim.Text;
+                diagnosis_recommended_measurements = txtbDRecommendedMeasuremnts.Text;
+                diagnosis_physical_issue = txtbDPhysicalIssue.Text;
+
+                //medical
+                medical_actions_by_hospital = txtbMDActionsHospital.Text;
+                medical_medication_during_stay = txtbMDMedicationStay.Text;
+                medical_medication_at_arrival = txtbMDMedicationArrival.Text;
+                medical_risk_allergies = txtbMDRisksAllergies.Text;
+                medical_previous_diseases = txtbMDPreviousDisease.Text;
+                medical_anamnesis = txtbMDAnamnesis.Text;
+                medical_admission_reason = txtbMDAdmissionReason.Text;
+            }
+            else
+            {
+                conn.Open();
+
+                //ELGA HEADER: personal data strings
+                #region PERSONAL DATA
+                sql = @"SELECT * FROM get_sv_number(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                pSVHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_family_status(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                pfamiliyHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_email(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                pemailHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_address(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                padressHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_legal_guardian(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                pguardianHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_religion(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                preligionHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_language(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                planguageHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_insurance(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                pinsuranceHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_telephone_number(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                ptelHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_birth_place(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                pbirthPlaceHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_birth_date(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                pbirthDateHeader = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_gender(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                pgenderHeader = (string)cmd.ExecuteScalar();
+                #endregion
+
+                //ELGA HEADER: medical data strings
+                #region hospital
+
+                sql = @"SELECT * FROM get_hospital_start_date(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                hospital_start_date = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_hospital_end_date(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                hospital_end_date = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_hospital_address(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                hospital_address = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_hospital_department(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                hospital_department = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_hospital_admission_number(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                hospital_admission_number = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_hospital_name(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                hospital_name = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_hospital_contact(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                hospital_contact = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_hospital_responsible_doctor(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                hospital_responsible_doctor = (string)cmd.ExecuteScalar();
+
+                #endregion
+
+                #region diagnosis
+
+                sql = @"SELECT * FROM get_diagnosis_state_at_release(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                diagnosis_state_at_release = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_diagnosis_summary(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                diagnosis_summary = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_diagnosis_future_medication(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                diagnosis_future_medication = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_diagnosis_rehabilitation_aim(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                diagnosis_rehabilitation_aim = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_diagnosis_recommended_measurements(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                diagnosis_recommended_measurements = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_diagnosis_physical_issue(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                diagnosis_physical_issue = (string)cmd.ExecuteScalar();
+
+                #endregion
+
+                #region medical
+
+                sql = @"SELECT * FROM get_medical_actions_by_hospital(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                medical_actions_by_hospital = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_medical_medication_during_stay(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                medical_medication_during_stay = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_medical_medication_at_arrival(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                medical_medication_at_arrival = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_medical_risk_allergies(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                medical_risk_allergies = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_medical_previous_diseases(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                medical_previous_diseases = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_medical_anamnesis(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                medical_anamnesis = (string)cmd.ExecuteScalar();
+
+                sql = @"SELECT * FROM get_medical_admission_reason(:_id)";
+                cmd = new NpgsqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue(":_id", rowIndex);
+                medical_admission_reason = (string)cmd.ExecuteScalar();
+
+                #endregion
+
+                conn.Close();
+            }
+
+            //adding the ELGA strings into the StringStream for the CSV
+            //Personal
+            sb.AppendLine("PERSONAL DATA:");
+            sb.AppendLine("SV-Number;" + pSVHeader);
+            sb.AppendLine("Family Status;" + pfamiliyHeader);
+            sb.AppendLine("E-Mail;" + pemailHeader);
+            sb.AppendLine("Address;" + padressHeader);
+            sb.AppendLine("Legal Guardian;" + pguardianHeader);
+            sb.AppendLine("Religion;" + preligionHeader);
+            sb.AppendLine("Language;" + planguageHeader);
+            sb.AppendLine("Insurance;" + pinsuranceHeader);
+            sb.AppendLine("Telephone Number;" + ptelHeader);
+            sb.AppendLine("Birth Place;" + pbirthPlaceHeader);
+            sb.AppendLine("Birth Date;" + pbirthDateHeader);
+            sb.AppendLine("Gender;" + pgenderHeader).AppendLine();
+
+            //Hospital
+            sb.AppendLine("HOSPITAL INFORMATION:");
+            sb.AppendLine("Start Date;" + hospital_start_date);
+            sb.AppendLine("End Date;" + hospital_end_date);
+            sb.AppendLine("Address;" + hospital_address);
+            sb.AppendLine("Department;" + hospital_department);
+            sb.AppendLine("Admission Number;" + hospital_admission_number);
+            sb.AppendLine("Name;" + hospital_name);
+            sb.AppendLine("Contact;" + hospital_contact);
+            sb.AppendLine("Responsible Doctor;" + hospital_responsible_doctor).AppendLine();
+
+            //Diagnosis
+            sb.AppendLine("DIAGNOSIS:");
+            sb.AppendLine("State At Release;" + diagnosis_state_at_release);
+            sb.AppendLine("Future Medication;" + diagnosis_future_medication);
+            sb.AppendLine("Rehabilitation Aim;" + diagnosis_rehabilitation_aim);
+            sb.AppendLine("Recommended Measurement;" + diagnosis_recommended_measurements);
+            sb.AppendLine("Physical Issue;" + diagnosis_physical_issue);
+            sb.AppendLine("Summary;" + diagnosis_summary).AppendLine();
+
+            //Medical
+            sb.AppendLine("MEDICAL INFORMATION:");
+            sb.AppendLine("Actions By Hospital;" + medical_actions_by_hospital);
+            sb.AppendLine("Medication During Stay;" + medical_medication_during_stay);
+            sb.AppendLine("Medication At Arrival;" + medical_medication_at_arrival);
+            sb.AppendLine("Risk and Allergies;" + medical_risk_allergies);
+            sb.AppendLine("Previous Diseases;" + medical_previous_diseases);
+            sb.AppendLine("Anamnesis;" + medical_anamnesis);
+            sb.AppendLine("Admission Reason;" + medical_admission_reason).AppendLine();
+
+            #endregion
 
             //pop up window, to save the data ... tips from: https://www.youtube.com/watch?v=5hQQg7S_5GQ
             SaveFileDialog save = new SaveFileDialog();
