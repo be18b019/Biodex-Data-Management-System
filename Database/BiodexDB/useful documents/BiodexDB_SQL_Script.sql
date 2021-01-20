@@ -110,6 +110,7 @@ CREATE TABLE medical_data(
     diagnosis_rehabilitation_aim VARCHAR DEFAULT NULL,
     diagnosis_recommended_measurements VARCHAR DEFAULT NULL,
     diagnosis_physical_issue VARCHAR DEFAULT NULL,
+
     medical_actions_by_hospital VARCHAR DEFAULT NULL,
     medical_medication_during_stay VARCHAR DEFAULT NULL,
     medical_medication_at_arrival VARCHAR DEFAULT NULL,
@@ -807,6 +808,251 @@ RETURNS character varying AS $$
 BEGIN
 	RETURN (SELECT elbow_flexion FROM settings WHERE settings_id = _id);
 END $$ LANGUAGE plpgsql;
+
+
+--------------------- get the second part of the csv: MEDICAL DATA PART
+
+---personal
+CREATE OR REPLACE FUNCTION get_sv_number(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT sv_number FROM personal_data WHERE personal_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_family_status(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT family_status FROM personal_data WHERE personal_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_email(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT email FROM personal_data WHERE personal_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_address(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT address FROM personal_data WHERE personal_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_legal_guardian(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT legal_guardian FROM personal_data WHERE personal_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_religion(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT religion FROM personal_data WHERE personal_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_language(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT language FROM personal_data WHERE personal_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_insurance(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT insurance FROM personal_data WHERE personal_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_telephone_number(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT telephone_number FROM personal_data WHERE personal_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_birth_place(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT birth_place FROM personal_data WHERE personal_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_birth_date(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT birth_date FROM personal_data WHERE personal_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_gender(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT gender FROM personal_data WHERE personal_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+
+
+---hospital
+CREATE OR REPLACE FUNCTION get_hospital_start_date(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT hospital_start_date FROM medical_data WHERE medical_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_hospital_end_date(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT hospital_end_date FROM medical_data WHERE medical_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_hospital_address(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT hospital_address FROM medical_data WHERE medical_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_hospital_department(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT hospital_department FROM medical_data WHERE medical_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_hospital_admission_number(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT hospital_admission_number FROM medical_data WHERE medical_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_hospital_name(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT hospital_name FROM medical_data WHERE medical_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_hospital_contact(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT hospital_contact FROM medical_data WHERE medical_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_hospital_responsible_doctor(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT hospital_responsible_doctor FROM medical_data WHERE medical_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+
+
+--- diagnosis
+CREATE OR REPLACE FUNCTION get_diagnosis_state_at_release(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT diagnosis_state_at_release FROM medical_data WHERE medical_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_diagnosis_summary(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT diagnosis_summary FROM medical_data WHERE medical_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_diagnosis_future_medication(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT diagnosis_future_medication FROM medical_data WHERE medical_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_diagnosis_rehabilitation_aim(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT diagnosis_rehabilitation_aim FROM medical_data WHERE medical_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_diagnosis_recommended_measurements(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT diagnosis_recommended_measurements FROM medical_data WHERE medical_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_diagnosis_physical_issue(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT diagnosis_physical_issue FROM medical_data WHERE medical_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+
+--- medical
+
+CREATE OR REPLACE FUNCTION get_medical_actions_by_hospital(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT medical_actions_by_hospital FROM medical_data WHERE medical_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_medical_medication_during_stay(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT medical_medication_during_stay FROM medical_data WHERE medical_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_medical_medication_at_arrival(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT medical_medication_at_arrival FROM medical_data WHERE medical_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_medical_risk_allergies(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT medical_risk_allergies FROM medical_data WHERE medical_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_medical_previous_diseases(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT medical_previous_diseases FROM medical_data WHERE medical_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_medical_anamnesis(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT medical_anamnesis FROM medical_data WHERE medical_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION get_medical_admission_reason(_id INT)
+RETURNS character varying AS $$
+BEGIN
+	RETURN (SELECT medical_admission_reason FROM medical_data WHERE medical_data_id = _id);
+END $$ LANGUAGE plpgsql;
+
+
 
 
 ----------------------------------------------------------------------------------will be used in emergency cases, when the IDs from each grand table do not match
