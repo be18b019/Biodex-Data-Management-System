@@ -209,7 +209,6 @@
     </Compile>
     <Compile Include="GraphPlotting.cs" />
     <Compile Include="Data.cs" />
-    <Compile Include="DataAccessObject.cs" />
     <Compile Include="DB Classes\BiodexReport.cs" />
     <Compile Include="DB Classes\ElgaReport.cs" />
     <Compile Include="DB Classes\ExerciseData.cs" />

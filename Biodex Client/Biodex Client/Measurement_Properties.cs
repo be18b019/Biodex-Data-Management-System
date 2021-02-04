@@ -1244,13 +1244,6 @@ namespace Biodex_Client
 
             #endregion
 
-            //filling the CSV File with the exercise values TORQUE, VELOCITY and ANGLE
-            sb.AppendLine("Torque;Velocity;Angle");
-            for (int i = 0; i < maxLength; i++)
-            {
-                sb.AppendLine(torqueArray[i] + ";" + velocityArray[i] + ";" + angleArray[i]);           //starts new line with the three values and in between there is a ; (torque; velocity; angle)
-            }
-
             #region second section of the CSV: Patient/Medical Data, filling strings to put them into the CSV (Personal, Hospital, Medical, Diagnosis)
 
             sb.AppendLine();
@@ -1586,6 +1579,21 @@ namespace Biodex_Client
             sb.AppendLine("Admission Reason;" + medical_admission_reason).AppendLine();
 
             #endregion
+
+            sb.AppendLine();
+            sb.AppendLine();
+            sb.AppendLine();
+            sb.AppendLine();
+            sb.AppendLine();
+
+            //filling the CSV File with the exercise values TORQUE, VELOCITY and ANGLE
+            sb.AppendLine("Torque;Velocity;Angle");
+            for (int i = 0; i < maxLength; i++)
+            {
+                sb.AppendLine(torqueArray[i] + ";" + velocityArray[i] + ";" + angleArray[i]);           //starts new line with the three values and in between there is a ; (torque; velocity; angle)
+            }
+
+
 
             //pop up window, to save the data ... tips from: https://www.youtube.com/watch?v=5hQQg7S_5GQ
             SaveFileDialog save = new SaveFileDialog();
