@@ -9,7 +9,7 @@ namespace Biodex_Client
     static class Program
     {
         /// <summary>
-        /// Der Haupteinstiegspunkt für die Anwendung.
+        /// The Main Entry Point of the Program.
         /// </summary>
         [STAThread]
         static void Main()

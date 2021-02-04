@@ -1580,6 +1580,12 @@ namespace Biodex_Client
 
             #endregion
 
+            sb.AppendLine();
+            sb.AppendLine();
+            sb.AppendLine();
+            sb.AppendLine();
+            sb.AppendLine();
+
             //filling the CSV File with the exercise values TORQUE, VELOCITY and ANGLE
             sb.AppendLine("Torque;Velocity;Angle");
             for (int i = 0; i < maxLength; i++)
