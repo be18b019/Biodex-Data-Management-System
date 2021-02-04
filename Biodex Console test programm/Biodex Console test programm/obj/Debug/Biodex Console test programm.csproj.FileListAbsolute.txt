@@ -1,7 +1,0 @@
-C:\Users\jgtha\source\repos\Biodex Console test programm\Biodex Console test programm\bin\Debug\Biodex Console test programm.exe.config
-C:\Users\jgtha\source\repos\Biodex Console test programm\Biodex Console test programm\bin\Debug\Biodex Console test programm.exe
-C:\Users\jgtha\source\repos\Biodex Console test programm\Biodex Console test programm\bin\Debug\Biodex Console test programm.pdb
-C:\Users\jgtha\source\repos\Biodex Console test programm\Biodex Console test programm\obj\Debug\Biodex Console test programm.csprojAssemblyReference.cache
-C:\Users\jgtha\source\repos\Biodex Console test programm\Biodex Console test programm\obj\Debug\Biodex Console test programm.csproj.CoreCompileInputs.cache
-C:\Users\jgtha\source\repos\Biodex Console test programm\Biodex Console test programm\obj\Debug\Biodex Console test programm.exe
-C:\Users\jgtha\source\repos\Biodex Console test programm\Biodex Console test programm\obj\Debug\Biodex Console test programm.pdb
